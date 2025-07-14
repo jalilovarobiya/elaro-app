@@ -1,3 +1,4 @@
+import 'package:clean_arxitekture/core/constants/app_colors.dart';
 import 'package:clean_arxitekture/core/widgets/custom_button.dart';
 import 'package:clean_arxitekture/feature/profile/presentation/widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
               CustomButton(
                 text: "Kirish",
                 onPressed: () {},
-                color: Colors.orange,
+                color: AppColor.primary,
               ),
               Card(
                 child: Column(

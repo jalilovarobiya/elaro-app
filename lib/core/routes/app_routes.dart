@@ -2,14 +2,38 @@ import 'package:clean_arxitekture/feature/card/presentation/pages/card_creen.dar
 import 'package:clean_arxitekture/feature/category/presentation/pages/category_screen.dart';
 import 'package:clean_arxitekture/feature/home/presentation/screens/home_screen.dart';
 import 'package:clean_arxitekture/feature/main/screen/main_screen.dart';
+import 'package:clean_arxitekture/feature/main/screen/splash_screen.dart';
 import 'package:clean_arxitekture/feature/order/presentation/pages/order_screen.dart';
 import 'package:clean_arxitekture/feature/profile/presentation/pages/profile_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
+  static String splash = "/splash";
+  static String home = "/home";
+  static String category = "/category";
+  static String card = "/card";
+  static String order = "/order";
+  static String profile = "/profile";
+  static String search = "/search";
+
   static GoRouter router = GoRouter(
-    initialLocation: "/home",
+    initialLocation: splash,
+
     routes: [
+      GoRoute(
+        path: splash,
+        name: splash,
+        pageBuilder:
+            (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: SplashScreen(),
+              transitionsBuilder: (context, animation, animation2, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            ),
+      ),
+
       StatefulShellRoute.indexedStack(
         builder:
             (context, state, navigationshell) =>
@@ -18,49 +42,121 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: "/home",
-                name: "/home",
-                builder: (context, state) => HomeScreen(),
+                path: home,
+                name: home,
+                pageBuilder:
+                    (context, state) => CustomTransitionPage(
+                      key: state.pageKey,
+                      child: HomeScreen(),
+                      transitionsBuilder: (
+                        context,
+                        animation,
+                        animation2,
+                        child,
+                      ) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                    ),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: "/category",
-                name: "/category",
-                builder: (context, state) => CategoryScreen(),
+                path: category,
+                name: category,
+                pageBuilder:
+                    (context, state) => CustomTransitionPage(
+                      key: state.pageKey,
+                      child: CategoryScreen(),
+                      transitionsBuilder: (
+                        context,
+                        animation,
+                        animation2,
+                        child,
+                      ) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                    ),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: "/card",
-                name: "/card",
-                builder: (context, state) => CardScreen(),
+                path: card,
+                name: card,
+                pageBuilder:
+                    (context, state) => CustomTransitionPage(
+                      key: state.pageKey,
+                      child: CardScreen(),
+                      transitionsBuilder: (
+                        context,
+                        animation,
+                        animation2,
+                        child,
+                      ) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                    ),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: "/order",
-                name: "/order",
-                builder: (context, state) => OrderScreen(),
+                path: order,
+                name: order,
+                pageBuilder:
+                    (context, state) => CustomTransitionPage(
+                      key: state.pageKey,
+                      child: OrderScreen(),
+                      transitionsBuilder: (
+                        context,
+                        animation,
+                        animation2,
+                        child,
+                      ) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                    ),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: "/profile",
-                name: "/profile",
-                builder: (context, state) => ProfileScreen(),
+                path: profile,
+                name: profile,
+                pageBuilder:
+                    (context, state) => CustomTransitionPage(
+                      key: state.pageKey,
+                      child: ProfileScreen(),
+                      transitionsBuilder: (
+                        context,
+                        animation,
+                        animation2,
+                        child,
+                      ) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                    ),
               ),
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: search,
+        name: search,
+        pageBuilder:
+            (context, state) => CustomTransitionPage(
+              key: state.pageKey,
+              child: CategoryScreen(),
+              transitionsBuilder: (context, animation, animation2, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            ),
       ),
     ],
   );

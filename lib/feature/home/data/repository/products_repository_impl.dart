@@ -1,56 +1,83 @@
+import 'package:clean_arxitekture/core/failure/failure_model.dart';
 import 'package:clean_arxitekture/core/interceptor/interceptor.dart';
-import 'package:clean_arxitekture/core/utils/utils.dart';
+import 'package:clean_arxitekture/feature/home/domain/repository/products_repository.dart';
 import 'package:clean_arxitekture/feature/home/data/model/product_model.dart';
 import 'package:clean_arxitekture/feature/home/data/model/products_model.dart';
-import 'package:clean_arxitekture/feature/home/domain/repository/products_repository.dart';
+import 'package:dartz/dartz.dart';
 
 class ProductsRepositoryImpl implements ProductsRepository {
-  final DioClient dio;
+  final DioClient client;
 
-  ProductsRepositoryImpl(this.dio);
+  ProductsRepositoryImpl(this.client);
 
   @override
-  Future<ProductsModel> fetchDiscountProducts() async {
-    final response = await dio.dioClient.get("/products-discount");
-    if (Utils.isDioSuccess(response.statusCode)) {
-      return ProductsModel.fromMap(response.data);
+  Future<Either<FailureModel, ProductModel>> product(int id) async {
+    final response = await client.get(url: "/products/$id");
+    if (response.isSuccess) {
+      final data = ProductModel.fromJson(response.response);
+      return Right(data);
+    } else {
+      return Left(FailureModel(response.response["message"]));
     }
-    throw response.data;
   }
 
   @override
-  Future<ProductsModel> fetchHitProducts() async {
-    final response = await dio.dioClient.get("/products-hit");
-    if (Utils.isDioSuccess(response.statusCode)) {
-      return ProductsModel.fromMap(response.data);
+  Future<Either<FailureModel, ProductsModel>> products({
+    required int pageIndex,
+  }) async {
+    final response = await client.get(
+      url: "/products?pageIndex=$pageIndex&pageSize=10",
+    );
+    if (response.isSuccess) {
+      final data = ProductsModel.fromJson(response.response);
+      return Right(data);
+    } else {
+      return Left(FailureModel(response.response["message"]));
     }
-    throw response.data;
   }
 
   @override
-  Future<ProductsModel> fetchNewProducts() async {
-    final response = await dio.dioClient.get("/products-new");
-    if (Utils.isDioSuccess(response.statusCode)) {
-      return ProductsModel.fromMap(response.data);
+  Future<Either<FailureModel, ProductsModel>> productsDiscount({
+    required int pageIndex,
+  }) async {
+    final response = await client.get(
+      url: "/products-discount?pageIndex=$pageIndex&pageSize=10",
+    );
+    if (response.isSuccess) {
+      final data = ProductsModel.fromJson(response.response);
+      return Right(data);
+    } else {
+      return Left(FailureModel(response.response["message"]));
     }
-    throw response.data;
   }
 
   @override
-  Future<ProductsModel> fetchProducts() async {
-    final response = await dio.dioClient.get("/products");
-    if (Utils.isDioSuccess(response.statusCode)) {
-      return ProductsModel.fromMap(response.data);
+  Future<Either<FailureModel, ProductsModel>> productsHit({
+    required int pageIndex,
+  }) async {
+    final response = await client.get(
+      url: "/products-hit?pageIndex=$pageIndex&pageSize=10",
+    );
+    if (response.isSuccess) {
+      final data = ProductsModel.fromJson(response.response);
+      return Right(data);
+    } else {
+      return Left(FailureModel(response.response["message"]));
     }
-    throw response.data;
   }
 
   @override
-  Future<ProductModel> fetchProductsById(int id) async {
-    final response = await dio.dioClient.get("/products/$id");
-    if (Utils.isDioSuccess(response.statusCode)) {
-      return ProductModel.fromMap(response.data);
+  Future<Either<FailureModel, ProductsModel>> productsNew({
+    required int pageIndex,
+  }) async {
+    final response = await client.get(
+      url: "/products-new?pageIndex=$pageIndex&pageSize=10",
+    );
+    if (response.isSuccess) {
+      final data = ProductsModel.fromJson(response.response);
+      return Right(data);
+    } else {
+      return Left(FailureModel(response.response["message"]));
     }
-    throw response.data;
   }
 }

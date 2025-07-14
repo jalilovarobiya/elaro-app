@@ -1,3 +1,4 @@
+import 'package:clean_arxitekture/feature/category/presentation/widgets/category_body.dart';
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -5,6 +6,6 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(body: SafeArea(child: CategoryBody()));
   }
 }

@@ -1,4 +1,6 @@
+import 'package:clean_arxitekture/core/constants/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class MainScreen extends StatefulWidget {
@@ -10,65 +12,76 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<Map> navigatorItems = [
-    {"name": "Home", "icon": Icons.home},
-    {"name": "Category", "icon": Icons.category_outlined},
-    {"name": "Card", "icon": Icons.shopping_cart_outlined},
-    {"name": "Orders", "icon": Icons.bookmark_border_outlined},
-    {"name": "Profile", "icon": Icons.person_outline},
-  ];
+  final ValueNotifier<int> currentIndex = ValueNotifier<int>(0);
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex.value = widget.navigationShell.currentIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.navigationShell,
-      bottomNavigationBar: Container(
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).padding.bottom,
-          ),
-          child: Row(
-            spacing: 3,
-            children: [
-              ...List.generate(navigatorItems.length, (index) {
-                return Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      widget.navigationShell.goBranch(index);
-                    },
-                    child: Container(
-                      color: Colors.transparent,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 8,
-                        children: [
-                          Icon(
-                            navigatorItems[index]["icon"],
-                            color:
-                                widget.navigationShell.currentIndex == index
-                                    ? Colors.black
-                                    : Colors.grey,
-                          ),
-                          Text(
-                            navigatorItems[index]["name"],
-                            style: TextStyle(
-                              color:
-                                  widget.navigationShell.currentIndex == index
-                                      ? Colors.black
-                                      : Colors.grey,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              }),
+      bottomNavigationBar: ValueListenableBuilder<int>(
+        valueListenable: currentIndex,
+        builder: (context, value, _) {
+          return BottomNavigationBar(
+            currentIndex: value,
+            onTap: (index) {
+              if (index != value) {
+                currentIndex.value = index;
+                widget.navigationShell.goBranch(index);
+              }
+            },
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.grey,
+            items: [
+              BottomNavigationBarItem(
+                icon: Image.asset(
+                  AppImages.home,
+                  height: 24,
+                  color: value == 0 ? Colors.black : Colors.grey,
+                ),
+                label: "home",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  AppImages.category,
+                  height: 24,
+                  color: value == 1 ? Colors.black : Colors.grey,
+                ),
+                label: "category",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  AppImages.card,
+                  height: 24,
+                  color: value == 2 ? Colors.black : Colors.grey,
+                ),
+                label: "card",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.bookmark_border_outlined,
+                  size: 24,
+                  color: value == 3 ? Colors.black : Colors.grey,
+                ),
+                label: "orders",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  AppImages.profile,
+                  height: 24,
+                  color: value == 4 ? Colors.black : Colors.grey,
+                ),
+                label: "profile",
+              ),
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }
