@@ -110,7 +110,7 @@ class _HomeCategoryState extends State<HomeCategory> {
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                   child: CachedNetworkImage(
-                                    imageUrl: category?.image ?? "",
+                                    imageUrl: category?.backgroundImg ?? "",
                                     fit: BoxFit.fitHeight,
                                   ),
                                 ),

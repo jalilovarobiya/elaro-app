@@ -31,17 +31,17 @@ class ProfileScreen extends StatelessWidget {
                     ProfileWidget(
                       actionIcon: Icon(Icons.navigate_next_outlined),
                       icon: Icon(Icons.favorite_border),
-                      title: "Sevimlilar",
+                      title: "favorites",
                     ),
                     ProfileWidget(
                       actionIcon: Icon(Icons.navigate_next_outlined),
                       icon: Icon(Icons.public_outlined),
-                      title: "Ilova tili",
+                      title: "language",
                     ),
                     ProfileWidget(
                       actionIcon: Icon(Icons.navigate_next_outlined),
                       icon: Icon(Icons.location_on_outlined),
-                      title: "Bizning do'konlarimiz",
+                      title: "location",
                     ),
                   ],
                 ),
@@ -53,17 +53,17 @@ class ProfileScreen extends StatelessWidget {
                     ProfileWidget(
                       actionIcon: Icon(Icons.navigate_next_outlined),
                       icon: Icon(Icons.question_answer_outlined),
-                      title: "Qo'llab-quvvatlash markazi",
+                      title: "support",
                     ),
                     ProfileWidget(
                       actionIcon: Icon(Icons.navigate_next_outlined),
                       icon: Icon(Icons.error_outline),
-                      title: "Ma'lumot",
+                      title: "info",
                     ),
                     ProfileWidget(
                       actionIcon: Icon(Icons.navigate_next_outlined),
                       icon: Icon(Icons.logout),
-                      title: "Chiqish",
+                      title: "exit",
                     ),
                   ],
                 ),

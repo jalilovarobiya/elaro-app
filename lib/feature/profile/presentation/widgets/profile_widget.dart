@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatelessWidget {
@@ -17,7 +18,7 @@ class ProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: icon,
-      title: Text(title),
+      title: Text(title.tr()),
       trailing: actionIcon,
       onTap: onTap,
     );

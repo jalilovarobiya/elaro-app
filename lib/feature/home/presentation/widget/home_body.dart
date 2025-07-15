@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/constants/app_shapes.dart';
@@ -98,7 +99,7 @@ class _HomeBodyState extends State<HomeBody> {
                             children: [
                               Icon(Icons.search),
                               10.width,
-                              Text("Search"),
+                              Text("search".tr()),
                             ],
                           ),
                         ),
@@ -117,15 +118,15 @@ class _HomeBodyState extends State<HomeBody> {
             HomeCategory(),
             AllProducts(),
             12.height,
-            Text("Ommabop brendlar"),
+            Text("popular".tr()),
             12.height,
             Brends(),
             12.height,
-            Text("Yangi mahsulotlar"),
+            Text("new_products".tr()),
             12.height,
             NewProducts(),
             12.height,
-            Text("Hit mahsulotlar"),
+            Text("hit_product".tr()),
             12.height,
             HitProducts(),
           ],
