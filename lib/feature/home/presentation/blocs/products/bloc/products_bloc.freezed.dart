@@ -20,27 +20,39 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
+    required TResult Function(String query) searchProducts,
+    required TResult Function() clearSearch,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
+    TResult? Function(String query)? searchProducts,
+    TResult? Function()? clearSearch,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
+    TResult Function(String query)? searchProducts,
+    TResult Function()? clearSearch,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SearchProducts value) searchProducts,
+    required TResult Function(_ClearSearch value) clearSearch,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SearchProducts value)? searchProducts,
+    TResult? Function(_ClearSearch value)? clearSearch,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SearchProducts value)? searchProducts,
+    TResult Function(_ClearSearch value)? clearSearch,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -111,6 +123,8 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
+    required TResult Function(String query) searchProducts,
+    required TResult Function() clearSearch,
   }) {
     return fetchData();
   }
@@ -119,6 +133,8 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
+    TResult? Function(String query)? searchProducts,
+    TResult? Function()? clearSearch,
   }) {
     return fetchData?.call();
   }
@@ -127,6 +143,8 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
+    TResult Function(String query)? searchProducts,
+    TResult Function()? clearSearch,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -139,6 +157,8 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SearchProducts value) searchProducts,
+    required TResult Function(_ClearSearch value) clearSearch,
   }) {
     return fetchData(this);
   }
@@ -147,6 +167,8 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SearchProducts value)? searchProducts,
+    TResult? Function(_ClearSearch value)? clearSearch,
   }) {
     return fetchData?.call(this);
   }
@@ -155,6 +177,8 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SearchProducts value)? searchProducts,
+    TResult Function(_ClearSearch value)? clearSearch,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -169,23 +193,305 @@ abstract class _FetchData implements ProductsEvent {
 }
 
 /// @nodoc
+abstract class _$$SearchProductsImplCopyWith<$Res> {
+  factory _$$SearchProductsImplCopyWith(
+    _$SearchProductsImpl value,
+    $Res Function(_$SearchProductsImpl) then,
+  ) = __$$SearchProductsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchProductsImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$SearchProductsImpl>
+    implements _$$SearchProductsImplCopyWith<$Res> {
+  __$$SearchProductsImplCopyWithImpl(
+    _$SearchProductsImpl _value,
+    $Res Function(_$SearchProductsImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? query = null}) {
+    return _then(
+      _$SearchProductsImpl(
+        null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SearchProductsImpl implements _SearchProducts {
+  const _$SearchProductsImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'ProductsEvent.searchProducts(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchProductsImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchProductsImplCopyWith<_$SearchProductsImpl> get copyWith =>
+      __$$SearchProductsImplCopyWithImpl<_$SearchProductsImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchData,
+    required TResult Function(String query) searchProducts,
+    required TResult Function() clearSearch,
+  }) {
+    return searchProducts(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchData,
+    TResult? Function(String query)? searchProducts,
+    TResult? Function()? clearSearch,
+  }) {
+    return searchProducts?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchData,
+    TResult Function(String query)? searchProducts,
+    TResult Function()? clearSearch,
+    required TResult orElse(),
+  }) {
+    if (searchProducts != null) {
+      return searchProducts(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SearchProducts value) searchProducts,
+    required TResult Function(_ClearSearch value) clearSearch,
+  }) {
+    return searchProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SearchProducts value)? searchProducts,
+    TResult? Function(_ClearSearch value)? clearSearch,
+  }) {
+    return searchProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SearchProducts value)? searchProducts,
+    TResult Function(_ClearSearch value)? clearSearch,
+    required TResult orElse(),
+  }) {
+    if (searchProducts != null) {
+      return searchProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchProducts implements ProductsEvent {
+  const factory _SearchProducts(final String query) = _$SearchProductsImpl;
+
+  String get query;
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchProductsImplCopyWith<_$SearchProductsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearSearchImplCopyWith<$Res> {
+  factory _$$ClearSearchImplCopyWith(
+    _$ClearSearchImpl value,
+    $Res Function(_$ClearSearchImpl) then,
+  ) = __$$ClearSearchImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSearchImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$ClearSearchImpl>
+    implements _$$ClearSearchImplCopyWith<$Res> {
+  __$$ClearSearchImplCopyWithImpl(
+    _$ClearSearchImpl _value,
+    $Res Function(_$ClearSearchImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ProductsEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearSearchImpl implements _ClearSearch {
+  const _$ClearSearchImpl();
+
+  @override
+  String toString() {
+    return 'ProductsEvent.clearSearch()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearSearchImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchData,
+    required TResult Function(String query) searchProducts,
+    required TResult Function() clearSearch,
+  }) {
+    return clearSearch();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchData,
+    TResult? Function(String query)? searchProducts,
+    TResult? Function()? clearSearch,
+  }) {
+    return clearSearch?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchData,
+    TResult Function(String query)? searchProducts,
+    TResult Function()? clearSearch,
+    required TResult orElse(),
+  }) {
+    if (clearSearch != null) {
+      return clearSearch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SearchProducts value) searchProducts,
+    required TResult Function(_ClearSearch value) clearSearch,
+  }) {
+    return clearSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SearchProducts value)? searchProducts,
+    TResult? Function(_ClearSearch value)? clearSearch,
+  }) {
+    return clearSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SearchProducts value)? searchProducts,
+    TResult Function(_ClearSearch value)? clearSearch,
+    required TResult orElse(),
+  }) {
+    if (clearSearch != null) {
+      return clearSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearSearch implements ProductsEvent {
+  const factory _ClearSearch() = _$ClearSearchImpl;
+}
+
+/// @nodoc
 mixin _$ProductsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ProductsModel data) success,
+    required TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )
+    success,
     required TResult Function(FailureModel data) failure,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ProductsModel data)? success,
+    TResult? Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult? Function(FailureModel data)? failure,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ProductsModel data)? success,
+    TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -276,7 +582,13 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ProductsModel data) success,
+    required TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )
+    success,
     required TResult Function(FailureModel data) failure,
   }) {
     return loading();
@@ -286,7 +598,13 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ProductsModel data)? success,
+    TResult? Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult? Function(FailureModel data)? failure,
   }) {
     return loading?.call();
@@ -296,7 +614,13 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ProductsModel data)? success,
+    TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
   }) {
@@ -352,7 +676,12 @@ abstract class _$$SuccessImplCopyWith<$Res> {
     $Res Function(_$SuccessImpl) then,
   ) = __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ProductsModel data});
+  $Res call({
+    ProductsModel data,
+    List<Datum> filteredProducts,
+    String searchQuery,
+    bool isSearching,
+  });
 
   $ProductsModelCopyWith<$Res> get data;
 }
@@ -370,7 +699,12 @@ class __$$SuccessImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
+  $Res call({
+    Object? data = null,
+    Object? filteredProducts = null,
+    Object? searchQuery = null,
+    Object? isSearching = null,
+  }) {
     return _then(
       _$SuccessImpl(
         data:
@@ -378,6 +712,21 @@ class __$$SuccessImplCopyWithImpl<$Res>
                 ? _value.data
                 : data // ignore: cast_nullable_to_non_nullable
                     as ProductsModel,
+        filteredProducts:
+            null == filteredProducts
+                ? _value._filteredProducts
+                : filteredProducts // ignore: cast_nullable_to_non_nullable
+                    as List<Datum>,
+        searchQuery:
+            null == searchQuery
+                ? _value.searchQuery
+                : searchQuery // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isSearching:
+            null == isSearching
+                ? _value.isSearching
+                : isSearching // ignore: cast_nullable_to_non_nullable
+                    as bool,
       ),
     );
   }
@@ -396,14 +745,35 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required this.data});
+  const _$SuccessImpl({
+    required this.data,
+    final List<Datum> filteredProducts = const [],
+    this.searchQuery = '',
+    this.isSearching = false,
+  }) : _filteredProducts = filteredProducts;
 
   @override
   final ProductsModel data;
+  final List<Datum> _filteredProducts;
+  @override
+  @JsonKey()
+  List<Datum> get filteredProducts {
+    if (_filteredProducts is EqualUnmodifiableListView)
+      return _filteredProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filteredProducts);
+  }
+
+  @override
+  @JsonKey()
+  final String searchQuery;
+  @override
+  @JsonKey()
+  final bool isSearching;
 
   @override
   String toString() {
-    return 'ProductsState.success(data: $data)';
+    return 'ProductsState.success(data: $data, filteredProducts: $filteredProducts, searchQuery: $searchQuery, isSearching: $isSearching)';
   }
 
   @override
@@ -411,11 +781,25 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(
+              other._filteredProducts,
+              _filteredProducts,
+            ) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery) &&
+            (identical(other.isSearching, isSearching) ||
+                other.isSearching == isSearching));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(
+    runtimeType,
+    data,
+    const DeepCollectionEquality().hash(_filteredProducts),
+    searchQuery,
+    isSearching,
+  );
 
   /// Create a copy of ProductsState
   /// with the given fields replaced by the non-null parameter values.
@@ -429,32 +813,50 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ProductsModel data) success,
+    required TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )
+    success,
     required TResult Function(FailureModel data) failure,
   }) {
-    return success(data);
+    return success(data, filteredProducts, searchQuery, isSearching);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ProductsModel data)? success,
+    TResult? Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult? Function(FailureModel data)? failure,
   }) {
-    return success?.call(data);
+    return success?.call(data, filteredProducts, searchQuery, isSearching);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ProductsModel data)? success,
+    TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success(data, filteredProducts, searchQuery, isSearching);
     }
     return orElse();
   }
@@ -495,9 +897,17 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements ProductsState {
-  const factory _Success({required final ProductsModel data}) = _$SuccessImpl;
+  const factory _Success({
+    required final ProductsModel data,
+    final List<Datum> filteredProducts,
+    final String searchQuery,
+    final bool isSearching,
+  }) = _$SuccessImpl;
 
   ProductsModel get data;
+  List<Datum> get filteredProducts;
+  String get searchQuery;
+  bool get isSearching;
 
   /// Create a copy of ProductsState
   /// with the given fields replaced by the non-null parameter values.
@@ -578,7 +988,13 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(ProductsModel data) success,
+    required TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )
+    success,
     required TResult Function(FailureModel data) failure,
   }) {
     return failure(data);
@@ -588,7 +1004,13 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(ProductsModel data)? success,
+    TResult? Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult? Function(FailureModel data)? failure,
   }) {
     return failure?.call(data);
@@ -598,7 +1020,13 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(ProductsModel data)? success,
+    TResult Function(
+      ProductsModel data,
+      List<Datum> filteredProducts,
+      String searchQuery,
+      bool isSearching,
+    )?
+    success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
   }) {

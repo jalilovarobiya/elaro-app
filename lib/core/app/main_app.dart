@@ -1,11 +1,11 @@
-import 'package:clean_arxitekture/core/interceptor/interceptor.dart';
-import 'package:clean_arxitekture/core/routes/app_routes.dart';
-import 'package:clean_arxitekture/core/utils/di.dart';
-import 'package:clean_arxitekture/feature/home/data/repository/products_repository_impl.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
+import 'package:elaro_app/core/interceptor/interceptor.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
+import 'package:elaro_app/core/utils/di.dart';
+import 'package:elaro_app/feature/home/data/repository/products_repository_impl.dart';
+import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
+import 'package:elaro_app/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
+import 'package:elaro_app/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
+import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
