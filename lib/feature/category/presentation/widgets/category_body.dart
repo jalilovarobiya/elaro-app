@@ -43,148 +43,146 @@ class CategoryBody extends StatelessWidget {
             ),
           ),
         ),
-        BlocBuilder<CategoriesBloc, CategoriesState>(
-          builder: (context, state) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                state.when(
-                  loading:
-                      () => Shimmer.fromColors(
-                        baseColor: AppColor.lightGray200,
-                        highlightColor: AppColor.lightGray500,
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 12),
-                          height: 200,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 6,
-                            itemBuilder: (ctx, index) {
-                              return ZoomTapAnimation(
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          16.0,
-                                        ),
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(
-                                        left: 8.0,
-                                        top: 8,
-                                      ),
-                                      child: Text("nkdfj", maxLines: 2),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                  success: (data) {
-                    var categories = data.data;
-                    return ListView.builder(
-                      itemBuilder: (context, index) {
-                        return ListTile();
-                      },
-                    );
-                    // SizedBox(
-                    //   height: 220,
-                    //   child: ListView(
-                    //     // scrollDirection: Axis.horizontal,
-                    //     // clipBehavior: Clip.none,
-                    //     children: [
-                    //       ListView.builder(
-                    //         shrinkWrap: true,
-                    //         scrollDirection: Axis.horizontal,
-                    //         itemCount: categories?.length ?? 0,
-                    //         itemBuilder: (context, index) {
-                    //           final category = categories?[index];
-                    //           return ZoomTapAnimation(
-                    //             onTap: () {
-                    //               // context.push(
-                    //               //   Routes.category,
-                    //               //   extra: CategoryConstructorModel(
-                    //               //     id: category?.id ?? 0,
-                    //               //     titleUz: category?.nameUz ?? "",
-                    //               //     titleRu: category?.nameRu ?? "",
-                    //               //     titleCrl: category?.nameCrl ?? "",
-                    //               //   ),
-                    //               // );
-                    //             },
-                    //             child: Stack(
-                    //               children: [
-                    //                 Container(
-                    //                   decoration: BoxDecoration(
-                    //                     borderRadius: BorderRadius.circular(
-                    //                       16.0,
-                    //                     ),
-                    //                   ),
-                    //                   child: CachedNetworkImage(
-                    //                     imageUrl: category?.backgroundImg ?? "",
-                    //                     fit: BoxFit.fitHeight,
-                    //                   ),
-                    //                 ),
-                    //                 Padding(
-                    //                   padding: const EdgeInsets.only(
-                    //                     left: 8.0,
-                    //                     top: 8,
-                    //                   ),
-                    //                   child: Text(
-                    //                     // maxLines: 2,
-                    //                     category?.nameUz ?? "",
-                    //                     style: const TextStyle(
-                    //                       fontSize: 12,
-                    //                       fontWeight: FontWeight.w400,
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           );
-                    //         },
-                    //       ),
-                    //       const SizedBox(width: 16),
-                    //       GestureDetector(
-                    //         onTap: () {
-                    //           // MainSources.currentPage.value = 1;
-                    //         },
-                    //         child: Container(
-                    //           width: 140,
-                    //           decoration: BoxDecoration(
-                    //             color: Colors.grey[200],
-                    //             borderRadius: BorderRadius.circular(8.0),
-                    //           ),
-                    //           child: const Center(
-                    //             child: Row(
-                    //               mainAxisAlignment: MainAxisAlignment.center,
-                    //               children: [
-                    //                 Text("hammasi"),
-                    //                 Icon(
-                    //                   Icons.arrow_forward_ios_rounded,
-                    //                   size: 14,
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       const SizedBox(width: 16),
-                    //     ],
-                    //   ),
-                    // );
-                  },
-                  failure: (failure) => Text("Xatolik: $failure"),
-                ),
-              ],
-            );
-          },
-        ),
+        // BlocBuilder<CategoriesBloc, CategoriesState>(
+        //   builder: (context, state) {
+        //     return Column(
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         state.when(
+        //           loading:
+        //               () => Shimmer.fromColors(
+        //                 baseColor: AppColor.lightGray200,
+        //                 highlightColor: AppColor.lightGray500,
+        //                 child: Container(
+        //                   margin: const EdgeInsets.only(bottom: 12),
+        //                   height: 200,
+        //                   child: ListView.builder(
+        //                     shrinkWrap: true,
+        //                     scrollDirection: Axis.horizontal,
+        //                     itemCount: 6,
+        //                     itemBuilder: (ctx, index) {
+        //                       return ZoomTapAnimation(
+        //                         child: Stack(
+        //                           children: [
+        //                             Container(
+        //                               decoration: BoxDecoration(
+        //                                 borderRadius: BorderRadius.circular(
+        //                                   16.0,
+        //                                 ),
+        //                                 color: Colors.white,
+        //                               ),
+        //                             ),
+        //                             const Padding(
+        //                               padding: EdgeInsets.only(
+        //                                 left: 8.0,
+        //                                 top: 8,
+        //                               ),
+        //                               child: Text("nkdfj", maxLines: 2),
+        //                             ),
+        //                           ],
+        //                         ),
+        //                       );
+        //                     },
+        //                   ),
+        //                 ),
+        //               ),
+        //           success: (data) {
+        //             var categories = data.data;
+        //             return ListView.builder(itemBuilder: (context, index) {
+        //               return ListTile();
+        //             });
+        //             // SizedBox(
+        //             //   height: 220,
+        //             //   child: ListView(
+        //             //     // scrollDirection: Axis.horizontal,
+        //             //     // clipBehavior: Clip.none,
+        //             //     children: [
+        //             //       ListView.builder(
+        //             //         shrinkWrap: true,
+        //             //         scrollDirection: Axis.horizontal,
+        //             //         itemCount: categories?.length ?? 0,
+        //             //         itemBuilder: (context, index) {
+        //             //           final category = categories?[index];
+        //             //           return ZoomTapAnimation(
+        //             //             onTap: () {
+        //             //               // context.push(
+        //             //               //   Routes.category,
+        //             //               //   extra: CategoryConstructorModel(
+        //             //               //     id: category?.id ?? 0,
+        //             //               //     titleUz: category?.nameUz ?? "",
+        //             //               //     titleRu: category?.nameRu ?? "",
+        //             //               //     titleCrl: category?.nameCrl ?? "",
+        //             //               //   ),
+        //             //               // );
+        //             //             },
+        //             //             child: Stack(
+        //             //               children: [
+        //             //                 Container(
+        //             //                   decoration: BoxDecoration(
+        //             //                     borderRadius: BorderRadius.circular(
+        //             //                       16.0,
+        //             //                     ),
+        //             //                   ),
+        //             //                   child: CachedNetworkImage(
+        //             //                     imageUrl: category?.backgroundImg ?? "",
+        //             //                     fit: BoxFit.fitHeight,
+        //             //                   ),
+        //             //                 ),
+        //             //                 Padding(
+        //             //                   padding: const EdgeInsets.only(
+        //             //                     left: 8.0,
+        //             //                     top: 8,
+        //             //                   ),
+        //             //                   child: Text(
+        //             //                     // maxLines: 2,
+        //             //                     category?.nameUz ?? "",
+        //             //                     style: const TextStyle(
+        //             //                       fontSize: 12,
+        //             //                       fontWeight: FontWeight.w400,
+        //             //                     ),
+        //             //                   ),
+        //             //                 ),
+        //             //               ],
+        //             //             ),
+        //             //           );
+        //             //         },
+        //             //       ),
+        //             //       const SizedBox(width: 16),
+        //             //       GestureDetector(
+        //             //         onTap: () {
+        //             //           // MainSources.currentPage.value = 1;
+        //             //         },
+        //             //         child: Container(
+        //             //           width: 140,
+        //             //           decoration: BoxDecoration(
+        //             //             color: Colors.grey[200],
+        //             //             borderRadius: BorderRadius.circular(8.0),
+        //             //           ),
+        //             //           child: const Center(
+        //             //             child: Row(
+        //             //               mainAxisAlignment: MainAxisAlignment.center,
+        //             //               children: [
+        //             //                 Text("hammasi"),
+        //             //                 Icon(
+        //             //                   Icons.arrow_forward_ios_rounded,
+        //             //                   size: 14,
+        //             //                 ),
+        //             //               ],
+        //             //             ),
+        //             //           ),
+        //             //         ),
+        //             //       ),
+        //             //       const SizedBox(width: 16),
+        //             //     ],
+        //             //   ),
+        //             // );
+        //           },
+        //           failure: (failure) => Text("Xatolik: $failure"),
+        //         ),
+        //       ],
+        //     );
+        //   },
+        // ),
       ],
     );
   }
