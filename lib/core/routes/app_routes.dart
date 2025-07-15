@@ -1,10 +1,10 @@
-import 'package:clean_arxitekture/feature/card/presentation/pages/card_creen.dart';
-import 'package:clean_arxitekture/feature/category/presentation/pages/category_screen.dart';
-import 'package:clean_arxitekture/feature/home/presentation/screens/home_screen.dart';
-import 'package:clean_arxitekture/feature/main/screen/main_screen.dart';
-import 'package:clean_arxitekture/feature/main/screen/splash_screen.dart';
-import 'package:clean_arxitekture/feature/order/presentation/pages/order_screen.dart';
-import 'package:clean_arxitekture/feature/profile/presentation/pages/profile_screen.dart';
+import 'package:elaro_app/feature/card/presentation/pages/card_creen.dart';
+import 'package:elaro_app/feature/category/presentation/pages/category_screen.dart';
+import 'package:elaro_app/feature/home/presentation/screens/home_screen.dart';
+import 'package:elaro_app/feature/main/screen/main_screen.dart';
+import 'package:elaro_app/feature/main/screen/splash_screen.dart';
+import 'package:elaro_app/feature/order/presentation/pages/order_screen.dart';
+import 'package:elaro_app/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,9 +1,9 @@
-import 'package:clean_arxitekture/core/failure/failure_model.dart';
-import 'package:clean_arxitekture/core/interceptor/interceptor.dart';
-import 'package:clean_arxitekture/feature/home/domain/repository/products_repository.dart';
-import 'package:clean_arxitekture/feature/home/data/model/product_model.dart';
-import 'package:clean_arxitekture/feature/home/data/model/products_model.dart';
 import 'package:dartz/dartz.dart';
+import 'package:elaro_app/core/failure/failure_model.dart';
+import 'package:elaro_app/core/interceptor/interceptor.dart';
+import 'package:elaro_app/feature/home/data/model/product_model.dart';
+import 'package:elaro_app/feature/home/data/model/products_model.dart';
+import 'package:elaro_app/feature/home/domain/repository/products_repository.dart';
 
 class ProductsRepositoryImpl implements ProductsRepository {
   final DioClient client;

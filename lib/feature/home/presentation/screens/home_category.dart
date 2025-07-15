@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clean_arxitekture/core/constants/app_colors.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/categories/bloc/categories_bloc.dart';
+import 'package:elaro_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_package_for_height/my_package.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import '../../../../core/constants/app_colors.dart';
+import '../blocs/categories/bloc/categories_bloc.dart';
 
 class HomeCategory extends StatefulWidget {
   const HomeCategory({super.key});

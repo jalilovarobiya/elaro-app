@@ -1,6 +1,6 @@
-import 'package:clean_arxitekture/core/constants/app_colors.dart';
-import 'package:clean_arxitekture/core/widgets/custom_button.dart';
-import 'package:clean_arxitekture/feature/profile/presentation/widgets/profile_widget.dart';
+import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/widgets/custom_button.dart';
+import 'package:elaro_app/feature/profile/presentation/widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {

@@ -1,8 +1,8 @@
-import 'package:clean_arxitekture/core/failure/failure_model.dart';
-import 'package:clean_arxitekture/core/interceptor/interceptor.dart';
-import 'package:clean_arxitekture/feature/home/data/model/banner_model.dart';
-import 'package:clean_arxitekture/feature/home/domain/repository/banner_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:elaro_app/core/failure/failure_model.dart';
+import 'package:elaro_app/core/interceptor/interceptor.dart';
+import 'package:elaro_app/feature/home/data/model/banner_model.dart';
+import 'package:elaro_app/feature/home/domain/repository/banner_repository.dart';
 
 class BannerRepositoryImpl implements BannerRepository {
   final DioClient client;

@@ -12,11 +12,11 @@ import 'package:clean_arxitekture/feature/home/presentation/blocs/new_products/b
 import 'package:clean_arxitekture/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:clean_arxitekture/feature/home/presentation/screens/home_banner.dart';
 import 'package:clean_arxitekture/feature/home/presentation/screens/home_category.dart';
+import 'package:clean_arxitekture/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_package_for_height/my_package.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 

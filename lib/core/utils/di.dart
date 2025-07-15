@@ -1,17 +1,19 @@
-import 'package:clean_arxitekture/core/interceptor/interceptor.dart';
-import 'package:clean_arxitekture/feature/home/data/repository/banner_repository_impl.dart';
-import 'package:clean_arxitekture/feature/home/data/repository/brendS_repository_impl.dart';
-import 'package:clean_arxitekture/feature/home/data/repository/categories_repository_impl.dart';
-import 'package:clean_arxitekture/feature/home/data/repository/category_repository.dart';
-import 'package:clean_arxitekture/feature/home/data/repository/products_repository_impl.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/brends/bloc/brends_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/categories/bloc/categories_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/category/bloc/category_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
+
 import 'package:get_it/get_it.dart';
+
+import '../../feature/home/data/repository/banner_repository_impl.dart';
+import '../../feature/home/data/repository/brendS_repository_impl.dart';
+import '../../feature/home/data/repository/categories_repository_impl.dart';
+import '../../feature/home/data/repository/category_repository.dart';
+import '../../feature/home/data/repository/products_repository_impl.dart';
+import '../../feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
+import '../../feature/home/presentation/blocs/brends/bloc/brends_bloc.dart';
+import '../../feature/home/presentation/blocs/categories/bloc/categories_bloc.dart';
+import '../../feature/home/presentation/blocs/category/bloc/category_bloc.dart';
+import '../../feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
+import '../../feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
+import '../../feature/home/presentation/blocs/products/bloc/products_bloc.dart';
+import '../interceptor/interceptor.dart';
 
 final sl = GetIt.instance;
 

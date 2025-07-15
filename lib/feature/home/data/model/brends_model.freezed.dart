@@ -12,8 +12,7 @@ part of 'brends_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BrandsModel _$BrandsModelFromJson(Map<String, dynamic> json) {
   return _BrandsModel.fromJson(json);
@@ -37,9 +36,8 @@ mixin _$BrandsModel {
 /// @nodoc
 abstract class $BrandsModelCopyWith<$Res> {
   factory $BrandsModelCopyWith(
-    BrandsModel value,
-    $Res Function(BrandsModel) then,
-  ) = _$BrandsModelCopyWithImpl<$Res, BrandsModel>;
+          BrandsModel value, $Res Function(BrandsModel) then) =
+      _$BrandsModelCopyWithImpl<$Res, BrandsModel>;
   @useResult
   $Res call({@JsonKey(name: "data") List<Datum>? data});
 }
@@ -58,17 +56,15 @@ class _$BrandsModelCopyWithImpl<$Res, $Val extends BrandsModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = freezed}) {
-    return _then(
-      _value.copyWith(
-            data:
-                freezed == data
-                    ? _value.data
-                    : data // ignore: cast_nullable_to_non_nullable
-                        as List<Datum>?,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Datum>?,
+    ) as $Val);
   }
 }
 
@@ -76,9 +72,8 @@ class _$BrandsModelCopyWithImpl<$Res, $Val extends BrandsModel>
 abstract class _$$BrandsModelImplCopyWith<$Res>
     implements $BrandsModelCopyWith<$Res> {
   factory _$$BrandsModelImplCopyWith(
-    _$BrandsModelImpl value,
-    $Res Function(_$BrandsModelImpl) then,
-  ) = __$$BrandsModelImplCopyWithImpl<$Res>;
+          _$BrandsModelImpl value, $Res Function(_$BrandsModelImpl) then) =
+      __$$BrandsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: "data") List<Datum>? data});
@@ -89,24 +84,22 @@ class __$$BrandsModelImplCopyWithImpl<$Res>
     extends _$BrandsModelCopyWithImpl<$Res, _$BrandsModelImpl>
     implements _$$BrandsModelImplCopyWith<$Res> {
   __$$BrandsModelImplCopyWithImpl(
-    _$BrandsModelImpl _value,
-    $Res Function(_$BrandsModelImpl) _then,
-  ) : super(_value, _then);
+      _$BrandsModelImpl _value, $Res Function(_$BrandsModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BrandsModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = freezed}) {
-    return _then(
-      _$BrandsModelImpl(
-        data:
-            freezed == data
-                ? _value._data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as List<Datum>?,
-      ),
-    );
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$BrandsModelImpl(
+      data: freezed == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Datum>?,
+    ));
   }
 }
 
@@ -114,7 +107,7 @@ class __$$BrandsModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BrandsModelImpl implements _BrandsModel {
   const _$BrandsModelImpl({@JsonKey(name: "data") final List<Datum>? data})
-    : _data = data;
+      : _data = data;
 
   factory _$BrandsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BrandsModelImplFromJson(json);
@@ -158,7 +151,9 @@ class _$BrandsModelImpl implements _BrandsModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BrandsModelImplToJson(this);
+    return _$$BrandsModelImplToJson(
+      this,
+    );
   }
 }
 
@@ -208,11 +203,10 @@ abstract class $DatumCopyWith<$Res> {
   factory $DatumCopyWith(Datum value, $Res Function(Datum) then) =
       _$DatumCopyWithImpl<$Res, Datum>;
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name") String? name,
-    @JsonKey(name: "image") String? image,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image});
 }
 
 /// @nodoc
@@ -234,42 +228,34 @@ class _$DatumCopyWithImpl<$Res, $Val extends Datum>
     Object? name = freezed,
     Object? image = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            name:
-                freezed == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            image:
-                freezed == image
-                    ? _value.image
-                    : image // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$DatumImplCopyWith<$Res> implements $DatumCopyWith<$Res> {
   factory _$$DatumImplCopyWith(
-    _$DatumImpl value,
-    $Res Function(_$DatumImpl) then,
-  ) = __$$DatumImplCopyWithImpl<$Res>;
+          _$DatumImpl value, $Res Function(_$DatumImpl) then) =
+      __$$DatumImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name") String? name,
-    @JsonKey(name: "image") String? image,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image});
 }
 
 /// @nodoc
@@ -277,9 +263,8 @@ class __$$DatumImplCopyWithImpl<$Res>
     extends _$DatumCopyWithImpl<$Res, _$DatumImpl>
     implements _$$DatumImplCopyWith<$Res> {
   __$$DatumImplCopyWithImpl(
-    _$DatumImpl _value,
-    $Res Function(_$DatumImpl) _then,
-  ) : super(_value, _then);
+      _$DatumImpl _value, $Res Function(_$DatumImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Datum
   /// with the given fields replaced by the non-null parameter values.
@@ -290,36 +275,30 @@ class __$$DatumImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? image = freezed,
   }) {
-    return _then(
-      _$DatumImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        name:
-            freezed == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        image:
-            freezed == image
-                ? _value.image
-                : image // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$DatumImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DatumImpl implements _Datum {
-  const _$DatumImpl({
-    @JsonKey(name: "id") this.id,
-    @JsonKey(name: "name") this.name,
-    @JsonKey(name: "image") this.image,
-  });
+  const _$DatumImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "image") this.image});
 
   factory _$DatumImpl.fromJson(Map<String, dynamic> json) =>
       _$$DatumImplFromJson(json);
@@ -363,16 +342,17 @@ class _$DatumImpl implements _Datum {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DatumImplToJson(this);
+    return _$$DatumImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Datum implements Datum {
-  const factory _Datum({
-    @JsonKey(name: "id") final int? id,
-    @JsonKey(name: "name") final String? name,
-    @JsonKey(name: "image") final String? image,
-  }) = _$DatumImpl;
+  const factory _Datum(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "name") final String? name,
+      @JsonKey(name: "image") final String? image}) = _$DatumImpl;
 
   factory _Datum.fromJson(Map<String, dynamic> json) = _$DatumImpl.fromJson;
 

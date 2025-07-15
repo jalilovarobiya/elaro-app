@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clean_arxitekture/core/widgets/shimmer_box.dart';
-import 'package:clean_arxitekture/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
+import 'package:elaro_app/core/widgets/shimmer_box.dart';
+import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:carousel_slider/carousel_slider.dart';

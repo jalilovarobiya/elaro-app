@@ -1,9 +1,34 @@
-import 'package:clean_arxitekture/core/app/main_app.dart';
-import 'package:clean_arxitekture/core/utils/di.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:elaro_app/core/app/main_app.dart';
+import 'package:elaro_app/core/utils/di.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await serviceLocator();
-  runApp(const MainApp());
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+      supportedLocales: [Locale("en"), Locale("ru"), Locale("uz")],
+      path: "assets/translations",
+      fallbackLocale: Locale("en"),
+      child: const MainApp(),
+    ),
+  );
 }
+
+
+
+
+extension IntExtensions on int {
+  SizedBox get height => SizedBox(height: toDouble());
+
+  SizedBox get width => SizedBox(width: toDouble());
+}
+
+
+
+
+
+
+

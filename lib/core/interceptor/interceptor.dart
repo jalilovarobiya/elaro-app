@@ -1,9 +1,7 @@
 import 'dart:developer';
-
-import 'package:clean_arxitekture/core/status_model/status_model.dart';
-import 'package:clean_arxitekture/core/utils/utils.dart';
 import 'package:dio/dio.dart';
-
+import '../status_model/status_model.dart';
+import '../utils/utils.dart';
 class DioClient {
   final String baseUrl = "http://api.elaro.uz/api";
 
@@ -47,8 +45,6 @@ class DioClient {
     bool anotherlink = false,
   }) async {
     try {
-      // Agar anotherlink true bo'lsa, to'liq URL ishlatish
-      // Aks holda relative URL ishlatish (baseUrl automatic qo'shiladi)
       final requestUrl = anotherlink ? url : url;
 
       final response = await dioClient.get(

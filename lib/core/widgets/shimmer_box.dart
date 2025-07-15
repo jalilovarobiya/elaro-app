@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:clean_arxitekture/core/constants/app_colors.dart';
+import 'package:elaro_app/core/constants/app_colors.dart';
 
 class ShimmerBox extends StatelessWidget {
   final double? height;

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:clean_arxitekture/core/failure/failure_model.dart';
-import 'package:clean_arxitekture/feature/home/data/model/banner_model.dart';
-import 'package:clean_arxitekture/feature/home/data/repository/banner_repository_impl.dart';
+import 'package:elaro_app/core/failure/failure_model.dart';
+import 'package:elaro_app/feature/home/data/model/banner_model.dart';
+import 'package:elaro_app/feature/home/data/repository/banner_repository_impl.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'banner_event.dart';
