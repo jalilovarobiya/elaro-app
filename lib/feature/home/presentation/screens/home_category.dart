@@ -1,8 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
-import 'package:elaro_app/feature/home/presentation/blocs/categories/bloc/categories_bloc.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
+import 'package:elaro_app/core/source/main_source.dart';
+import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
+import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_package_for_height/my_package.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -93,15 +97,17 @@ class _HomeCategoryState extends State<HomeCategory> {
                           final category = categories?[index];
                           return ZoomTapAnimation(
                             onTap: () {
-                              // context.push(
-                              //   Routes.category,
-                              //   extra: CategoryConstructorModel(
-                              //     id: category?.id ?? 0,
-                              //     titleUz: category?.nameUz ?? "",
-                              //     titleRu: category?.nameRu ?? "",
-                              //     titleCrl: category?.nameCrl ?? "",
-                              //   ),
-                              // );
+                              context.push(
+                                AppRouter.category,
+                                extra:
+                                // category?.id ?? 0,
+                                CategoryConstructorModel(
+                                  id: category?.id ?? 0,
+                                  titleUz: category?.nameUz ?? "",
+                                  titleRu: category?.nameRu ?? "",
+                                  titleCrl: category?.nameCrl ?? "",
+                                ),
+                              );
                             },
                             child: Stack(
                               children: [
@@ -136,7 +142,8 @@ class _HomeCategoryState extends State<HomeCategory> {
                       const SizedBox(width: 16),
                       GestureDetector(
                         onTap: () {
-                          // MainSources.currentPage.value = 1;
+                          MainSources.currentPage.value = 1;
+                          context.go(AppRouter.globalSearch);
                         },
                         child: Container(
                           width: 140,

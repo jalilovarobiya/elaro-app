@@ -33,15 +33,18 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
             selectedColor: selectedColor,
             minPrice: minPrice,
             maxPrice: maxPrice,
+            colors: [],
           ),
         );
       });
+      final colors = await impl.getColors(event.id);
       emit(
         CategoryState.success(
           data: data,
           selectedColor: selectedColor,
           minPrice: minPrice,
           maxPrice: maxPrice,
+          colors: colors,
         ),
       );
     } catch (e) {

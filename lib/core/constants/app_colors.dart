@@ -9,4 +9,7 @@ class AppColor {
   static const Color lightGray500 = Color(0xFFD0D8E5);
   static const Color lightGray400 = Color(0xFFE3E8F0);
   static const Color lightGreen = Color(0xFF6EC207);
+  static const Color lightGray600 = Color(0xFFB8C2D1);
+  static const Color primaryDark = Color(0xFF2C3955);
+  static const Color homeCategoryItem = Color(0xFFF7F7F7);
 }

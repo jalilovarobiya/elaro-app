@@ -5,5 +5,5 @@ import 'package:dartz/dartz.dart';
 abstract class CategoryRepository {
   Future<Either<FailureModel, CategoryModel>> categories();
   Future<Either<FailureModel, CategoryModel>> category(int id);
-  // Future<List<String>> getColors(int id);
+  Future<List<String>> getColors(int id);
 }

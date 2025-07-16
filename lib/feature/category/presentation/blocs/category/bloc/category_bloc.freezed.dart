@@ -238,6 +238,7 @@ mixin _$CategoryState {
     required TResult Function() loading,
     required TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -250,6 +251,7 @@ mixin _$CategoryState {
     TResult? Function()? loading,
     TResult? Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -262,6 +264,7 @@ mixin _$CategoryState {
     TResult Function()? loading,
     TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -359,6 +362,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -375,6 +379,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -391,6 +396,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -453,6 +459,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   @useResult
   $Res call({
     CategoryModel data,
+    List<String> colors,
     String selectedColor,
     String minPrice,
     String maxPrice,
@@ -476,6 +483,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? colors = null,
     Object? selectedColor = null,
     Object? minPrice = null,
     Object? maxPrice = null,
@@ -487,6 +495,11 @@ class __$$SuccessImplCopyWithImpl<$Res>
                 ? _value.data
                 : data // ignore: cast_nullable_to_non_nullable
                     as CategoryModel,
+        colors:
+            null == colors
+                ? _value._colors
+                : colors // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
         selectedColor:
             null == selectedColor
                 ? _value.selectedColor
@@ -522,13 +535,22 @@ class __$$SuccessImplCopyWithImpl<$Res>
 class _$SuccessImpl implements _Success {
   const _$SuccessImpl({
     required this.data,
+    required final List<String> colors,
     required this.selectedColor,
     required this.minPrice,
     required this.maxPrice,
-  });
+  }) : _colors = colors;
 
   @override
   final CategoryModel data;
+  final List<String> _colors;
+  @override
+  List<String> get colors {
+    if (_colors is EqualUnmodifiableListView) return _colors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_colors);
+  }
+
   @override
   final String selectedColor;
   @override
@@ -538,7 +560,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'CategoryState.success(data: $data, selectedColor: $selectedColor, minPrice: $minPrice, maxPrice: $maxPrice)';
+    return 'CategoryState.success(data: $data, colors: $colors, selectedColor: $selectedColor, minPrice: $minPrice, maxPrice: $maxPrice)';
   }
 
   @override
@@ -547,6 +569,7 @@ class _$SuccessImpl implements _Success {
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
             (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(other._colors, _colors) &&
             (identical(other.selectedColor, selectedColor) ||
                 other.selectedColor == selectedColor) &&
             (identical(other.minPrice, minPrice) ||
@@ -556,8 +579,14 @@ class _$SuccessImpl implements _Success {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, data, selectedColor, minPrice, maxPrice);
+  int get hashCode => Object.hash(
+    runtimeType,
+    data,
+    const DeepCollectionEquality().hash(_colors),
+    selectedColor,
+    minPrice,
+    maxPrice,
+  );
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -573,6 +602,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() loading,
     required TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -580,7 +610,7 @@ class _$SuccessImpl implements _Success {
     success,
     required TResult Function(FailureModel data) failure,
   }) {
-    return success(data, selectedColor, minPrice, maxPrice);
+    return success(data, colors, selectedColor, minPrice, maxPrice);
   }
 
   @override
@@ -589,6 +619,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? loading,
     TResult? Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -596,7 +627,7 @@ class _$SuccessImpl implements _Success {
     success,
     TResult? Function(FailureModel data)? failure,
   }) {
-    return success?.call(data, selectedColor, minPrice, maxPrice);
+    return success?.call(data, colors, selectedColor, minPrice, maxPrice);
   }
 
   @override
@@ -605,6 +636,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? loading,
     TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -614,7 +646,7 @@ class _$SuccessImpl implements _Success {
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data, selectedColor, minPrice, maxPrice);
+      return success(data, colors, selectedColor, minPrice, maxPrice);
     }
     return orElse();
   }
@@ -657,12 +689,14 @@ class _$SuccessImpl implements _Success {
 abstract class _Success implements CategoryState {
   const factory _Success({
     required final CategoryModel data,
+    required final List<String> colors,
     required final String selectedColor,
     required final String minPrice,
     required final String maxPrice,
   }) = _$SuccessImpl;
 
   CategoryModel get data;
+  List<String> get colors;
   String get selectedColor;
   String get minPrice;
   String get maxPrice;
@@ -748,6 +782,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function() loading,
     required TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -764,6 +799,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? loading,
     TResult? Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,
@@ -780,6 +816,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? loading,
     TResult Function(
       CategoryModel data,
+      List<String> colors,
       String selectedColor,
       String minPrice,
       String maxPrice,

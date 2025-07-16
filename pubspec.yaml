@@ -9,6 +9,7 @@ environment:
 dependencies:
   cached_network_image: ^3.4.1
   carousel_slider: ^5.1.1
+  connectivity_plus: ^6.1.4
   dartz: ^0.10.1
   dio: ^5.8.0+1
   easy_localization: ^3.0.7+1
@@ -24,6 +25,7 @@ dependencies:
   http: ^1.4.0
   internet_connection_checker: ^3.0.1
   json_annotation: ^4.9.0
+  liquid_pull_to_refresh: ^3.0.1
   my_package_for_height: ^0.0.1
   shimmer: ^3.0.0
   zoom_tap_animation: ^1.1.0

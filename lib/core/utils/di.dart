@@ -1,4 +1,6 @@
 import 'package:elaro_app/core/interceptor/interceptor.dart';
+import 'package:elaro_app/feature/category/data/repository/sub_category_repository_impl.dart';
+import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
 import 'package:elaro_app/feature/home/data/repository/banner_repository_impl.dart';
 import 'package:elaro_app/feature/home/data/repository/brendS_repository_impl.dart';
 import 'package:elaro_app/feature/home/data/repository/categories_repository_impl.dart';
@@ -6,8 +8,8 @@ import 'package:elaro_app/feature/home/data/repository/category_repository.dart'
 import 'package:elaro_app/feature/home/data/repository/products_repository_impl.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/brends/bloc/brends_bloc.dart';
-import 'package:elaro_app/feature/home/presentation/blocs/categories/bloc/categories_bloc.dart';
-import 'package:elaro_app/feature/home/presentation/blocs/category/bloc/category_bloc.dart';
+import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
+import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/category_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
@@ -46,6 +48,9 @@ void _repositories() {
   sl.registerLazySingleton<ProductsRepositoryImpl>(
     () => ProductsRepositoryImpl(sl<DioClient>()),
   );
+  sl.registerLazySingleton<SubCategoryRepositoryImpl>(
+    () => SubCategoryRepositoryImpl(sl<DioClient>()),
+  );
 }
 
 void _blocs() {
@@ -57,6 +62,7 @@ void _blocs() {
   sl.registerFactory(() => NewProductsBloc(sl<ProductsRepositoryImpl>()));
   // sl.registerFactory(() => ProductBloc(sl<ProductsRepositoryImpl>()));
   sl.registerFactory(() => ProductsBloc(sl<ProductsRepositoryImpl>()));
+  sl.registerFactory(() => SubCategoryBloc(sl<SubCategoryRepositoryImpl>()));
 }
 
 void _dataSources() {}

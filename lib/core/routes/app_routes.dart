@@ -1,5 +1,10 @@
+import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/feature/card/presentation/pages/card_creen.dart';
+import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
+import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
+import 'package:elaro_app/feature/category/presentation/pages/category_page.dart';
 import 'package:elaro_app/feature/category/presentation/pages/category_screen.dart';
+import 'package:elaro_app/feature/category/presentation/pages/sub_category_page.dart';
 import 'package:elaro_app/feature/home/presentation/screens/home_screen.dart';
 import 'package:elaro_app/feature/main/screen/main_screen.dart';
 import 'package:elaro_app/feature/main/screen/splash_screen.dart';
@@ -12,14 +17,18 @@ class AppRouter {
   static String splash = "/splash";
   static String home = "/home";
   static String category = "/category";
+  static String categories = "/categories";
   static String card = "/card";
   static String order = "/order";
   static String profile = "/profile";
   static String search = "/search";
+  static String globalSearch = "/globalSearch";
+  static String subCategory = "/subCategory";
+  static String noInternet = "/noInternet";
 
   static GoRouter router = GoRouter(
     initialLocation: splash,
-
+    navigatorKey: navigatorKey,
     routes: [
       GoRoute(
         path: splash,
@@ -63,8 +72,8 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: category,
-                name: category,
+                path: globalSearch,
+                name: globalSearch,
                 pageBuilder:
                     (context, state) => CustomTransitionPage(
                       key: state.pageKey,
@@ -147,17 +156,28 @@ class AppRouter {
         ],
       ),
       GoRoute(
-        path: search,
-        name: search,
-        pageBuilder:
-            (context, state) => CustomTransitionPage(
-              key: state.pageKey,
-              child: CategoryScreen(),
-              transitionsBuilder: (context, animation, animation2, child) {
-                return FadeTransition(opacity: animation, child: child);
-              },
-            ),
+        path: AppRouter.category,
+        builder: (context, state) {
+          final data = state.extra as CategoryConstructorModel;
+          return CategoryPage(data: data);
+        },
       ),
+      GoRoute(
+        path: AppRouter.subCategory,
+        builder: (context, state) {
+          final data = state.extra as SubCategoryConstructorModel;
+          return SubCategoryPage(data: data);
+        },
+      ),
+
+      // GoRoute(
+      //   parentNavigatorKey: navigatorKey,
+      //   path: AppRouter.noInternet,
+      //   name: AppRouter.noInternet,
+      //   builder: (context, state) {
+      //     return NoInternetPage();
+      //   },
+      // ),
     ],
   );
 }

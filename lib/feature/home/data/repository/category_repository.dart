@@ -31,9 +31,17 @@ class CategoryRepositoryImpl extends CategoryRepository {
     }
   }
 
-  // @override
-  // Future<List<String>> getColors(int id) {
-  //   // TODO: implement getColors
-  //   throw UnimplementedError();
-  // }
+  @override
+  Future<List<String>> getColors(int id) async {
+    final request = await client.get(url: "/categories/$id/colors");
+    if (request.isSuccess) {
+      try {
+        return List<String>.from(request.response["colors"]);
+      } catch (e) {
+        return [];
+      }
+    } else {
+      return [];
+    }
+  }
 }

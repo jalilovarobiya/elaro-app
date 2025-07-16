@@ -1,4 +1,5 @@
 import 'package:elaro_app/core/constants/app_images.dart';
+import 'package:elaro_app/core/source/main_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -12,28 +13,18 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final ValueNotifier<int> currentIndex = ValueNotifier<int>(0);
-
-  @override
-  void initState() {
-    super.initState();
-    currentIndex.value = widget.navigationShell.currentIndex;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.navigationShell,
-      bottomNavigationBar: ValueListenableBuilder<int>(
-        valueListenable: currentIndex,
-        builder: (context, value, _) {
+      bottomNavigationBar: ListenableBuilder(
+        listenable: MainSources.currentPage,
+        builder: (context, child) {
           return BottomNavigationBar(
-            currentIndex: value,
-            onTap: (index) {
-              if (index != value) {
-                currentIndex.value = index;
-                widget.navigationShell.goBranch(index);
-              }
+            currentIndex: MainSources.currentPage.value,
+            onTap: (index) async {
+              MainSources.currentPage.value = index;
+              widget.navigationShell.goBranch(index);
             },
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.black,
@@ -43,7 +34,10 @@ class _MainScreenState extends State<MainScreen> {
                 icon: Image.asset(
                   AppImages.home,
                   height: 24,
-                  color: value == 0 ? Colors.black : Colors.grey,
+                  color:
+                      MainSources.currentPage.value == 0
+                          ? Colors.black
+                          : Colors.grey,
                 ),
                 label: "home",
               ),
@@ -51,7 +45,10 @@ class _MainScreenState extends State<MainScreen> {
                 icon: SvgPicture.asset(
                   AppImages.category,
                   height: 24,
-                  color: value == 1 ? Colors.black : Colors.grey,
+                  color:
+                      MainSources.currentPage.value == 1
+                          ? Colors.black
+                          : Colors.grey,
                 ),
                 label: "category",
               ),
@@ -59,7 +56,10 @@ class _MainScreenState extends State<MainScreen> {
                 icon: SvgPicture.asset(
                   AppImages.card,
                   height: 24,
-                  color: value == 2 ? Colors.black : Colors.grey,
+                  color:
+                      MainSources.currentPage.value == 2
+                          ? Colors.black
+                          : Colors.grey,
                 ),
                 label: "card",
               ),
@@ -67,7 +67,10 @@ class _MainScreenState extends State<MainScreen> {
                 icon: Icon(
                   Icons.bookmark_border_outlined,
                   size: 24,
-                  color: value == 3 ? Colors.black : Colors.grey,
+                  color:
+                      MainSources.currentPage.value == 3
+                          ? Colors.black
+                          : Colors.grey,
                 ),
                 label: "orders",
               ),
@@ -75,7 +78,10 @@ class _MainScreenState extends State<MainScreen> {
                 icon: SvgPicture.asset(
                   AppImages.profile,
                   height: 24,
-                  color: value == 4 ? Colors.black : Colors.grey,
+                  color:
+                      MainSources.currentPage.value == 4
+                          ? Colors.black
+                          : Colors.grey,
                 ),
                 label: "profile",
               ),
