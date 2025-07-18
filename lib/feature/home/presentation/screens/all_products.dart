@@ -1,11 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/mapper/datum_to_product_model.dart';
+import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/core/widgets/shimmer_box.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class AllProducts extends StatelessWidget {
   const AllProducts({super.key});
@@ -124,80 +124,10 @@ class AllProducts extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: data.data?.length ?? 0,
                   itemBuilder: (context, index) {
-                    final product = data.data![index];
-                    return ZoomTapAnimation(
-                      child: SizedBox(
-                        width: 200,
-                        child: Column(
-                          children: [
-                            AspectRatio(
-                              aspectRatio: 1,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey[100],
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    clipBehavior: Clip.hardEdge,
-                                    child:
-                                        (product.images ?? []).isNotEmpty
-                                            ? Center(
-                                              child: CachedNetworkImage(
-                                                fit: BoxFit.fitWidth,
-                                                imageUrl:
-                                                    product
-                                                        .images
-                                                        ?.firstOrNull
-                                                        ?.image ??
-                                                    "",
-                                                progressIndicatorBuilder:
-                                                    (context, url, progress) =>
-                                                        CircularProgressIndicator(),
-                                              ),
-                                            )
-                                            : SizedBox(),
-                                  ),
-                                  if ((product.discountType ?? "").isNotEmpty)
-                                    Positioned(
-                                      top: 10,
-                                      left: 10,
-                                      child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 20,
-                                          vertical: 5,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: AppColor.lightGreen,
-                                          borderRadius: BorderRadius.circular(
-                                            8,
-                                          ),
-                                        ),
-                                        child: Text("discount"),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                ),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      product.nameUz.toString(),
-                                      maxLines: 2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Text("${product.price} sum"),
-                          ],
-                        ),
-                      ),
+                    final product = data.data![index].toProductModel();
+                    return ProductItemWidget(
+                      ontap: () {},
+                      productData: product,
                     );
                   },
                 ),

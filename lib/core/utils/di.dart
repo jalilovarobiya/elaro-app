@@ -1,4 +1,6 @@
+import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/interceptor/interceptor.dart';
+import 'package:elaro_app/core/repository/favourite_repository.dart';
 import 'package:elaro_app/feature/category/data/repository/sub_category_repository_impl.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
 import 'package:elaro_app/feature/home/data/repository/banner_repository_impl.dart';
@@ -7,6 +9,7 @@ import 'package:elaro_app/feature/home/data/repository/categories_repository_imp
 import 'package:elaro_app/feature/home/data/repository/category_repository.dart';
 import 'package:elaro_app/feature/home/data/repository/products_repository_impl.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
+import 'package:elaro_app/feature/home/presentation/blocs/brand/bloc/brand_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/brends/bloc/brends_bloc.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/category_bloc.dart';
@@ -51,6 +54,9 @@ void _repositories() {
   sl.registerLazySingleton<SubCategoryRepositoryImpl>(
     () => SubCategoryRepositoryImpl(sl<DioClient>()),
   );
+  sl.registerLazySingleton<FavouriteRepositoryImpl>(
+    () => FavouriteRepositoryImpl(),
+  );
 }
 
 void _blocs() {
@@ -63,6 +69,8 @@ void _blocs() {
   // sl.registerFactory(() => ProductBloc(sl<ProductsRepositoryImpl>()));
   sl.registerFactory(() => ProductsBloc(sl<ProductsRepositoryImpl>()));
   sl.registerFactory(() => SubCategoryBloc(sl<SubCategoryRepositoryImpl>()));
+  sl.registerFactory(() => FavouriteBloc(sl<FavouriteRepositoryImpl>()));
+  sl.registerFactory(() => BrandBloc(sl<BrendsRepositoryImpl>()));
 }
 
 void _dataSources() {}

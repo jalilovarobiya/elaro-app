@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/shimmer_box.dart';
+import 'package:elaro_app/feature/home/data/model/brand_constructr_model.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/brends/bloc/brends_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class Brends extends StatelessWidget {
@@ -27,11 +30,19 @@ class Brends extends StatelessWidget {
             success:
                 (data) => ListView.builder(
                   clipBehavior: Clip.none,
-
                   itemCount: data.data?.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return ZoomTapAnimation(
+                      onTap: () {
+                        context.push(
+                          AppRouter.brand,
+                          extra: BrandConstructorModel(
+                            brandId: data.data?[index].id ?? 0,
+                            title: data.data?[index].name ?? "",
+                          ),
+                        );
+                      },
                       child: Container(
                         width: 100,
                         margin: const EdgeInsets.symmetric(
