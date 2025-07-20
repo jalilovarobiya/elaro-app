@@ -18,5 +18,10 @@
     "recomand": "Tavsiya etilgan mahsulotlar",
     "popular": "Omabop kategoriyalar",
     "welcome": "Xush kelibsiz!",
-    "enter": "Kirish"
+    "enter": "Kirish",
+    "cancel": "Bekor qilish",
+    "lan": "Til",
+    "required_login": "Xarid qilish, buyurtmalarni kuzatish va bo'lib-bo'lib to'lash uchun tizimga kirishingiz kerak.",
+    "sum": "so'm",
+    "empty_card": "Savatda hali hech narsa yo'q"
 }

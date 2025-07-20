@@ -1,0 +1,50 @@
+import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/constants/app_styles.dart';
+import 'package:elaro_app/core/widgets/translator.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({
+    super.key,
+    required this.titleUz,
+    required this.titleRu,
+    required this.titleCrl,
+    this.action = const [],
+    this.navigate = true,
+    this.color,
+    this.leading,
+    this.textColor,
+  });
+  final String titleUz;
+  final String titleRu;
+  final String titleCrl;
+  final List<Widget> action;
+  final bool navigate;
+  final Color? color;
+  final Widget? leading;
+  final Color? textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: color ?? AppColor.primary,
+      centerTitle: true,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      title: Translator(
+        uz: titleUz,
+        ru: titleRu,
+        crl: titleCrl,
+        style: AppStyle.w600s17h22DarkBluePrimary.copyWith(
+          color: textColor ?? Colors.white,
+        ),
+      ),
+      leading: leading,
+      actions: action,
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}

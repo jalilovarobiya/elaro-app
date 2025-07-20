@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/source/main_source.dart';
+import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,6 @@ class _HomeCategoryState extends State<HomeCategory> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Omabop kategoriyalar"),
             12.height,
             state.when(
               loading:
@@ -125,9 +126,11 @@ class _HomeCategoryState extends State<HomeCategory> {
                                     left: 8.0,
                                     top: 8,
                                   ),
-                                  child: Text(
-                                    maxLines: 2,
-                                    category?.nameUz ?? "",
+                                  child: Translator(
+                                    maxLen: 1,
+                                    uz: category?.nameUz ?? "",
+                                    ru: category?.nameRu ?? "",
+                                    crl: category?.nameCrl ?? "",
                                     style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
@@ -151,11 +154,11 @@ class _HomeCategoryState extends State<HomeCategory> {
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("hammasi"),
+                                Text("all".tr()),
                                 Icon(Icons.arrow_forward_ios_rounded, size: 14),
                               ],
                             ),

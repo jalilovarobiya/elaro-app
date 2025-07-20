@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
+import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
 import 'package:flutter/material.dart';
@@ -115,7 +116,11 @@ class _CategoryBodyState extends State<CategoryBody> {
                         },
                       ),
                     ),
-                    title: Text(category?.nameUz ?? ""),
+                    title: Translator(
+                      uz: category?.nameUz ?? "",
+                      ru: category?.nameRu ?? "",
+                      crl: category?.nameCrl ?? "",
+                    ),
                     trailing: Icon(
                       Icons.arrow_forward_ios,
                       size: 16,

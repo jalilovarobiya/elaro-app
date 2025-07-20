@@ -18,7 +18,7 @@ class HomeBanner extends StatelessWidget {
                 child: CarouselSlider(
                   options: CarouselOptions(
                     clipBehavior: Clip.none,
-                    aspectRatio: 16 / 7,
+                    aspectRatio: 16 / 5,
                     viewportFraction: 0.9,
                     initialPage: 0,
                     enableInfiniteScroll: true,
@@ -37,7 +37,7 @@ class HomeBanner extends StatelessWidget {
                 autoPlay: true,
                 autoPlayInterval: Duration(seconds: 3),
                 clipBehavior: Clip.none,
-                aspectRatio: 16 / 7,
+                aspectRatio: 16 / 5,
                 viewportFraction: 0.9,
                 initialPage: 0,
                 enableInfiniteScroll: true,

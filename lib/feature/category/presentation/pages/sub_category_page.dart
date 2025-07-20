@@ -1,4 +1,5 @@
 import 'package:elaro_app/core/utils/di.dart';
+import 'package:elaro_app/core/widgets/custom_appbar.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
 import 'package:elaro_app/feature/category/presentation/widgets/sub_category_page_body.dart';
@@ -18,7 +19,11 @@ class SubCategoryPage extends StatelessWidget {
               sl<SubCategoryBloc>()
                 ..add(SubCategoryEvent.fetchData(id: data.id)),
       child: Scaffold(
-        appBar: AppBar(title: Text(data.titleUz)),
+        appBar: CustomAppBar(
+          titleUz: data.titleUz,
+          titleRu: data.titleRu,
+          titleCrl: data.titleCrl,
+        ),
         body: SubCategoryPageBody(),
       ),
     );

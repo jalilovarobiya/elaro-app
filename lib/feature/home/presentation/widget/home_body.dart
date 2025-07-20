@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/constants/app_shapes.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/source/main_source.dart';
 import 'package:elaro_app/core/widgets/search_view_delegate.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
@@ -16,6 +17,7 @@ import 'package:elaro_app/feature/home/presentation/screens/new_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_package_for_height/my_package.dart';
 
 class HomeBody extends StatefulWidget {
@@ -36,6 +38,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
     return RefreshIndicator(
       backgroundColor: Colors.transparent,
       color: AppColor.primary,
@@ -70,7 +73,7 @@ class _HomeBodyState extends State<HomeBody> {
                   ),
                 ),
                 bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(10),
+                  preferredSize: Size.fromHeight(20),
                   child: Padding(
                     padding: const EdgeInsets.only(
                       right: 12,
@@ -79,29 +82,19 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        showSearch(
-                          context: context,
-                          delegate: CustomSearchDelegate(
-                            productsBloc: context.read<ProductsBloc>(),
-                          ),
-                        );
+                        context.push(AppRouter.search);
                       },
-                      child: Ink(
-                        height: 50,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Icon(Icons.search),
-                              10.width,
-                              Text("search".tr()),
-                            ],
+                      child: TextField(
+                        enabled: false,
+                        decoration: InputDecoration(
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(12),
                           ),
+                          hintText: "search".tr(),
+                          fillColor: Colors.white,
+                          prefixIcon: Icon(Icons.search, size: 24),
                         ),
                       ),
                     ),
@@ -115,7 +108,10 @@ class _HomeBodyState extends State<HomeBody> {
           children: [
             HomeBanner(),
             12.height,
+            Text("popular".tr()),
             HomeCategory(),
+            12.height,
+            Text("recomand".tr()),
             AllProducts(),
             12.height,
             Text("popular".tr()),

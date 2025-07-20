@@ -4,7 +4,9 @@ import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
 import 'package:elaro_app/core/utils/utils.dart';
+import 'package:elaro_app/core/widgets/custom_toast.dart';
 import 'package:elaro_app/core/widgets/favourite_button.dart';
+import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart'
     as product;
 import 'package:flutter/material.dart';
@@ -87,7 +89,16 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                       widget.productData.data?.id.toString(),
                                 );
                                 return FavouriteButton(
-                                  ontap: () {
+                                  ontap: () async {
+                                    if (!(await Utils().isLogin())) {
+                                      CustomToast.showToast(
+                                        context,
+                                        Icon(Icons.warning_amber),
+                                        "required_login".tr(),
+                                        Colors.white,
+                                        Colors.red,
+                                      );
+                                    }
                                     if (isSelected) {
                                       context.read<FavouriteBloc>().add(
                                         FavouriteEvent.deleteProduct(
@@ -123,7 +134,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                           color: AppColor.lightGreen,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Text("discount"),
+                        child: Text("sale".tr()),
                       ),
                     ),
                 ],
@@ -137,7 +148,11 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: Text(widget.productData.data?.nameUz ?? ""),
+                      child: Translator(
+                        uz: widget.productData.data?.nameUz ?? "",
+                        ru: widget.productData.data?.nameRu ?? "",
+                        crl: widget.productData.data?.nameCrl ?? "",
+                      ),
                     ),
                     Row(
                       children: [
@@ -184,7 +199,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                         //     builder: (context, state) {
                         //       return
                         //     },
-                        //   ),
+                        // ),
                       ],
                     ),
                   ],

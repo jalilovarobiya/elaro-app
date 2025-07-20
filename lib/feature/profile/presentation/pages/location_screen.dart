@@ -1,4 +1,5 @@
 import 'package:elaro_app/core/utils/utils.dart';
+import 'package:elaro_app/core/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -8,7 +9,11 @@ class LocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Do'konlar")),
+      appBar: CustomAppBar(
+        titleUz: "Do'konlar",
+        titleRu: "Магазины",
+        titleCrl: "Дўконлар",
+      ),
       body: Column(
         children: [
           ListTile(
