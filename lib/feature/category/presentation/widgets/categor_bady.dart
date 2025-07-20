@@ -4,6 +4,7 @@ import 'package:elaro_app/core/mapper/category_to_product.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
+import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/category_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/category_model.dart';
@@ -112,12 +113,11 @@ class _CategorBadyState extends State<CategorBady> {
                                   ),
                                 if (subCategory?.nameUz != null)
                                   const SizedBox(width: 12),
-                                Text(subCategory?.nameUz ?? ""),
-                                // TranslatorText(
-                                //   uz: subCategory?.nameUz ?? "",
-                                //   ru: subCategory?.nameRu ?? "",
-                                //   crl: subCategory?.nameCrl ?? "",
-                                // ),
+                                Translator(
+                                  uz: subCategory?.nameUz ?? "",
+                                  ru: subCategory?.nameRu ?? "",
+                                  crl: subCategory?.nameCrl ?? "",
+                                ),
                               ],
                             ),
                           ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/feature/profile/presentation/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
     return SafeArea(child: Scaffold(body: ProfileBody()));
   }
 }

@@ -13,4 +13,6 @@ class AppColor {
   static const Color primaryDark = Color(0xFF2C3955);
   static const Color homeCategoryItem = Color(0xFFF7F7F7);
   static const Color lightGray50 = Color.fromRGBO(64, 79, 111, 0.50);
+  static const Color darkBlue500 = Color(0xFF404F6F);
+  static const Color lightGray700 = Color(0xFF939497);
 }

@@ -1,7 +1,9 @@
 import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/interceptor/interceptor.dart';
 import 'package:elaro_app/core/repository/favourite_repository.dart';
+import 'package:elaro_app/feature/category/data/repository/search_repository_impl.dart';
 import 'package:elaro_app/feature/category/data/repository/sub_category_repository_impl.dart';
+import 'package:elaro_app/feature/category/presentation/blocs/search/bloc/search_bloc.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
 import 'package:elaro_app/feature/home/data/repository/banner_repository_impl.dart';
 import 'package:elaro_app/feature/home/data/repository/brendS_repository_impl.dart';
@@ -57,6 +59,9 @@ void _repositories() {
   sl.registerLazySingleton<FavouriteRepositoryImpl>(
     () => FavouriteRepositoryImpl(),
   );
+  sl.registerLazySingleton<SearchRepositoryImpl>(
+    () => SearchRepositoryImpl(sl<DioClient>()),
+  );
 }
 
 void _blocs() {
@@ -71,6 +76,7 @@ void _blocs() {
   sl.registerFactory(() => SubCategoryBloc(sl<SubCategoryRepositoryImpl>()));
   sl.registerFactory(() => FavouriteBloc(sl<FavouriteRepositoryImpl>()));
   sl.registerFactory(() => BrandBloc(sl<BrendsRepositoryImpl>()));
+  sl.registerFactory(() => SearchBloc(sl<SearchRepositoryImpl>()));
 }
 
 void _dataSources() {}

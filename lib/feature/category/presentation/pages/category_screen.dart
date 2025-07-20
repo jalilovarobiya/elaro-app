@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/utils/di.dart';
 import 'package:elaro_app/core/widgets/search_view_delegate.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:elaro_app/feature/category/presentation/widgets/category_body.da
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_package_for_height/my_package.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -18,20 +21,19 @@ class CategoryScreen extends StatelessWidget {
         appBar: AppBar(
           title: InkWell(
             onTap: () {
-              showSearch(
-                context: context,
-                delegate: CustomSearchDelegate(
-                  productsBloc: context.read<ProductsBloc>(),
-                ),
-              );
+              context.push(AppRouter.search);
             },
-            child: Ink(
-              decoration: BoxDecoration(
-                color: Color(0xFFF7F8FA),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Row(
-                children: [Icon(Icons.search), 10.width, Text("Search")],
+            child: TextField(
+              enabled: false,
+              decoration: InputDecoration(
+                // filled: true,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                hintText: "search".tr(),
+                // fillColor: Colors.white,
+                prefixIcon: Icon(Icons.search, size: 24),
               ),
             ),
           ),

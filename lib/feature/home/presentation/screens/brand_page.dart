@@ -1,4 +1,5 @@
 import 'package:elaro_app/core/utils/di.dart';
+import 'package:elaro_app/core/widgets/custom_appbar.dart';
 import 'package:elaro_app/feature/home/data/model/brand_constructr_model.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/brand/bloc/brand_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/widget/brands_body.dart';
@@ -12,7 +13,11 @@ class BrandPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(data.title)),
+      appBar: CustomAppBar(
+        titleUz: data.title,
+        titleRu: data.title,
+        titleCrl: data.title,
+      ),
       body: BlocProvider(
         create:
             (context) =>

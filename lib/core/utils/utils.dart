@@ -1,3 +1,4 @@
+import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
 import 'package:intl/intl.dart';
 
 class Utils {
@@ -24,5 +25,10 @@ class Utils {
 
   static String generateGoogleMapsLink(double latitude, double longitude) {
     return "https://www.google.com/maps?q=$latitude,$longitude";
+  }
+
+  Future<bool> isLogin() async {
+    final token = await SecureStorage().read(key: "token");
+    return token != null;
   }
 }

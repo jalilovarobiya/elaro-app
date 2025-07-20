@@ -3,6 +3,7 @@ import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
 import 'package:elaro_app/feature/category/presentation/pages/category_page.dart';
 import 'package:elaro_app/feature/category/presentation/pages/category_screen.dart';
+import 'package:elaro_app/feature/category/presentation/pages/global_search_page.dart';
 import 'package:elaro_app/feature/category/presentation/pages/sub_category_page.dart';
 import 'package:elaro_app/feature/home/data/model/brand_constructr_model.dart';
 import 'package:elaro_app/feature/home/presentation/screens/brand_page.dart';
@@ -10,6 +11,7 @@ import 'package:elaro_app/feature/home/presentation/screens/home_screen.dart';
 import 'package:elaro_app/feature/main/screen/main_screen.dart';
 import 'package:elaro_app/feature/order/presentation/pages/order_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_screen.dart';
+import 'package:elaro_app/feature/profile/presentation/pages/language_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/location_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +31,7 @@ class AppRouter {
   static String brand = "/brand";
   static String favourite = "/favourite";
   static String location = "/location";
+  static String language = "/language";
 
   static GoRouter router = GoRouter(
     initialLocation: home,
@@ -160,13 +163,6 @@ class AppRouter {
         },
       ),
 
-      // GoRoute(
-      //   path: AppRouter.noInternet,
-      //   name: AppRouter.noInternet,
-      //   builder: (context, state) {
-      //     return NoInternetPage();
-      //   },
-      // ),
       GoRoute(
         path: AppRouter.brand,
         name: AppRouter.brand,
@@ -189,6 +185,22 @@ class AppRouter {
         name: AppRouter.location,
         builder: (context, state) {
           return LocationScreen();
+        },
+      ),
+
+      GoRoute(
+        path: AppRouter.search,
+        name: AppRouter.search,
+        builder: (context, state) {
+          return GlobalSearchPage();
+        },
+      ),
+
+      GoRoute(
+        path: AppRouter.language,
+        name: AppRouter.language,
+        builder: (context, state) {
+          return LanguageScreen();
         },
       ),
     ],

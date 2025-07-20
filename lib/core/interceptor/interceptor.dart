@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:elaro_app/core/status_model/status_model.dart';
 import 'package:elaro_app/core/utils/utils.dart';
 import 'package:dio/dio.dart';
 
 class DioClient {
-  final String baseUrl = "http://api.elaro.uz/api";
+  final String baseUrl = "https://api.elaro.uz/api";
 
   late final Dio dioClient;
 
@@ -12,9 +13,9 @@ class DioClient {
     dioClient = Dio(
       BaseOptions(
         baseUrl: baseUrl,
-        connectTimeout: const Duration(seconds: 20),
-        receiveTimeout: const Duration(seconds: 20),
-        sendTimeout: const Duration(seconds: 20),
+        connectTimeout: const Duration(minutes: 1),
+        receiveTimeout: const Duration(minutes: 1),
+        sendTimeout: const Duration(minutes: 1),
         headers: {"Content-Type": "application/json"},
       ),
     );
@@ -73,6 +74,34 @@ class DioClient {
     } catch (e) {
       log("Unknown error: $e");
       throw Exception("Unexpected error: $e");
+    }
+  }
+
+  Future<StatusModel> post({
+    required String url,
+    required Map<String, dynamic> body,
+  }) async {
+    try {
+      final response = await dioClient.post(
+        "$baseUrl$url",
+        // options: Options(),
+        data: jsonEncode(body),
+      );
+      if (Utils.isDioSuccess(response.statusCode)) {
+        return StatusModel(
+          response: response.data,
+          code: response.statusCode,
+          isSuccess: true,
+        );
+      }
+      return StatusModel(
+        response: response.data,
+        code: response.statusCode,
+        isSuccess: false,
+      );
+    } on DioException catch (e) {
+      log(e.message.toString());
+      throw Exception("Dio error: ${e.message}");
     }
   }
 }

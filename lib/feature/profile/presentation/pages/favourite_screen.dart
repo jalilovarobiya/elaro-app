@@ -1,3 +1,4 @@
+import 'package:elaro_app/core/widgets/custom_appbar.dart';
 import 'package:elaro_app/feature/profile/presentation/widgets/favourite_body.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,11 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Istaklar")),
+      appBar: CustomAppBar(
+        titleUz: "Istaklar",
+        titleRu: "Favorite",
+        titleCrl: "Истаклар",
+      ),
       body: FavouriteBody(),
     );
   }

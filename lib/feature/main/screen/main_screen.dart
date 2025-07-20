@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/source/main_source.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
                           ? Colors.black
                           : Colors.grey,
                 ),
-                label: "home",
+                label: "home".tr(),
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -50,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
                           ? Colors.black
                           : Colors.grey,
                 ),
-                label: "category",
+                label: "category".tr(),
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -61,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
                           ? Colors.black
                           : Colors.grey,
                 ),
-                label: "card",
+                label: "card".tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
@@ -72,7 +73,7 @@ class _MainScreenState extends State<MainScreen> {
                           ? Colors.black
                           : Colors.grey,
                 ),
-                label: "orders",
+                label: "order".tr(),
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -83,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
                           ? Colors.black
                           : Colors.grey,
                 ),
-                label: "profile",
+                label: "profile".tr(),
               ),
             ],
           );

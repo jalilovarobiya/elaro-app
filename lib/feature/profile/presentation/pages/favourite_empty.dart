@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/constants/app_styles.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/source/main_source.dart';
-import 'package:elaro_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,20 +27,37 @@ class _FavoriteEmptyWidgetState extends State<FavoriteEmptyWidget> {
         ),
         const SizedBox(height: 10),
         Text(
-          "Sevimlilar ro'yxati bo'sh".tr(),
-          // style: AppStyle.w500s17h20DarkBlue500.copyWith(color: AppColor.lightGray700),
+          "empty_card".tr(),
+          style: AppStyle.w500s17h20DarkBlue500.copyWith(
+            color: AppColor.lightGray700,
+          ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        Container(
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 60),
-          child: CustomButton(
-            color: Colors.white,
-            text: "Mahsulotlarni ko'rish",
-            onPressed: () {
+
+          child: InkWell(
+            onTap: () {
               MainSources.currentPage.value = 0;
-              context.pop();
+              context.pop(AppRouter.home);
             },
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: AppColor.primary,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 60),
+              child: Center(
+                child: Text(
+                  "Mahsulotlarni ko'rish",
+                  style: AppStyle.w500s15h20DarkBlue500.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ),
         ),
       ],

@@ -1,10 +1,12 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/utils/di.dart';
+import 'package:elaro_app/core/widgets/custom_appbar.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/category_bloc.dart';
 import 'package:elaro_app/feature/category/presentation/widgets/categor_bady.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoryPage extends StatelessWidget {
   CategoryPage({super.key, required this.data});
@@ -16,9 +18,10 @@ class CategoryPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => bloc,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(data.titleUz),
-          backgroundColor: AppColor.primary,
+        appBar: CustomAppBar(
+          titleUz: data.titleUz,
+          titleRu: data.titleRu,
+          titleCrl: data.titleCrl,
         ),
         body: CategorBady(id: data.id, bloc: bloc),
       ),

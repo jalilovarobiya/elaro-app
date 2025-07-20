@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/mapper/card_to_product_model.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
@@ -13,6 +14,9 @@ class FavouriteBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
+    final size = MediaQuery.of(context).size;
+
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -22,7 +26,11 @@ class FavouriteBody extends StatelessWidget {
                 loading: () => Center(child: CircularProgressIndicator()),
                 allProduct: (List<CardModel> data) {
                   if (data.isEmpty) {
-                    return SizedBox(child: FavoriteEmptyWidget());
+                    return SizedBox(
+                      height: size.height - kToolbarHeight - 100,
+
+                      child: FavoriteEmptyWidget(),
+                    );
                   }
                   return GridView.builder(
                     padding: const EdgeInsets.symmetric(
