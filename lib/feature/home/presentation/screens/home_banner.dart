@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/widgets/shimmer_box.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class HomeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lan = context.locale.languageCode;
     return BlocBuilder<BannerBloc, BannerState>(
       builder: (context, state) {
         return state.when(
@@ -51,7 +53,12 @@ class HomeBanner extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl: data.data?[index].imageUzUrl ?? "",
+                      imageUrl:
+                          lan == "uz"
+                              ? (data.data?[index].imageUzUrl) ?? ""
+                              : lan == "ru"
+                              ? (data.data?[index].imageRuUrl ?? "")
+                              : (data.data?[index].imageCrlUrl ?? ""),
                     ),
                   ),
                 );

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/source/main_source.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
@@ -9,7 +10,6 @@ import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/ca
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_package_for_height/my_package.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -34,7 +34,7 @@ class _HomeCategoryState extends State<HomeCategory> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            12.height,
+            12.h,
             state.when(
               loading:
                   () => Shimmer.fromColors(

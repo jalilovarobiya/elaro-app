@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/widgets/custom_appbar.dart';
-import 'package:elaro_app/feature/profile/presentation/widgets/language_body.dart';
 import 'package:flutter/material.dart';
 
 class LanguageScreen extends StatefulWidget {

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
@@ -10,7 +11,6 @@ import 'package:elaro_app/feature/category/presentation/blocs/search/bloc/search
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_package_for_height/my_package.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GlobalSearchBody extends StatefulWidget {
@@ -87,7 +87,7 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                   ),
                 ),
               ),
-              12.height,
+              12.h,
             ],
           ),
           Expanded(
@@ -138,7 +138,7 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                                       alignment: Alignment.center,
                                       child: Icon(Icons.widgets_outlined),
                                     ),
-                                    6.height,
+                                    6.h,
                                     Text(data.categories?[index].nameUz ?? ""),
                                   ],
                                 ),
@@ -181,7 +181,7 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                                       alignment: Alignment.center,
                                       child: Icon(Icons.widgets_outlined),
                                     ),
-                                    6.height,
+                                    6.h,
                                     Text(
                                       data.subCategories?[index].nameUz ?? "",
                                     ),
@@ -196,20 +196,20 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                             physics: NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               return InkWell(
-                                // onTap: () {
-                                //   context.push(
-                                //     AppRouter.category,
-                                //     extra: CategoryConstructorModel(
-                                //       id: data.products?[index].id ?? 0,
-                                //       titleUz:
-                                //           data.products?[index].nameUz ?? "",
-                                //       titleCrl:
-                                //           data.products?[index].nameCrl ?? "",
-                                //       titleRu:
-                                //           data.products?[index].nameRu ?? "",
-                                //     ),
-                                //   );
-                                // },
+                                onTap: () {
+                                  // context.push(
+                                  //   AppRouter.category,
+                                  //   extra: CategoryConstructorModel(
+                                  //     id: data.products?[index].id ?? 0,
+                                  //     titleUz:
+                                  //         data.products?[index].nameUz ?? "",
+                                  //     titleCrl:
+                                  //         data.products?[index].nameCrl ?? "",
+                                  //     titleRu:
+                                  //         data.products?[index].nameRu ?? "",
+                                  //   ),
+                                  // );
+                                },
                                 child: Row(
                                   children: [
                                     Container(
@@ -241,7 +241,7 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                                             (context, url, error) => SizedBox(),
                                       ),
                                     ),
-                                    6.height,
+                                    6.h,
                                     Text(data.products?[index].nameUz ?? ""),
                                   ],
                                 ),

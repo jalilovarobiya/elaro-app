@@ -40,7 +40,7 @@ class _FavoriteEmptyWidgetState extends State<FavoriteEmptyWidget> {
           child: InkWell(
             onTap: () {
               MainSources.currentPage.value = 0;
-              context.pop(AppRouter.home);
+              context.go(AppRouter.home);
             },
             child: Container(
               height: 50,

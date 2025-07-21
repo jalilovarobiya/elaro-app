@@ -1,8 +1,8 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -13,7 +13,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.action = const [],
     this.navigate = true,
     this.color,
-    this.leading,
     this.textColor,
   });
   final String titleUz;
@@ -22,12 +21,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> action;
   final bool navigate;
   final Color? color;
-  final Widget? leading;
   final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: color ?? AppColor.primary,
       centerTitle: true,
       elevation: 0,
@@ -40,7 +39,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: textColor ?? Colors.white,
         ),
       ),
-      leading: leading,
+      leading: IconButton(
+        onPressed: () {
+          context.pop();
+        },
+        icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+      ),
       actions: action,
     );
   }
