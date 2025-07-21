@@ -2,9 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/constants/app_shapes.dart';
+import 'package:elaro_app/core/constants/app_styles.dart';
+import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/source/main_source.dart';
-import 'package:elaro_app/core/widgets/search_view_delegate.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/brends/bloc/brends_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
@@ -14,11 +15,11 @@ import 'package:elaro_app/feature/home/presentation/screens/hit_products.dart';
 import 'package:elaro_app/feature/home/presentation/screens/home_banner.dart';
 import 'package:elaro_app/feature/home/presentation/screens/home_category.dart';
 import 'package:elaro_app/feature/home/presentation/screens/new_products.dart';
+import 'package:elaro_app/feature/home/presentation/widget/row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_package_for_height/my_package.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -107,23 +108,38 @@ class _HomeBodyState extends State<HomeBody> {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           children: [
             HomeBanner(),
-            12.height,
-            Text("popular".tr()),
+            12.h,
+            Text("popular".tr(), style: AppStyle.w600s17h22DarkBluePrimary),
             HomeCategory(),
-            12.height,
-            Text("recomand".tr()),
+            12.h,
+            RowWidget(
+              ontap: () {
+                context.push(AppRouter.recomand);
+              },
+              category: "recomand",
+            ),
             AllProducts(),
-            12.height,
-            Text("popular".tr()),
-            12.height,
+            12.h,
+            Text("brand".tr(), style: AppStyle.w600s17h22DarkBluePrimary),
+            12.h,
             Brends(),
-            12.height,
-            Text("new_products".tr()),
-            12.height,
+            12.h,
+            RowWidget(
+              ontap: () {
+                context.push(AppRouter.newProducts);
+              },
+              category: "new_products",
+            ),
+            12.h,
             NewProducts(),
-            12.height,
-            Text("hit_product".tr()),
-            12.height,
+            12.h,
+            RowWidget(
+              ontap: () {
+                context.push(AppRouter.hitProduct);
+              },
+              category: "hit_product",
+            ),
+            12.h,
             HitProducts(),
           ],
         ),

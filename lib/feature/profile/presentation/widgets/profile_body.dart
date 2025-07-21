@@ -1,4 +1,5 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/constants/app_styles.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
 import 'package:elaro_app/core/widgets/custom_button.dart';
@@ -42,7 +43,25 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ),
                 ProfileWidget(
                   onTap: () => context.push(AppRouter.language),
-                  actionIcon: Icon(Icons.navigate_next_outlined),
+                  actionIcon: Container(
+                    decoration: BoxDecoration(
+                      color: AppColor.primary,
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 2,
+                      ),
+                      child: Text(
+                        language(),
+                        style: AppStyle.w700s18h28DarkBluePrimary.copyWith(
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ),
                   icon: Icon(Icons.public_outlined),
                   title: "language",
                 ),
@@ -84,5 +103,18 @@ class _ProfileBodyState extends State<ProfileBody> {
         ],
       ),
     );
+  }
+
+  String language() {
+    final lan = context.locale.languageCode;
+    if (lan == "uz") {
+      return "O'z";
+    } else if (lan == "en") {
+      return "Ўз";
+    } else if (lan == "ru") {
+      return "Ру";
+    } else {
+      return "O'z";
+    }
   }
 }

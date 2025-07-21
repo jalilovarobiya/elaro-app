@@ -16,6 +16,20 @@ class AppStyle {
     color: AppColor.primaryDark,
   );
 
+  static TextStyle w400s15h20DarkBlue500 = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
+    fontSize: 15,
+    height: 20 / 15,
+    color: AppColor.darkBlue500,
+  );
+
+  static TextStyle w700s18h28DarkBluePrimary = GoogleFonts.roboto(
+    fontWeight: FontWeight.w700,
+    fontSize: 18,
+    height: 28 / 18,
+    color: AppColor.primaryDark,
+  );
+
   static TextStyle w500s15h20DarkBlue500 = GoogleFonts.roboto(
     fontWeight: FontWeight.w500,
     fontSize: 15,

@@ -134,7 +134,12 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                           color: AppColor.lightGreen,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Text("sale".tr()),
+                        child: Text(
+                          "sale".tr(),
+                          style: AppStyle.w600s15h20DarkBluePrimary.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                 ],

@@ -7,7 +7,10 @@ import 'package:elaro_app/feature/category/presentation/pages/global_search_page
 import 'package:elaro_app/feature/category/presentation/pages/sub_category_page.dart';
 import 'package:elaro_app/feature/home/data/model/brand_constructr_model.dart';
 import 'package:elaro_app/feature/home/presentation/screens/brand_page.dart';
+import 'package:elaro_app/feature/home/presentation/screens/hit_products_page.dart';
 import 'package:elaro_app/feature/home/presentation/screens/home_screen.dart';
+import 'package:elaro_app/feature/home/presentation/screens/new_products_page.dart';
+import 'package:elaro_app/feature/home/presentation/screens/recomanded_products_page.dart';
 import 'package:elaro_app/feature/main/screen/main_screen.dart';
 import 'package:elaro_app/feature/order/presentation/pages/order_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_screen.dart';
@@ -32,6 +35,9 @@ class AppRouter {
   static String favourite = "/favourite";
   static String location = "/location";
   static String language = "/language";
+  static String recomand = "/recomand";
+  static String newProducts = "/newProducts";
+  static String hitProduct = "/hitProduct";
 
   static GoRouter router = GoRouter(
     initialLocation: home,
@@ -201,6 +207,29 @@ class AppRouter {
         name: AppRouter.language,
         builder: (context, state) {
           return LanguageScreen();
+        },
+      ),
+
+      GoRoute(
+        path: AppRouter.recomand,
+        name: AppRouter.recomand,
+        builder: (context, state) {
+          return RecomandedProductsPage();
+        },
+      ),
+      GoRoute(
+        path: AppRouter.hitProduct,
+        name: AppRouter.hitProduct,
+        builder: (context, state) {
+          return HitProductsPage();
+        },
+      ),
+
+      GoRoute(
+        path: AppRouter.newProducts,
+        name: AppRouter.newProducts,
+        builder: (context, state) {
+          return NewProductsPage();
         },
       ),
     ],

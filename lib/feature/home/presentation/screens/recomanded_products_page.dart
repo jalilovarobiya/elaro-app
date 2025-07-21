@@ -1,5 +1,7 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/mapper/datum_to_product_model.dart';
+import 'package:elaro_app/core/widgets/custom_appbar.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/core/widgets/shimmer_box.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
@@ -7,66 +9,62 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
-class AllProducts extends StatelessWidget {
-  const AllProducts({super.key});
+class RecomandedProductsPage extends StatelessWidget {
+  const RecomandedProductsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductsBloc, ProductsState>(
-      builder: (context, state) {
-        return state.when(
-          loading:
-              () => Container(
-                clipBehavior: Clip.none,
-                height: 320,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
+    return Scaffold(
+      appBar: CustomAppBar(
+        titleUz: "Tavsiyalar",
+        titleRu: "Рекомендации",
+        titleCrl: "Тавсиялар",
+      ),
+      body: BlocBuilder<ProductsBloc, ProductsState>(
+        builder: (context, state) {
+          return state.when(
+            loading:
+                () => GridView.builder(
                   clipBehavior: Clip.none,
-                  itemCount: 5,
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1 / 1.6,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                  ),
                   itemBuilder: (context, index) {
                     return Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5),
                       clipBehavior: Clip.hardEdge,
-                      width: 200,
-                      margin: const EdgeInsets.symmetric(horizontal: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
                       child: Column(
                         children: [
-                          AspectRatio(aspectRatio: 1, child: ShimmerBox()),
+                          AspectRatio(
+                            aspectRatio: 1,
+                            child: Shimmer.fromColors(
+                              baseColor: AppColor.lightGray400,
+                              highlightColor: AppColor.lightGray500,
+                              child: Container(
+                                alignment: Alignment.center,
+                                margin: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 12),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: <Widget>[
-                                  Shimmer.fromColors(
-                                    baseColor: AppColor.lightGray400,
-                                    highlightColor: AppColor.lightGray500,
-                                    child: Container(
-                                      height: 16,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Shimmer.fromColors(
-                                    baseColor: AppColor.lightGray400,
-                                    highlightColor: AppColor.lightGray500,
-                                    child: Container(
-                                      height: 16,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
+                                children: [
+                                  ShimmerBox(),
+                                  8.h,
+                                  ShimmerBox(),
+                                  Spacer(),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment:
@@ -104,7 +102,7 @@ class AllProducts extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 8),
+                                  8.h,
                                 ],
                               ),
                             ),
@@ -114,27 +112,37 @@ class AllProducts extends StatelessWidget {
                     );
                   },
                 ),
-              ),
-          success:
-              (data) => SizedBox(
-                height: 350,
-                child: ListView.builder(
-                  clipBehavior: Clip.none,
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: data.data?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final product = data.data![index].toProductModel();
-                    return ProductItemWidget(
-                      ontap: () {},
-                      productData: product,
-                    );
-                  },
+            success:
+                (data) => SizedBox(
+                  child: GridView.builder(
+                    clipBehavior: Clip.none,
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      top: 16,
+                      bottom: 150,
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1 / 1.6,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                        ),
+                    itemCount: data.data?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      final product = data.data![index].toProductModel();
+                      return ProductItemWidget(
+                        ontap: () {},
+                        productData: product,
+                      );
+                    },
+                  ),
                 ),
-              ),
-          failure: (failure) => Text("xatolik: $failure"),
-        );
-      },
+            failure: (failure) => Text("xatolik: $failure"),
+          );
+        },
+      ),
     );
   }
 }

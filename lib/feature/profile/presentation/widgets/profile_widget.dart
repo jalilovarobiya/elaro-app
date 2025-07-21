@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elaro_app/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatelessWidget {
@@ -18,7 +19,7 @@ class ProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: icon,
-      title: Text(title.tr()),
+      title: Text(title.tr(), style: AppStyle.w400s15h20DarkBlue500),
       trailing: actionIcon,
       onTap: onTap,
     );
