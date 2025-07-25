@@ -39,12 +39,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: textColor ?? Colors.white,
         ),
       ),
-      leading: IconButton(
-        onPressed: () {
-          context.pop();
-        },
-        icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-      ),
+      leading:
+          navigate
+              ? IconButton(
+                onPressed: () {
+                  context.pop();
+                },
+                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+              )
+              : null,
       actions: action,
     );
   }

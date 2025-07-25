@@ -3,6 +3,7 @@ import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/interceptor/interceptor.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/utils/di.dart';
+import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:elaro_app/feature/home/data/repository/products_repository_impl.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
@@ -34,6 +35,9 @@ class MainApp extends StatelessWidget {
             create:
                 (context) =>
                     sl<FavouriteBloc>()..add(FavouriteEvent.fetchData()),
+          ),
+          BlocProvider(
+            create: (context) => sl<CardBloc>()..add(CardEvent.fetchData()),
           ),
         ],
         child: MaterialApp.router(

@@ -51,7 +51,7 @@ class _FavoriteEmptyWidgetState extends State<FavoriteEmptyWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 60),
               child: Center(
                 child: Text(
-                  "Mahsulotlarni ko'rish",
+                  "see".tr(),
                   style: AppStyle.w500s15h20DarkBlue500.copyWith(
                     color: Colors.white,
                   ),

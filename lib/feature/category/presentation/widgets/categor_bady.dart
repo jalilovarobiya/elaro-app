@@ -3,6 +3,7 @@ import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/mapper/category_to_product.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
+import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
@@ -149,7 +150,7 @@ class _CategorBadyState extends State<CategorBady> {
               ),
             );
           },
-          failure: (failure) => Text("Xatolik: $failure"),
+          failure: (failure) => AppErrorWidget(message: "error"),
         );
       },
     );

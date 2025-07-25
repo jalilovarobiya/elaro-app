@@ -7,6 +7,7 @@ import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/core/widgets/custom_toast.dart';
 import 'package:elaro_app/core/widgets/favourite_button.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
+import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart'
     as product;
 import 'package:flutter/material.dart';
@@ -200,11 +201,47 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                         ),
                         // if (widget.productData.data?.qty != null &&
                         //     widget.productData.data?.qty != 0)
-                        //   BlocBuilder<SubjectBloc, SubjectState>(
-                        //     builder: (context, state) {
-                        //       return
-                        //     },
-                        // ),
+                        ValueListenableBuilder<bool>(
+                          valueListenable: loading,
+                          builder: (context, isloading, child) {
+                            return IconButton(
+                              onPressed:
+                                  isloading
+                                      ? null
+                                      : () async {
+                                        if (!(await Utils().isLogin())) {
+                                          CustomToast.showToast(
+                                            context,
+                                            Icon(Icons.warning_amber),
+                                            "required_login".tr(),
+                                            Colors.white,
+                                            Colors.red,
+                                          );
+                                          return;
+                                        }
+                                        loading.value = true;
+                                        context.read<CardBloc>().add(
+                                          CardEvent.addProduct(
+                                            (widget.productData.data?.id ?? 0)
+                                                .toString(),
+                                            1,
+                                          ),
+                                        );
+                                        await Future.delayed(
+                                          Duration(seconds: 2),
+                                        );
+                                        loading.value = false;
+                                      },
+                              icon:
+                                  isloading
+                                      ? CircularProgressIndicator(
+                                        color: AppColor.primary,
+                                        strokeWidth: 2,
+                                      )
+                                      : Icon(Icons.shopping_cart_outlined),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ],

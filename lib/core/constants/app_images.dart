@@ -7,4 +7,6 @@ abstract class AppImages {
   static const String profile = "assets/svg/profile.svg";
 
   static const String home = "assets/images/home.png";
+
+  static const String lottieErrorJson = "assets/lottie/error.json";
 }

@@ -23,6 +23,13 @@
     "lan": "Til",
     "required_login": "Xarid qilish, buyurtmalarni kuzatish va bo'lib-bo'lib to'lash uchun tizimga kirishingiz kerak.",
     "sum": "so'm",
-    "empty_card": "Savatda hali hech narsa yo'q",
-    "brand": "Ommabop brendlar"
+    "empty_card": "Mahsulotlar mavjud emas",
+    "brand": "Ommabop brendlar",
+    "error": "Nimadir xato ketdi",
+    "empty_cart": "Savat bo'sh",
+    "add_products_to_cart": "Savatga mahsulot qo'shing",
+    "total": "Jami",
+    "checkout": "Buyurtma berish",
+    "clear_cart": "Savatni tozalash",
+    "see": "Mahsulotlarni ko'rish"
 }

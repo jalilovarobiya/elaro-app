@@ -1,7 +1,8 @@
-import 'package:elaro_app/core/constants/app_colors.dart';
-import 'package:elaro_app/core/extension/sized_box_extension.dart';
-import 'package:elaro_app/core/widgets/custom_button.dart';
+import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
+import 'package:elaro_app/core/widgets/custom_appbar.dart';
+import 'package:elaro_app/feature/card/presentation/widgets/card_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CardScreen extends StatefulWidget {
   const CardScreen({super.key});
@@ -16,32 +17,13 @@ class _CardScreenState extends State<CardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Xush kelibsiz!")),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                prefixText: "+998",
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange),
-                ),
-              ),
-            ),
-            15.h,
-            CustomButton(
-              text: ("Kirish"),
-              onPressed: () {},
-              color: AppColor.primary,
-            ),
-          ],
-        ),
+      appBar: CustomAppBar(
+        titleUz: "Savatcha",
+        titleRu: "Корзина",
+        titleCrl: "Саватча",
+        navigate: false,
       ),
+      body: RefreshIndicator(child: CardBody(), onRefresh: () async {}),
     );
   }
 }

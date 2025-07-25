@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
+import 'package:elaro_app/feature/profile/data/model/profile_model.dart';
 import 'package:intl/intl.dart';
 
 class Utils {
@@ -30,5 +33,14 @@ class Utils {
   Future<bool> isLogin() async {
     final token = await SecureStorage().read(key: "token");
     return token != null;
+  }
+
+  static Future<ProfileModel> getUser() async {
+    final user = await SecureStorage().read(key: "user") ?? "";
+    try {
+      return ProfileModel.fromJson(json.decode(user));
+    } catch (e) {
+      return const ProfileModel();
+    }
   }
 }

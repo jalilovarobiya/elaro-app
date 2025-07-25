@@ -10,7 +10,7 @@ class FavouriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         titleUz: "Istaklar",
-        titleRu: "Favorite",
+        titleRu: "Избранное",
         titleCrl: "Истаклар",
       ),
       body: FavouriteBody(),

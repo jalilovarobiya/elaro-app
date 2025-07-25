@@ -10,9 +10,9 @@ class CardModel extends Equatable {
   final int quantity;
   final String price;
   final String image;
-  final int? discountedPrice; // Chegirmali narx
-  final String? discount; // Chegirma miqdori yoki foizi
-  final String? discountType; // Chegirma turi (foiz yoki fiks)
+  final int? discountedPrice;
+  final String? discount;
+  final String? discountType;
   final String? discountEnd;
   final String? discountStart;
 
@@ -71,6 +71,40 @@ class CardModel extends Equatable {
     "discount_end": discountEnd,
     "quantity": quantity,
   };
+
+  CardModel copyWith({
+    String? productId,
+    String? titleUz,
+    String? titleRu,
+    String? titleCrl,
+    int? productCount,
+    int? qty,
+    int? quantity,
+    String? price,
+    String? image,
+    int? discountedPrice,
+    String? discount,
+    String? discountType,
+    String? discountEnd,
+    String? discountStart,
+  }) {
+    return CardModel(
+      productId: productId ?? this.productId,
+      titleUz: titleUz ?? this.titleUz,
+      titleRu: titleRu ?? this.titleRu,
+      titleCrl: titleCrl ?? this.titleCrl,
+      productCount: productCount ?? this.productCount,
+      qty: qty ?? this.qty,
+      quantity: quantity ?? this.quantity,
+      price: price ?? this.price,
+      image: image ?? this.image,
+      discountedPrice: discountedPrice ?? this.discountedPrice,
+      discount: discount ?? this.discount,
+      discountType: discountType ?? this.discountType,
+      discountEnd: discountEnd ?? this.discountEnd,
+      discountStart: discountStart ?? this.discountStart,
+    );
+  }
 
   @override
   List<Object?> get props => [

@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
+import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/search/bloc/search_bloc.dart';
@@ -251,7 +252,7 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                         ],
                       );
                     },
-                    failure: (failure) => Text("xatolik: $failure"),
+                    failure: (failure) => AppErrorWidget(message: "error"),
                   );
                 },
               ),

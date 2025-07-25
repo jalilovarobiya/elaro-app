@@ -1,5 +1,6 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/mapper/sub_category_to_product.dart';
+import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
@@ -41,7 +42,7 @@ class SubCategoryPageBody extends StatelessWidget {
               },
             );
           },
-          failure: (failure) => Text("Error: $failure"),
+          failure: (failure) => AppErrorWidget(message: "error"),
         );
       },
     );

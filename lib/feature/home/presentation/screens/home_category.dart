@@ -4,6 +4,7 @@ import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/source/main_source.dart';
+import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
@@ -170,7 +171,7 @@ class _HomeCategoryState extends State<HomeCategory> {
                   ),
                 );
               },
-              failure: (failure) => Text("Xatolik: $failure"),
+              failure: (failure) => AppErrorWidget(message: "error"),
             ),
           ],
         );

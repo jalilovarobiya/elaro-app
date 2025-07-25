@@ -65,7 +65,7 @@ class HomeBanner extends StatelessWidget {
               }),
             );
           },
-          failure: (failure) => Text("Xatolik: $failure"),
+          failure: (failure) => SizedBox(),
         );
       },
     );

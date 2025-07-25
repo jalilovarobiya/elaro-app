@@ -1,5 +1,6 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/mapper/brand_to_product_model.dart';
+import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart';
@@ -39,7 +40,7 @@ class BrandsBody extends StatelessWidget {
               },
             );
           },
-          failure: (failure) => Text(failure.toString()),
+          failure: (failure) => AppErrorWidget(message: "error"),
         );
       },
     );
