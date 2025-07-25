@@ -6,7 +6,6 @@ import 'package:elaro_app/core/widgets/shimmer_box.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AllProducts extends StatelessWidget {

@@ -51,7 +51,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 12,
-                        vertical: 2,
+                        vertical: 3,
                       ),
                       child: Text(
                         language(),
