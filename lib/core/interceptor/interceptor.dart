@@ -17,7 +17,10 @@ class DioClient {
         connectTimeout: const Duration(minutes: 1),
         receiveTimeout: const Duration(minutes: 1),
         sendTimeout: const Duration(minutes: 1),
-        headers: {"Content-Type": "application/json"},
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
       ),
     );
 
@@ -35,12 +38,19 @@ class DioClient {
           return handler.next(option);
         },
         onResponse: (response, handler) {
+          log("Resposne body ${response.data}");
           log("Response status code: ${response.statusCode}");
           return handler.next(response);
         },
         onError: (error, handler) {
-          log("Error: $error");
-          return handler.next(error);
+          log("Error 1: $error");
+          log("Resposne body ${error.response?.data}");
+          try {
+            return handler.resolve(error.response!);
+          } catch (e) {
+            return handler.next(error);
+          }
+
         },
       ),
     );

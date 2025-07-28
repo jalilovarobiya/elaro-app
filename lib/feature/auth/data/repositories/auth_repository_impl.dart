@@ -21,26 +21,30 @@ class AuthRepositoryImpl implements AuthRepository {
     String password,
   ) async {
     String signature = await SmsAutoFill().getAppSignature;
-    final response = await client.post(
-      url: "/otp/login",
-      body: {
-        "phone": phone,
-        "password": password,
-        "app_signature": Platform.isAndroid ? signature : "https://elaro.uz",
-      },
-    );
-
-    if (response.isSuccess) {
-      if (response.response["error"] == true) {
-        throw "registed"; // Controllerda ushbu xatolikni ushlab RegisterPagega yo‘naltirasiz
+    try{
+      final response = await client.post(
+        url: "/otp/login",
+        body: {
+          "phone": phone,
+          "password": password,
+          "app_signature": Platform.isAndroid ? signature : "https://elaro.uz",
+        },
+      );
+      if (response.isSuccess) {
+        if (response.response["error"] == true) {
+          throw "registed";
+        }
+        final data = SendOtpModel(message: "send_otp_code".tr());
+        return Right(data);
+      } else if (response.code == 404) {
+        throw "registed";
+      } else {
+        return Left(FailureModel(response.response["message"]));
       }
-      final data = SendOtpModel(message: "send_otp_code".tr());
-      return Right(data);
-    } else if (response.code == 404) {
-      throw "registed"; // serverda topilmadi — foydalanuvchi mavjud emas
-    } else {
-      return Left(FailureModel(response.response["message"]));
+    }catch(e){
+      return Left(FailureModel(e.toString()));
     }
+
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/app/main_app.dart';
+import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
 import 'package:elaro_app/core/utils/di.dart';
 import 'package:flutter/material.dart';
 

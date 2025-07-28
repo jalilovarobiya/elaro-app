@@ -22,13 +22,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(const AuthState.loading());
-
     try {
       final result = await impl.login(event.number, "");
       result.fold(
         (failure) {
-          if (failure.error.contains("registed") ||
-              failure.error.contains("not registered")) {
+          if (failure.error.contains("registed")) {
             emit(AuthState.register(phone: event.number));
           } else {
             emit(AuthState.failure(failure));
@@ -40,7 +38,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     } on DioException catch (e) {
       emit(AuthState.failure(FailureModel(e.message ?? e.toString())));
-    } catch (e) {
+    } on String catch (e) {
+      if(e == "registed"){
+        emit(AuthState.register(phone: event.number));
+        return;
+      }
+    }  on Exception catch (e) {
       emit(AuthState.failure(FailureModel(e.toString())));
     }
   }
