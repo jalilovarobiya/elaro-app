@@ -1,5 +1,6 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/mapper/brand_to_product_model.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
@@ -7,6 +8,7 @@ import 'package:elaro_app/feature/home/data/model/product_model.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/brand/bloc/brand_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class BrandsBody extends StatelessWidget {
   const BrandsBody({super.key});
@@ -33,7 +35,9 @@ class BrandsBody extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 return ProductItemWidget(
-                  ontap: () {},
+                  ontap: () {
+                    context.push(AppRouter.product);
+                  },
                   productData:
                       data.data?.products?[index].toProduct() ?? ProductModel(),
                 );

@@ -7,8 +7,12 @@ import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/card/data/model/card_model.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
+import 'package:elaro_app/feature/home/data/model/products_model.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class CardBody extends StatefulWidget {
   const CardBody({super.key});
@@ -30,7 +34,9 @@ class _CardBodyState extends State<CardBody> {
                   () => const Center(
                     child: CircularProgressIndicator(color: AppColor.primary),
                   ),
-              success: (data) => _buildSuccessWidget(data),
+              success: (data, qty) {
+                return _buildSuccessWidget(data);
+              },
               failure:
                   () => Center(
                     child: Column(
@@ -68,7 +74,7 @@ class _CardBodyState extends State<CardBody> {
     );
   }
 
-  Widget _buildSuccessWidget(List<CardModel> data) {
+  Widget _buildSuccessWidget(List<Datum> data) {
     if (data.isEmpty) {
       return const EmptyWidget();
     }
@@ -90,7 +96,7 @@ class _CardBodyState extends State<CardBody> {
     );
   }
 
-  Widget _buildCartItem(CardModel item) {
+  Widget _buildCartItem(Datum item) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -116,7 +122,7 @@ class _CardBodyState extends State<CardBody> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(
-                imageUrl: item.image,
+                imageUrl: item.images?.firstOrNull?.image ?? "",
                 fit: BoxFit.cover,
                 placeholder:
                     (context, url) => const Center(
@@ -139,16 +145,16 @@ class _CardBodyState extends State<CardBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Translator(
-                  uz: item.titleUz,
-                  ru: item.titleRu,
-                  crl: item.titleCrl,
+                  uz: item.nameUz ?? "",
+                  ru: item.nameRu ?? "",
+                  crl: item.nameCrl ?? "",
                 ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
                     if (item.discountedPrice != null) ...[
                       Text(
-                        "${Utils.cashFormat(item.price)} ${"sum".tr()}",
+                        "${Utils.cashFormat(item.price ?? "0")} ${"sum".tr()}",
                         style: AppStyle.w600s15h20DarkBluePrimary.copyWith(
                           decoration: TextDecoration.lineThrough,
                           color: AppColor.lightGray50,
@@ -164,7 +170,7 @@ class _CardBodyState extends State<CardBody> {
                       ),
                     ] else
                       Text(
-                        "${Utils.cashFormat(item.price)} ${"sum".tr()}",
+                        "${Utils.cashFormat(item.price ?? "0")} ${"sum".tr()}",
                         style: AppStyle.w600s15h20DarkBluePrimary,
                       ),
                   ],
@@ -175,34 +181,20 @@ class _CardBodyState extends State<CardBody> {
                   children: [
                     Row(
                       children: [
-                        GestureDetector(
+                        ZoomTapAnimation(
                           onTap: () {
-                            if (item.quantity > 1) {
-                              context.read<CardBloc>().add(
-                                CardEvent.updateQuantity(
-                                  item.productId,
-                                  item.quantity - 1,
-                                ),
-                              );
-                            }
+                            context.read<CardBloc>().add(
+                              CardEvent.updateQuantity(
+                                int.parse("${item.id ?? 0}").toString(),
+                                (item.quantity ?? 0) + 1,
+                              ),
+                            );
                           },
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              color:
-                                  item.quantity > 1
-                                      ? AppColor.primary
-                                      : Colors.grey[300],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Icon(
-                              Icons.remove,
-                              color:
-                                  item.quantity > 1
-                                      ? Colors.white
-                                      : Colors.grey[600],
-                              size: 16,
+                          child: Text(
+                            " + ",
+                            style: AppStyle.w700s18h28DarkBluePrimary.copyWith(
+                              color: Colors.black,
+                              fontSize: 15,
                             ),
                           ),
                         ),
@@ -214,42 +206,30 @@ class _CardBodyState extends State<CardBody> {
                             style: AppStyle.w600s15h20DarkBluePrimary,
                           ),
                         ),
-                        GestureDetector(
+                        ZoomTapAnimation(
                           onTap: () {
-                            if (item.quantity < item.productCount) {
-                              context.read<CardBloc>().add(
-                                CardEvent.updateQuantity(
-                                  item.productId,
-                                  item.quantity + 1,
-                                ),
-                              );
-                            }
+                            context.read<CardBloc>().add(
+                              CardEvent.clearCart(
+                                int.parse("${item.id ?? 0}").toString(),
+                                (item.quantity ?? 0) - 1,
+                              ),
+                            );
                           },
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              color:
-                                  item.quantity < item.productCount
-                                      ? AppColor.primary
-                                      : Colors.grey[300],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Icon(
-                              Icons.add,
-                              color:
-                                  item.quantity < item.productCount
-                                      ? Colors.white
-                                      : Colors.grey[600],
-                              size: 16,
+                          child: Text(
+                            " - ",
+                            style: AppStyle.w600s15h20DarkBluePrimary.copyWith(
+                              color: Colors.black,
+                              fontSize: 15,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    GestureDetector(
+                    ZoomTapAnimation(
                       onTap: () {
-                        _showDeleteConfirmation(item);
+                        context.read<CardBloc>().add(
+                          CardEvent.removeProduct((item.id ?? 0).toString()),
+                        );
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
@@ -274,15 +254,17 @@ class _CardBodyState extends State<CardBody> {
     );
   }
 
-  Widget _buildCartSummary(List<CardModel> data) {
-    final total = data.fold<double>(
-      0.0,
-      (sum, item) =>
-          sum +
-          (item.discountedPrice ?? double.parse(item.price)) * item.quantity,
-    );
-    final totalItems = data.fold<int>(0, (sum, item) => sum + item.quantity);
-
+  Widget _buildCartSummary(List<Datum> data) {
+    int totalCount = data.fold(0, (sum, item) => sum + (item.quantity ?? 0));
+    double totalPrice = data.fold(0.0, (sum, item) {
+      double price = double.tryParse(item.price ?? "0") ?? 0;
+      double discountedPrice = 0.0;
+      String discountedPriceString = (item.discountedPrice?.toString() ?? "0");
+      discountedPrice = double.tryParse(discountedPriceString) ?? 0;
+      return sum +
+          ((item.discountType != null) ? discountedPrice : price) *
+              (item.quantity ?? 0);
+    });
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -311,7 +293,25 @@ class _CardBodyState extends State<CardBody> {
                 ),
               ),
               Text(
-                "${Utils.cashFormat(total.toString())} ${"sum".tr()}",
+                "${Utils.cashFormat(totalPrice.toString())} ${"sum".tr()}",
+                style: AppStyle.w600s15h20DarkBluePrimary.copyWith(
+                  fontSize: 18,
+                  color: AppColor.primary,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "total".tr(),
+                style: AppStyle.w600s15h20DarkBluePrimary.copyWith(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                "${totalCount} ${"sum".tr()}",
                 style: AppStyle.w600s15h20DarkBluePrimary.copyWith(
                   fontSize: 18,
                   color: AppColor.primary,
@@ -324,9 +324,7 @@ class _CardBodyState extends State<CardBody> {
             width: double.infinity,
             height: 50,
             child: ElevatedButton(
-              onPressed: () {
-                _proceedToCheckout(data);
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColor.primary,
                 shape: RoundedRectangleBorder(
@@ -343,80 +341,7 @@ class _CardBodyState extends State<CardBody> {
               ),
             ),
           ),
-          const SizedBox(height: 8),
-          TextButton(
-            onPressed: () {
-              _showClearCartConfirmation();
-            },
-            child: Text(
-              "clear_cart".tr(),
-              style: const TextStyle(color: Colors.red, fontSize: 14),
-            ),
-          ),
         ],
-      ),
-    );
-  }
-
-  void _showDeleteConfirmation(CardModel item) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("confirm_delete".tr()),
-          content: Text("delete_item_confirmation".tr()),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text("cancel".tr()),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                context.read<CardBloc>().add(
-                  CardEvent.removeProduct(item.productId),
-                );
-              },
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
-              child: Text("delete".tr()),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showClearCartConfirmation() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("clear_cart".tr()),
-          content: Text("clear_cart_confirmation".tr()),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text("cancel".tr()),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                // context.read<CardBloc>().add(const CardEvent.clearCart());
-              },
-              style: TextButton.styleFrom(foregroundColor: Colors.red),
-              child: Text("clear".tr()),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _proceedToCheckout(List<CardModel> data) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("proceeding_to_checkout".tr()),
-        backgroundColor: AppColor.primary,
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EmptyWidget extends StatelessWidget {
@@ -12,12 +12,13 @@ class EmptyWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const Icon(
-          Icons.shopping_cart_outlined,
+          CupertinoIcons.shopping_cart,
           size: 100,
-          color: AppColor.lightGray600,
+          color: Colors.black,
         ),
+
         const SizedBox(height: 10),
-        Text("Mahsulot mavjud emas".tr(), textAlign: TextAlign.center),
+        Text("empty_card".tr(), textAlign: TextAlign.center),
       ],
     );
   }

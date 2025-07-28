@@ -29,12 +29,9 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  late final ProductsBloc _productsBloc;
-
   @override
-  void dispose() {
-    _productsBloc.close();
-    super.dispose();
+  void initState() {
+    super.initState();
   }
 
   @override

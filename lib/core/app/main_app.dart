@@ -9,6 +9,7 @@ import 'package:elaro_app/feature/home/presentation/blocs/banner/bloc/banner_blo
 import 'package:elaro_app/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
+import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,6 +31,12 @@ class MainApp extends StatelessWidget {
           ),
           BlocProvider(create: (context) => sl<ProductsBloc>()),
           BlocProvider(create: (context) => sl<NewProductsBloc>()),
+          BlocProvider(
+            create:
+                (context) =>
+                    sl<ProfileBloc>()..add(const ProfileEvent.fetchData()),
+          ),
+
           BlocProvider(create: (context) => sl<HitProductsBloc>()),
           BlocProvider(
             create:

@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:elaro_app/core/interceptor/interceptor.dart';
 import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/feature/card/data/model/card_model.dart';
 import 'package:elaro_app/feature/card/domain/repository/card_repositoyr.dart';
+import 'package:elaro_app/feature/home/data/model/products_model.dart';
 
 class CardRepositoryImpl implements CardRepositoyr {
   final DioClient client;
@@ -14,27 +17,16 @@ class CardRepositoryImpl implements CardRepositoyr {
     final request = await client.post(
       url: "/add-cart",
       body: {
-        "cart_id": user.data?.id ?? 0,
+        "cart_id": user.data?.id,
         "product_id": card.productId,
         "quantity": card.qty,
       },
     );
-    return request.isSuccess;
-  }
+    print("user id: ${user.data?.id}");
+    print("product id: ${card.productId}");
+    print("miqdori ${card.qty}");
 
-  @override
-  Future<List<CardModel>> getcartitems() async {
-    try {
-      final request = await client.get(url: "/cart");
-      if (request.isSuccess) {
-        final itemsJson =
-            request.response["data"][0]["products"] as List<dynamic>;
-        return itemsJson.map((item) => CardModel.fromJson(item)).toList();
-      }
-      return [];
-    } catch (e) {
-      return [];
-    }
+    return request.isSuccess;
   }
 
   @override
@@ -87,6 +79,30 @@ class CardRepositoryImpl implements CardRepositoyr {
       return request.isSuccess;
     } catch (e) {
       return false;
+    }
+  }
+
+  @override
+  Future<List<Datum>> getCartItems() async {
+    try {
+      log('Repository: Fetching cart items...');
+
+      final request = await client.get(url: "/cart");
+
+      if (request.isSuccess) {
+        // final List<dynamic> data = request.response['data'] ?? [];
+        // final cartItems = data.map((item) => CardModel.fromJson(item)).toList();
+        // log('Repository: Successfully fetched ${cartItems.length} cart items');
+        return List<Datum>.from(
+          request.response["data"][0]["products"].map((e) => Datum.fromJson(e)),
+        );
+      } else {
+        log('Repository: Failed to fetch cart items: ${request.response}');
+        return [];
+      }
+    } catch (e) {
+      log('Repository: Error fetching cart items: $e');
+      return [];
     }
   }
 }

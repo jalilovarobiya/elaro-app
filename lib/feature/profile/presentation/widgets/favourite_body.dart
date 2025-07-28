@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/mapper/card_to_product_model.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/feature/card/data/model/card_model.dart';
@@ -8,6 +9,7 @@ import 'package:elaro_app/feature/home/data/model/product_model.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_empty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FavouriteBody extends StatelessWidget {
   const FavouriteBody({super.key});
@@ -50,7 +52,9 @@ class FavouriteBody extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final product = data[index];
                       return ProductItemWidget(
-                        ontap: () {},
+                        ontap: () {
+                          context.push(AppRouter.product);
+                        },
                         productData: ProductModel(
                           data: product.toProductModel(),
                         ),

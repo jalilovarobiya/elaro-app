@@ -1,6 +1,7 @@
 import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/interceptor/interceptor.dart';
 import 'package:elaro_app/core/repository/favourite_repository.dart';
+import 'package:elaro_app/feature/auth/data/repositories/auth_repository_impl.dart';
 import 'package:elaro_app/feature/card/data/repository/card_repository_impl.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:elaro_app/feature/category/data/repository/search_repository_impl.dart';
@@ -20,6 +21,9 @@ import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/cate
 import 'package:elaro_app/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
+import 'package:elaro_app/feature/auth/presentation/bloc/auth_bloc.dart';
+import 'package:elaro_app/feature/profile/data/repository/profile_repository_impl.dart';
+import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -67,6 +71,12 @@ void _repositories() {
   sl.registerLazySingleton<CardRepositoryImpl>(
     () => CardRepositoryImpl(sl<DioClient>()),
   );
+  sl.registerLazySingleton<ProfileRepositoryImpl>(
+    () => ProfileRepositoryImpl(sl<DioClient>()),
+  );
+  sl.registerLazySingleton<AuthRepositoryImpl>(
+    () => AuthRepositoryImpl(sl<DioClient>()),
+  );
 }
 
 void _blocs() {
@@ -76,13 +86,14 @@ void _blocs() {
   sl.registerFactory(() => CategoryBloc(sl<CategoryRepositoryImpl>()));
   sl.registerFactory(() => HitProductsBloc(sl<ProductsRepositoryImpl>()));
   sl.registerFactory(() => NewProductsBloc(sl<ProductsRepositoryImpl>()));
-  // sl.registerFactory(() => ProductBloc(sl<ProductsRepositoryImpl>()));
   sl.registerFactory(() => ProductsBloc(sl<ProductsRepositoryImpl>()));
   sl.registerFactory(() => SubCategoryBloc(sl<SubCategoryRepositoryImpl>()));
   sl.registerFactory(() => FavouriteBloc(sl<FavouriteRepositoryImpl>()));
   sl.registerFactory(() => BrandBloc(sl<BrendsRepositoryImpl>()));
   sl.registerFactory(() => SearchBloc(sl<SearchRepositoryImpl>()));
   sl.registerFactory(() => CardBloc(sl<CardRepositoryImpl>()));
+  sl.registerFactory(() => ProfileBloc(sl<ProfileRepositoryImpl>()));
+  sl.registerFactory(() => AuthBloc(sl<AuthRepositoryImpl>()));
 }
 
 void _dataSources() {}

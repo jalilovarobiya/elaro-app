@@ -2,11 +2,19 @@ import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
-import 'package:elaro_app/core/widgets/custom_button.dart';
+import 'package:elaro_app/core/widgets/translator.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/button_widget.dart';
+import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
+import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
+import 'package:elaro_app/feature/profile/presentation/widgets/profile_edit_page.dart';
 import 'package:elaro_app/feature/profile/presentation/widgets/profile_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class ProfileBody extends StatefulWidget {
   const ProfileBody({super.key});
@@ -18,16 +26,28 @@ class ProfileBody extends StatefulWidget {
 class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
+    context.read<ProfileBloc>().add(const ProfileEvent.fetchData());
+    context.locale;
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         spacing: 15,
         children: [
-          Text("required_login".tr(), textAlign: TextAlign.center),
-          CustomButton(
-            text: "Kirish",
-            onPressed: () {},
-            color: AppColor.primary,
+          BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                success: (profile) {
+                  return ProfileInfoTile(
+                    name: profile.profile.data?.name ?? "",
+                    phone: profile.profile.data?.phone ?? "",
+                    last: profile.profile.data?.surname ?? "",
+                    address: profile.profile.data?.address ?? "",
+                  );
+                },
+                loading: (_) => ProfileInfoLoadingTile(),
+                orElse: () => LoginRequiredWidget(),
+              );
+            },
           ),
           Card(
             child: Column(
@@ -37,8 +57,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   onTap: () {
                     context.push(AppRouter.favourite);
                   },
-                  actionIcon: Icon(Icons.navigate_next_outlined),
-                  icon: Icon(Icons.favorite_border),
+                  icon: CupertinoIcons.heart,
                   title: "favorites",
                 ),
                 ProfileWidget(
@@ -62,13 +81,13 @@ class _ProfileBodyState extends State<ProfileBody> {
                       ),
                     ),
                   ),
-                  icon: Icon(Icons.public_outlined),
+                  icon: Icons.language,
                   title: "language",
                 ),
                 ProfileWidget(
                   onTap: () => context.push(AppRouter.location),
-                  actionIcon: Icon(Icons.navigate_next_outlined),
-                  icon: Icon(Icons.location_on_outlined),
+
+                  icon: CupertinoIcons.location_solid,
                   title: "location",
                 ),
               ],
@@ -79,22 +98,52 @@ class _ProfileBodyState extends State<ProfileBody> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ProfileWidget(
-                  actionIcon: Icon(Icons.navigate_next_outlined),
-                  icon: Icon(Icons.question_answer_outlined),
+                  icon: CupertinoIcons.chat_bubble_2,
                   title: "support",
                 ),
-                ProfileWidget(
-                  actionIcon: Icon(Icons.navigate_next_outlined),
-                  icon: Icon(Icons.error_outline),
-                  title: "info",
-                ),
+                ProfileWidget(icon: CupertinoIcons.info, title: "info"),
                 ProfileWidget(
                   onTap: () {
-                    SecureStorage().deleteAll();
-                    setState(() {});
+                    showDialog(
+                      context: context,
+                      builder:
+                          (context) => AlertDialog(
+                            title: Translator(
+                              maxLen: 3,
+                              textAlign: TextAlign.center,
+                              uz: "Hisobingizni o'chirib tashlamoqchisiz",
+                              ru: "Вы хотите удалить свой аккаунт",
+                              crl: "Ҳисобингизни ўчириб ташламоқчисиз",
+                            ),
+                            content: Translator(
+                              textAlign: TextAlign.center,
+                              uz: "Ishonchingiz komilmi?",
+                              ru: "Вы уверены?",
+                              crl: "Ишончингиз комилми?",
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  context.pop();
+                                },
+                                child: Text("cancel".tr()),
+                              ),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  await SecureStorage().deleteAll();
+                                  setState(() {});
+                                  context.pop();
+                                  // setState(() {
+                                  // });
+                                },
+                                child: Text("delete".tr()),
+                              ),
+                            ],
+                          ),
+                    );
                   },
-                  actionIcon: Icon(Icons.navigate_next_outlined),
-                  icon: Icon(Icons.logout),
+
+                  icon: Icons.logout,
                   title: "exit",
                 ),
               ],
@@ -116,5 +165,94 @@ class _ProfileBodyState extends State<ProfileBody> {
     } else {
       return "O'z";
     }
+  }
+}
+
+class LoginRequiredWidget extends StatelessWidget {
+  const LoginRequiredWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(height: 12),
+        Text("required_login".tr(), textAlign: TextAlign.center),
+        const SizedBox(height: 12),
+        ButtonWidget(
+          textColor: Colors.white,
+          text: "login".tr(),
+          onTap: () {
+            context.push(AppRouter.auth);
+          },
+        ),
+        const SizedBox(height: 12),
+      ],
+    );
+  }
+}
+
+class ProfileInfoLoadingTile extends StatelessWidget {
+  const ProfileInfoLoadingTile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: AppColor.lightGray200,
+      highlightColor: AppColor.lightGray500,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+        ),
+        child: const ListTile(),
+      ),
+    );
+  }
+}
+
+class ProfileInfoTile extends StatelessWidget {
+  final String name;
+  final String last;
+  final String address;
+  final String phone;
+
+  const ProfileInfoTile({
+    required this.name,
+    required this.phone,
+    required this.address,
+    required this.last,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ZoomTapAnimation(
+      onTap: () {
+        Navigator.of(context).push(
+          CupertinoPageRoute(
+            builder:
+                (context) => ProfileEditPage(
+                  firstName: name,
+                  lastName: last,
+                  address: address,
+                ),
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: ListTile(
+          leading: const Icon(Icons.person, size: 30),
+          title: Text("$name $last"),
+          subtitle: Text(phone),
+          trailing: const Icon(Icons.arrow_forward_ios_sharp, size: 24),
+        ),
+      ),
+    );
   }
 }

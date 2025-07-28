@@ -1,3 +1,5 @@
+import 'package:elaro_app/core/utils/utils.dart';
+import 'package:elaro_app/feature/auth/presentation/pages/auth_page.dart';
 import 'package:elaro_app/feature/card/presentation/pages/card_creen.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
@@ -10,9 +12,13 @@ import 'package:elaro_app/feature/home/presentation/screens/brand_page.dart';
 import 'package:elaro_app/feature/home/presentation/screens/hit_products_page.dart';
 import 'package:elaro_app/feature/home/presentation/screens/home_screen.dart';
 import 'package:elaro_app/feature/home/presentation/screens/new_products_page.dart';
+import 'package:elaro_app/feature/home/presentation/screens/product_page.dart';
 import 'package:elaro_app/feature/home/presentation/screens/recomanded_products_page.dart';
+import 'package:elaro_app/feature/auth/presentation/pages/otp_screen.dart';
+import 'package:elaro_app/feature/auth/presentation/pages/register_page.dart';
 import 'package:elaro_app/feature/main/screen/main_screen.dart';
 import 'package:elaro_app/feature/order/presentation/pages/order_screen.dart';
+import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/language_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/location_screen.dart';
@@ -38,6 +44,10 @@ class AppRouter {
   static String recomand = "/recomand";
   static String newProducts = "/newProducts";
   static String hitProduct = "/hitProduct";
+  static String auth = "/auth";
+  static String otp = "/otp";
+  static String register = "/register";
+  static String product = "/product";
 
   static GoRouter router = GoRouter(
     initialLocation: home,
@@ -97,7 +107,15 @@ class AppRouter {
                 pageBuilder:
                     (context, state) => CustomTransitionPage(
                       key: state.pageKey,
-                      child: CardScreen(),
+                      child: FutureBuilder<bool>(
+                        future: Utils().isLogin(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return snapshot.data! ? CardScreen() : AuthPage();
+                          }
+                          return SizedBox();
+                        },
+                      ),
                       transitionsBuilder: (
                         context,
                         animation,
@@ -118,7 +136,15 @@ class AppRouter {
                 pageBuilder:
                     (context, state) => CustomTransitionPage(
                       key: state.pageKey,
-                      child: OrderScreen(),
+                      child: FutureBuilder<bool>(
+                        future: Utils().isLogin(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return snapshot.data! ? OrderScreen() : AuthPage();
+                          }
+                          return SizedBox();
+                        },
+                      ),
                       transitionsBuilder: (
                         context,
                         animation,
@@ -168,7 +194,6 @@ class AppRouter {
           return SubCategoryPage(data: data);
         },
       ),
-
       GoRoute(
         path: AppRouter.brand,
         name: AppRouter.brand,
@@ -177,7 +202,6 @@ class AppRouter {
           return BrandPage(data: data);
         },
       ),
-
       GoRoute(
         path: AppRouter.favourite,
         name: AppRouter.favourite,
@@ -185,7 +209,6 @@ class AppRouter {
           return FavouriteScreen();
         },
       ),
-
       GoRoute(
         path: AppRouter.location,
         name: AppRouter.location,
@@ -193,7 +216,6 @@ class AppRouter {
           return LocationScreen();
         },
       ),
-
       GoRoute(
         path: AppRouter.search,
         name: AppRouter.search,
@@ -201,7 +223,6 @@ class AppRouter {
           return GlobalSearchPage();
         },
       ),
-
       GoRoute(
         path: AppRouter.language,
         name: AppRouter.language,
@@ -209,7 +230,6 @@ class AppRouter {
           return LanguageScreen();
         },
       ),
-
       GoRoute(
         path: AppRouter.recomand,
         name: AppRouter.recomand,
@@ -224,12 +244,47 @@ class AppRouter {
           return HitProductsPage();
         },
       ),
-
       GoRoute(
         path: AppRouter.newProducts,
         name: AppRouter.newProducts,
         builder: (context, state) {
           return NewProductsPage();
+        },
+      ),
+      GoRoute(
+        path: AppRouter.auth,
+        name: AppRouter.auth,
+        builder: (context, state) {
+          return AuthPage();
+        },
+      ),
+      GoRoute(
+        path: AppRouter.otp,
+        name: AppRouter.otp,
+        builder: (context, state) {
+          final phone = state.extra as String?;
+          return OtpScreen(phoneNumber: phone);
+        },
+      ),
+      GoRoute(
+        path: register,
+        name: register,
+        builder: (context, state) {
+          final phone = state.extra as String;
+          return RegisterPage(phone: phone);
+        },
+      ),
+      GoRoute(
+        path: product,
+        name: product,
+        builder: (context, state) {
+          final data = state.extra as ProductConstructorModel;
+          return ProductPage(
+            id: data.id,
+            titleUzb: data.titleUzb,
+            titleRus: data.titleRus,
+            titleCrl: data.titleCrl,
+          );
         },
       ),
     ],

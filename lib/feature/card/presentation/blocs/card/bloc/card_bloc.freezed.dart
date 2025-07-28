@@ -20,7 +20,7 @@ mixin _$CardEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
-    required TResult Function(String id, int quantity) addProduct,
+    required TResult Function(Datum product) addProduct,
     required TResult Function(String id, int quantity) clearCart,
     required TResult Function(String id, int count) updateQuantity,
     required TResult Function(String id) removeProduct,
@@ -28,7 +28,7 @@ mixin _$CardEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
-    TResult? Function(String id, int quantity)? addProduct,
+    TResult? Function(Datum product)? addProduct,
     TResult? Function(String id, int quantity)? clearCart,
     TResult? Function(String id, int count)? updateQuantity,
     TResult? Function(String id)? removeProduct,
@@ -36,7 +36,7 @@ mixin _$CardEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
-    TResult Function(String id, int quantity)? addProduct,
+    TResult Function(Datum product)? addProduct,
     TResult Function(String id, int quantity)? clearCart,
     TResult Function(String id, int count)? updateQuantity,
     TResult Function(String id)? removeProduct,
@@ -133,7 +133,7 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
-    required TResult Function(String id, int quantity) addProduct,
+    required TResult Function(Datum product) addProduct,
     required TResult Function(String id, int quantity) clearCart,
     required TResult Function(String id, int count) updateQuantity,
     required TResult Function(String id) removeProduct,
@@ -145,7 +145,7 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
-    TResult? Function(String id, int quantity)? addProduct,
+    TResult? Function(Datum product)? addProduct,
     TResult? Function(String id, int quantity)? clearCart,
     TResult? Function(String id, int count)? updateQuantity,
     TResult? Function(String id)? removeProduct,
@@ -157,7 +157,7 @@ class _$FetchDataImpl implements _FetchData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
-    TResult Function(String id, int quantity)? addProduct,
+    TResult Function(Datum product)? addProduct,
     TResult Function(String id, int quantity)? clearCart,
     TResult Function(String id, int count)? updateQuantity,
     TResult Function(String id)? removeProduct,
@@ -221,7 +221,9 @@ abstract class _$$AddProductImplCopyWith<$Res> {
     $Res Function(_$AddProductImpl) then,
   ) = __$$AddProductImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, int quantity});
+  $Res call({Datum product});
+
+  $DatumCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -237,35 +239,39 @@ class __$$AddProductImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? quantity = null}) {
+  $Res call({Object? product = null}) {
     return _then(
       _$AddProductImpl(
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                as String,
-        null == quantity
-            ? _value.quantity
-            : quantity // ignore: cast_nullable_to_non_nullable
-                as int,
+        null == product
+            ? _value.product
+            : product // ignore: cast_nullable_to_non_nullable
+                as Datum,
       ),
     );
+  }
+
+  /// Create a copy of CardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DatumCopyWith<$Res> get product {
+    return $DatumCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$AddProductImpl implements _AddProduct {
-  const _$AddProductImpl(this.id, this.quantity);
+  const _$AddProductImpl(this.product);
 
   @override
-  final String id;
-  @override
-  final int quantity;
+  final Datum product;
 
   @override
   String toString() {
-    return 'CardEvent.addProduct(id: $id, quantity: $quantity)';
+    return 'CardEvent.addProduct(product: $product)';
   }
 
   @override
@@ -273,13 +279,11 @@ class _$AddProductImpl implements _AddProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, quantity);
+  int get hashCode => Object.hash(runtimeType, product);
 
   /// Create a copy of CardEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -293,38 +297,38 @@ class _$AddProductImpl implements _AddProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
-    required TResult Function(String id, int quantity) addProduct,
+    required TResult Function(Datum product) addProduct,
     required TResult Function(String id, int quantity) clearCart,
     required TResult Function(String id, int count) updateQuantity,
     required TResult Function(String id) removeProduct,
   }) {
-    return addProduct(id, quantity);
+    return addProduct(product);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
-    TResult? Function(String id, int quantity)? addProduct,
+    TResult? Function(Datum product)? addProduct,
     TResult? Function(String id, int quantity)? clearCart,
     TResult? Function(String id, int count)? updateQuantity,
     TResult? Function(String id)? removeProduct,
   }) {
-    return addProduct?.call(id, quantity);
+    return addProduct?.call(product);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
-    TResult Function(String id, int quantity)? addProduct,
+    TResult Function(Datum product)? addProduct,
     TResult Function(String id, int quantity)? clearCart,
     TResult Function(String id, int count)? updateQuantity,
     TResult Function(String id)? removeProduct,
     required TResult orElse(),
   }) {
     if (addProduct != null) {
-      return addProduct(id, quantity);
+      return addProduct(product);
     }
     return orElse();
   }
@@ -371,11 +375,9 @@ class _$AddProductImpl implements _AddProduct {
 }
 
 abstract class _AddProduct implements CardEvent {
-  const factory _AddProduct(final String id, final int quantity) =
-      _$AddProductImpl;
+  const factory _AddProduct(final Datum product) = _$AddProductImpl;
 
-  String get id;
-  int get quantity;
+  Datum get product;
 
   /// Create a copy of CardEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -463,7 +465,7 @@ class _$ClearCartImpl implements _ClearCart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
-    required TResult Function(String id, int quantity) addProduct,
+    required TResult Function(Datum product) addProduct,
     required TResult Function(String id, int quantity) clearCart,
     required TResult Function(String id, int count) updateQuantity,
     required TResult Function(String id) removeProduct,
@@ -475,7 +477,7 @@ class _$ClearCartImpl implements _ClearCart {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
-    TResult? Function(String id, int quantity)? addProduct,
+    TResult? Function(Datum product)? addProduct,
     TResult? Function(String id, int quantity)? clearCart,
     TResult? Function(String id, int count)? updateQuantity,
     TResult? Function(String id)? removeProduct,
@@ -487,7 +489,7 @@ class _$ClearCartImpl implements _ClearCart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
-    TResult Function(String id, int quantity)? addProduct,
+    TResult Function(Datum product)? addProduct,
     TResult Function(String id, int quantity)? clearCart,
     TResult Function(String id, int count)? updateQuantity,
     TResult Function(String id)? removeProduct,
@@ -635,7 +637,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
-    required TResult Function(String id, int quantity) addProduct,
+    required TResult Function(Datum product) addProduct,
     required TResult Function(String id, int quantity) clearCart,
     required TResult Function(String id, int count) updateQuantity,
     required TResult Function(String id) removeProduct,
@@ -647,7 +649,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
-    TResult? Function(String id, int quantity)? addProduct,
+    TResult? Function(Datum product)? addProduct,
     TResult? Function(String id, int quantity)? clearCart,
     TResult? Function(String id, int count)? updateQuantity,
     TResult? Function(String id)? removeProduct,
@@ -659,7 +661,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
-    TResult Function(String id, int quantity)? addProduct,
+    TResult Function(Datum product)? addProduct,
     TResult Function(String id, int quantity)? clearCart,
     TResult Function(String id, int count)? updateQuantity,
     TResult Function(String id)? removeProduct,
@@ -797,7 +799,7 @@ class _$RemoveProductImpl implements _RemoveProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
-    required TResult Function(String id, int quantity) addProduct,
+    required TResult Function(Datum product) addProduct,
     required TResult Function(String id, int quantity) clearCart,
     required TResult Function(String id, int count) updateQuantity,
     required TResult Function(String id) removeProduct,
@@ -809,7 +811,7 @@ class _$RemoveProductImpl implements _RemoveProduct {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
-    TResult? Function(String id, int quantity)? addProduct,
+    TResult? Function(Datum product)? addProduct,
     TResult? Function(String id, int quantity)? clearCart,
     TResult? Function(String id, int count)? updateQuantity,
     TResult? Function(String id)? removeProduct,
@@ -821,7 +823,7 @@ class _$RemoveProductImpl implements _RemoveProduct {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
-    TResult Function(String id, int quantity)? addProduct,
+    TResult Function(Datum product)? addProduct,
     TResult Function(String id, int quantity)? clearCart,
     TResult Function(String id, int count)? updateQuantity,
     TResult Function(String id)? removeProduct,
@@ -891,19 +893,19 @@ mixin _$CardState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CardModel> data) success,
+    required TResult Function(List<Datum> data, int? qty) success,
     required TResult Function() failure,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CardModel> data)? success,
+    TResult? Function(List<Datum> data, int? qty)? success,
     TResult? Function()? failure,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CardModel> data)? success,
+    TResult Function(List<Datum> data, int? qty)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -992,7 +994,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CardModel> data) success,
+    required TResult Function(List<Datum> data, int? qty) success,
     required TResult Function() failure,
   }) {
     return loading();
@@ -1002,7 +1004,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CardModel> data)? success,
+    TResult? Function(List<Datum> data, int? qty)? success,
     TResult? Function()? failure,
   }) {
     return loading?.call();
@@ -1012,7 +1014,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CardModel> data)? success,
+    TResult Function(List<Datum> data, int? qty)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -1068,7 +1070,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
     $Res Function(_$SuccessImpl) then,
   ) = __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CardModel> data});
+  $Res call({List<Datum> data, int? qty});
 }
 
 /// @nodoc
@@ -1084,14 +1086,19 @@ class __$$SuccessImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
+  $Res call({Object? data = null, Object? qty = freezed}) {
     return _then(
       _$SuccessImpl(
         data:
             null == data
                 ? _value._data
                 : data // ignore: cast_nullable_to_non_nullable
-                    as List<CardModel>,
+                    as List<Datum>,
+        qty:
+            freezed == qty
+                ? _value.qty
+                : qty // ignore: cast_nullable_to_non_nullable
+                    as int?,
       ),
     );
   }
@@ -1100,19 +1107,23 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required final List<CardModel> data}) : _data = data;
+  const _$SuccessImpl({required final List<Datum> data, required this.qty})
+    : _data = data;
 
-  final List<CardModel> _data;
+  final List<Datum> _data;
   @override
-  List<CardModel> get data {
+  List<Datum> get data {
     if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
   }
 
   @override
+  final int? qty;
+
+  @override
   String toString() {
-    return 'CardState.success(data: $data)';
+    return 'CardState.success(data: $data, qty: $qty)';
   }
 
   @override
@@ -1120,12 +1131,13 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.qty, qty) || other.qty == qty));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data), qty);
 
   /// Create a copy of CardState
   /// with the given fields replaced by the non-null parameter values.
@@ -1139,32 +1151,32 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CardModel> data) success,
+    required TResult Function(List<Datum> data, int? qty) success,
     required TResult Function() failure,
   }) {
-    return success(data);
+    return success(data, qty);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CardModel> data)? success,
+    TResult? Function(List<Datum> data, int? qty)? success,
     TResult? Function()? failure,
   }) {
-    return success?.call(data);
+    return success?.call(data, qty);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CardModel> data)? success,
+    TResult Function(List<Datum> data, int? qty)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success(data, qty);
     }
     return orElse();
   }
@@ -1205,9 +1217,13 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements CardState {
-  const factory _Success({required final List<CardModel> data}) = _$SuccessImpl;
+  const factory _Success({
+    required final List<Datum> data,
+    required final int? qty,
+  }) = _$SuccessImpl;
 
-  List<CardModel> get data;
+  List<Datum> get data;
+  int? get qty;
 
   /// Create a copy of CardState
   /// with the given fields replaced by the non-null parameter values.
@@ -1260,7 +1276,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CardModel> data) success,
+    required TResult Function(List<Datum> data, int? qty) success,
     required TResult Function() failure,
   }) {
     return failure();
@@ -1270,7 +1286,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CardModel> data)? success,
+    TResult? Function(List<Datum> data, int? qty)? success,
     TResult? Function()? failure,
   }) {
     return failure?.call();
@@ -1280,7 +1296,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CardModel> data)? success,
+    TResult Function(List<Datum> data, int? qty)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
 import 'package:elaro_app/core/status_model/status_model.dart';
 import 'package:elaro_app/core/utils/utils.dart';
 import 'package:dio/dio.dart';
@@ -22,10 +23,15 @@ class DioClient {
 
     dioClient.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (option, handler) {
+        onRequest: (option, handler) async {
+          String token = await SecureStorage().read(key: 'token') ?? "";
+          if (token.isNotEmpty) {
+            option.headers['Authorization'] = 'Bearer $token';
+          }
           log("Method type: ${option.method}");
           log("Method path: ${option.path}");
           log("FULL URL: ${option.uri}");
+          log("Token: ${token.isNotEmpty ? 'Present' : 'Not found'}");
           return handler.next(option);
         },
         onResponse: (response, handler) {
@@ -83,6 +89,31 @@ class DioClient {
   }) async {
     try {
       final response = await dioClient.post(
+        "$baseUrl$url",
+        // options: Options(),
+        data: jsonEncode(body),
+      );
+      if (Utils.isDioSuccess(response.statusCode)) {
+        return StatusModel(
+          response: response.data,
+          code: response.statusCode,
+          isSuccess: true,
+        );
+      }
+      return StatusModel(
+        response: response.data,
+        code: response.statusCode,
+        isSuccess: false,
+      );
+    } on DioException catch (e) {
+      log(e.message.toString());
+      throw Exception("Dio error: ${e.message}");
+    }
+  }
+
+  Future<StatusModel> put({required String url, required dynamic body}) async {
+    try {
+      final response = await dioClient.put(
         "$baseUrl$url",
         // options: Options(),
         data: jsonEncode(body),

@@ -5,8 +5,10 @@ abstract class AppImages {
   static const String compare = "assets/svg/compare.svg";
   static const String favorite = "assets/svg/favorite.svg";
   static const String profile = "assets/svg/profile.svg";
+  static const String error = "assets/svg/error.svg";
 
   static const String home = "assets/images/home.png";
 
   static const String lottieErrorJson = "assets/lottie/error.json";
+  static const String lottieLoadingJson = "assets/lottie/loading_2.json";
 }

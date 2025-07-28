@@ -31,5 +31,11 @@
     "total": "Jami",
     "checkout": "Buyurtma berish",
     "clear_cart": "Savatni tozalash",
-    "see": "Mahsulotlarni ko'rish"
+    "see": "Mahsulotlarni ko'rish",
+    "login": "Kirish",
+    "resend": "Kodni qayta yuborish",
+    "changePhone": "Telefon raqamni o'zgartirish",
+    "name": "Ism",
+    "lastname": "Familya",
+    "delete": "O‘chirish"
 }

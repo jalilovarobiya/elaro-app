@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 class CustomToast {
   static void showToast(
     BuildContext context,
-    Icon icon,
+    String icon,
     String message,
     Color color,
     Color borderColor,

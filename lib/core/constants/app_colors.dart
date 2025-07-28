@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-AppColor appColor = AppColor();
-
 class AppColor {
   AppColor();
   static const Color primary = Color(0xFFff6600);
@@ -15,4 +13,5 @@ class AppColor {
   static const Color lightGray50 = Color.fromRGBO(64, 79, 111, 0.50);
   static const Color darkBlue500 = Color(0xFF404F6F);
   static const Color lightGray700 = Color(0xFF939497);
+  static const Color blue = Color(0xFF4379F2);
 }

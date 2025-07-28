@@ -43,4 +43,13 @@ class Utils {
       return const ProfileModel();
     }
   }
+
+  static String? validator(String? value, int minLength) {
+    if (value == null || value.isEmpty) {
+      return 'Iltimos, maʼlumot kiriting';
+    } else if (value.length < minLength) {
+      return 'Kamida $minLength ta belgidan iborat bo‘lishi kerak';
+    }
+    return null;
+  }
 }

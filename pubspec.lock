@@ -25,6 +25,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  app_links:
+    dependency: "direct main"
+    description:
+      name: app_links
+      sha256: "85ed8fc1d25a76475914fff28cc994653bd900bc2c26e4b57a49e097febb54ba"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.4.0"
+  app_links_linux:
+    dependency: transitive
+    description:
+      name: app_links_linux
+      sha256: f5f7173a78609f3dfd4c2ff2c95bd559ab43c80a87dc6a095921d96c05688c81
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
+  app_links_platform_interface:
+    dependency: transitive
+    description:
+      name: app_links_platform_interface
+      sha256: "05f5379577c513b534a29ddea68176a4d4802c46180ee8e2e966257158772a3f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
+  app_links_web:
+    dependency: transitive
+    description:
+      name: app_links_web
+      sha256: af060ed76183f9e2b87510a9480e56a5352b6c249778d07bd2c95fc35632a555
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   archive:
     dependency: transitive
     description:
@@ -49,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.13.0"
+  badges:
+    dependency: "direct main"
+    description:
+      name: badges
+      sha256: a7b6bbd60dce418df0db3058b53f9d083c22cdb5132a052145dc267494df0b84
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
   bloc:
     dependency: transitive
     description:
@@ -241,6 +281,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  cupertino_icons:
+    dependency: "direct main"
+    description:
+      name: cupertino_icons
+      sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   dart_style:
     dependency: transitive
     description:
@@ -509,6 +557,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  gtk:
+    dependency: transitive
+    description:
+      name: gtk
+      sha256: e8ce9ca4b1df106e4d72dad201d345ea1a036cc12c360f1a7d5a758f78ffa42c
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   html:
     dependency: transitive
     description:
@@ -789,6 +845,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
+  pin_input_text_field:
+    dependency: transitive
+    description:
+      name: pin_input_text_field
+      sha256: f45683032283d30b670ec343781660655e3e1953438b281a0bc6e2d358486236
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.2"
+  pinput:
+    dependency: "direct main"
+    description:
+      name: pinput
+      sha256: "8a73be426a91fefec90a7f130763ca39772d547e92f19a827cf4aa02e323d35a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
   platform:
     dependency: transitive
     description:
@@ -938,6 +1010,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  sms_autofill:
+    dependency: "direct main"
+    description:
+      name: sms_autofill
+      sha256: c65836abe9c1f62ce411bb78d5546a09ece4297558070b1bd871db1db283aaf9
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
   source_gen:
     dependency: transitive
     description:
@@ -1066,6 +1146,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
+  timer_count_down:
+    dependency: "direct main"
+    description:
+      name: timer_count_down
+      sha256: d025d408c2654e497ca0bd4bde014bd7509d4c6397af4ed23a0f9b692bbcf337
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
   timing:
     dependency: transitive
     description:
@@ -1090,6 +1178,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.2"
+  universal_platform:
+    dependency: transitive
+    description:
+      name: universal_platform
+      sha256: "64e16458a0ea9b99260ceb5467a214c1f298d647c659af1bff6d3bf82536b1ec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   url_launcher:
     dependency: "direct main"
     description:

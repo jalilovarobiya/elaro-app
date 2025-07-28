@@ -140,7 +140,9 @@ class _CategorBadyState extends State<CategorBady> {
                       itemBuilder: (contex, index) {
                         final product = data.data?.products?[index];
                         return ProductItemWidget(
-                          ontap: () {},
+                          ontap: () {
+                            context.push(AppRouter.product);
+                          },
                           productData: product!.toProductModel(),
                         );
                       },

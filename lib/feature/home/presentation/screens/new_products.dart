@@ -1,12 +1,14 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/mapper/datum_to_product_model.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/core/widgets/shimmer_box.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 class NewProducts extends StatefulWidget {
@@ -116,7 +118,9 @@ class _NewProductsState extends State<NewProducts> {
                   itemBuilder: (context, index) {
                     final product = data.data![index].toProductModel();
                     return ProductItemWidget(
-                      ontap: () {},
+                      ontap: () {
+                        context.push(AppRouter.product);
+                      },
                       productData: product,
                     );
                   },

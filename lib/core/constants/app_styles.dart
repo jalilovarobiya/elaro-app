@@ -43,4 +43,23 @@ class AppStyle {
     height: 20 / 17,
     color: AppColor.darkBlue500,
   );
+  static TextStyle w500s15h20DarkBlue300 = GoogleFonts.roboto(
+    fontWeight: FontWeight.w500,
+    fontSize: 15,
+    height: 20 / 15,
+    color: AppColor.darkBlue500,
+  );
+
+  static TextStyle w500s15h20Primary = GoogleFonts.roboto(
+    fontWeight: FontWeight.w500,
+    fontSize: 15,
+    height: 20 / 15,
+    color: AppColor.primaryDark,
+  );
+  static TextStyle w400s13h18DarkBlue300 = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
+    fontSize: 13,
+    height: 18 / 13,
+    // color: AppColor.darkBlue300,
+  );
 }

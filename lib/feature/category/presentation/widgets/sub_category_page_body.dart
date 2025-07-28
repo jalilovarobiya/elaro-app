@@ -1,11 +1,13 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/mapper/sub_category_to_product.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SubCategoryPageBody extends StatelessWidget {
   const SubCategoryPageBody({super.key});
@@ -36,7 +38,9 @@ class SubCategoryPageBody extends StatelessWidget {
               itemBuilder: (context, index) {
                 final product = products?.products?[index];
                 return ProductItemWidget(
-                  ontap: () {},
+                  ontap: () {
+                    context.push(AppRouter.product);
+                  },
                   productData: product!.toProductModel(),
                 );
               },

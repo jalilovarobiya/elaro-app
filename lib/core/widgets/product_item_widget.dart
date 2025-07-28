@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
 import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/core/widgets/custom_toast.dart';
@@ -10,6 +11,7 @@ import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart'
     as product;
+import 'package:elaro_app/feature/home/data/model/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -94,7 +96,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                     if (!(await Utils().isLogin())) {
                                       CustomToast.showToast(
                                         context,
-                                        Icon(Icons.warning_amber),
+                                        AppImages.error,
                                         "required_login".tr(),
                                         Colors.white,
                                         Colors.red,
@@ -199,49 +201,113 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                             ],
                           ),
                         ),
-                        // if (widget.productData.data?.qty != null &&
-                        //     widget.productData.data?.qty != 0)
-                        ValueListenableBuilder<bool>(
-                          valueListenable: loading,
-                          builder: (context, isloading, child) {
-                            return IconButton(
-                              onPressed:
-                                  isloading
-                                      ? null
-                                      : () async {
-                                        if (!(await Utils().isLogin())) {
-                                          CustomToast.showToast(
-                                            context,
-                                            Icon(Icons.warning_amber),
-                                            "required_login".tr(),
-                                            Colors.white,
-                                            Colors.red,
-                                          );
-                                          return;
-                                        }
-                                        loading.value = true;
+                        if (widget.productData.data?.qty != null &&
+                            widget.productData.data?.qty != 0)
+                          BlocBuilder<CardBloc, CardState>(
+                            builder: (context, state) {
+                              return state.when(
+                                loading: () => SizedBox(),
+                                success: (success, qty) {
+                                  loading.value = false;
+                                  bool isSelect = false;
+                                  try {
+                                    isSelect = success.any(
+                                      (e) =>
+                                          (e.id == widget.productData.data!.id),
+                                    );
+                                  } catch (e) {}
+                                  return GestureDetector(
+                                    onTap: () async {
+                                      if (!(await Utils().isLogin())) {
+                                        CustomToast.showToast(
+                                          context,
+                                          AppImages.error,
+                                          "required_login".tr(),
+                                          Colors.white,
+                                          Colors.red,
+                                        );
+                                        return;
+                                      }
+                                      loading.value = true;
+                                      if (isSelect) {
                                         context.read<CardBloc>().add(
-                                          CardEvent.addProduct(
+                                          CardEvent.removeProduct(
                                             (widget.productData.data?.id ?? 0)
                                                 .toString(),
-                                            1,
                                           ),
                                         );
-                                        await Future.delayed(
-                                          Duration(seconds: 2),
+                                      } else {
+                                        context.read<CardBloc>().add(
+                                          CardEvent.addProduct(
+                                            Datum(
+                                              id: widget.productData.data!.id,
+                                              qty:
+                                                  widget
+                                                      .productData
+                                                      .data!
+                                                      .quantity ??
+                                                  1,
+                                            ),
+                                          ),
                                         );
-                                        loading.value = false;
-                                      },
-                              icon:
-                                  isloading
-                                      ? CircularProgressIndicator(
-                                        color: AppColor.primary,
-                                        strokeWidth: 2,
-                                      )
-                                      : Icon(Icons.shopping_cart_outlined),
-                            );
-                          },
-                        ),
+                                      }
+                                    },
+                                    child: AnimatedContainer(
+                                      duration: const Duration(
+                                        milliseconds: 300,
+                                      ),
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            isSelect
+                                                ? AppColor.primary
+                                                : Colors.white,
+                                        borderRadius: BorderRadius.circular(12),
+                                        border: Border.all(
+                                          width: 2,
+                                          color: AppColor.primary,
+                                        ),
+                                      ),
+                                      child: ValueListenableBuilder(
+                                        valueListenable: loading,
+                                        builder: (context, value, child) {
+                                          if (value) {
+                                            return Center(
+                                              child: SizedBox(
+                                                height: 24,
+                                                width: 24,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                      color:
+                                                          isSelect
+                                                              ? Colors.white
+                                                              : AppColor
+                                                                  .primary,
+                                                    ),
+                                              ),
+                                            );
+                                          }
+                                          return Icon(
+                                            isSelect
+                                                ? Icons
+                                                    .shopping_cart_checkout_rounded
+                                                : Icons.shopping_cart_outlined,
+                                            size: 20,
+                                            color:
+                                                isSelect
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  );
+                                },
+                                failure: () => SizedBox(),
+                              );
+                            },
+                          ),
                       ],
                     ),
                   ],
