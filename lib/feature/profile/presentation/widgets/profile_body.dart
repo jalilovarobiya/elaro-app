@@ -1,10 +1,8 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
+import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
-import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
-import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/button_widget.dart';
-import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:elaro_app/feature/profile/presentation/widgets/profile_edit_page.dart';
 import 'package:elaro_app/feature/profile/presentation/widgets/profile_widget.dart';
@@ -104,43 +102,42 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ProfileWidget(icon: CupertinoIcons.info, title: "info"),
                 ProfileWidget(
                   onTap: () {
-                    showDialog(
-                      context: context,
-                      builder:
-                          (context) => AlertDialog(
-                            title: Translator(
-                              maxLen: 3,
-                              textAlign: TextAlign.center,
-                              uz: "Hisobingizni o'chirib tashlamoqchisiz",
-                              ru: "Вы хотите удалить свой аккаунт",
-                              crl: "Ҳисобингизни ўчириб ташламоқчисиз",
-                            ),
-                            content: Translator(
-                              textAlign: TextAlign.center,
-                              uz: "Ishonchingiz komilmi?",
-                              ru: "Вы уверены?",
-                              crl: "Ишончингиз комилми?",
-                            ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  context.pop();
-                                },
-                                child: Text("cancel".tr()),
-                              ),
-                              ElevatedButton(
-                                onPressed: () async {
-                                  await SecureStorage().deleteAll();
-                                  setState(() {});
-                                  context.pop();
-                                  // setState(() {
-                                  // });
-                                },
-                                child: Text("delete".tr()),
-                              ),
-                            ],
-                          ),
-                    );
+                    // showDialog(
+                    //   context: context,
+                    //   builder:
+                    //       (context) => AlertDialog(
+                    //         title: Translator(
+                    //           maxLen: 3,
+                    //           textAlign: TextAlign.center,
+                    //           uz: "Hisobingizni o'chirib tashlamoqchisiz",
+                    //           ru: "Вы хотите удалить свой аккаунт",
+                    //           crl: "Ҳисобингизни ўчириб ташламоқчисиз",
+                    //         ),
+                    //         content: Translator(
+                    //           textAlign: TextAlign.center,
+                    //           uz: "Ishonchingiz komilmi?",
+                    //           ru: "Вы уверены?",
+                    //           crl: "Ишончингиз комилми?",
+                    //         ),
+                    //         actions: [
+                    //           TextButton(
+                    //             onPressed: () {
+                    //               context.pop();
+                    //             },
+                    //             child: Text("cancel".tr()),
+                    //           ),
+                    //           ElevatedButton(
+                    //             onPressed: () async {
+                    //               await SecureStorage().deleteAll();
+                    //               setState(() {});
+                    //               context.pop();
+                    //             },
+                    //             child: Text("delete".tr()),
+                    //           ),
+                    //         ],
+                    //       ),
+                    // );
+                    showCustomDeleteDialog(context);
                   },
 
                   icon: Icons.logout,
@@ -255,4 +252,85 @@ class ProfileInfoTile extends StatelessWidget {
       ),
     );
   }
+}
+
+void showCustomDeleteDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return Dialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.topCenter,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 60, 24, 24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'You are going to delete your account',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'You won\'t be able to restore your data',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey.shade700),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          child: Text('Cancel'),
+                        ),
+                      ),
+                      16.h,
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.red.shade400,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: const Text('Delete'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: -32,
+              child: CircleAvatar(
+                radius: 40,
+                child: Icon(
+                  Icons.warning_amber_rounded,
+                  color: Colors.red,
+                  size: 32,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }

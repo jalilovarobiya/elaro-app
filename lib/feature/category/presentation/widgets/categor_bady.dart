@@ -10,6 +10,7 @@ import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/category_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/category_model.dart';
+import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -141,7 +142,15 @@ class _CategorBadyState extends State<CategorBady> {
                         final product = data.data?.products?[index];
                         return ProductItemWidget(
                           ontap: () {
-                            context.push(AppRouter.product);
+                            context.push(
+                              AppRouter.product,
+                              extra: ProductConstructorModel(
+                                id: product.id ?? 0,
+                                titleUzb: "${product.nameUz}",
+                                titleRus: "${product.nameRu}",
+                                titleCrl: "${product.nameCrl}",
+                              ),
+                            );
                           },
                           productData: product!.toProductModel(),
                         );

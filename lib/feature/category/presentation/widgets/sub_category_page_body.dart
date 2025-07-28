@@ -5,6 +5,7 @@ import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
+import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +40,15 @@ class SubCategoryPageBody extends StatelessWidget {
                 final product = products?.products?[index];
                 return ProductItemWidget(
                   ontap: () {
-                    context.push(AppRouter.product);
+                    context.push(
+                      AppRouter.product,
+                      extra: ProductConstructorModel(
+                        id: product.id ?? 0,
+                        titleUzb: "${product.nameUz}",
+                        titleRus: "${product.nameRu}",
+                        titleCrl: "${product.nameCrl}",
+                      ),
+                    );
                   },
                   productData: product!.toProductModel(),
                 );

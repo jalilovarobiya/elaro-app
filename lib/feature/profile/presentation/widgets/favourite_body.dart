@@ -53,7 +53,15 @@ class FavouriteBody extends StatelessWidget {
                       final product = data[index];
                       return ProductItemWidget(
                         ontap: () {
-                          context.push(AppRouter.product);
+                          context.push(
+                            AppRouter.product,
+                            // extra: ProductConstructorModel(
+                            //   id: product.data?.id ?? 0,
+                            //   titleUzb: "${product.data?.nameUz}",
+                            //   titleRus: "${product.data?.nameRu}",
+                            //   titleCrl: "${product.data?.nameCrl}",
+                            // ),
+                          );
                         },
                         productData: ProductModel(
                           data: product.toProductModel(),

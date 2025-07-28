@@ -23,70 +23,41 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     _FetchData event,
     Emitter<FavouriteState> emit,
   ) async {
-    try {
-      final isLoggedIn = await Utils().isLogin();
-      if (!isLoggedIn) {
-        emit(FavouriteState.allProduct(data: []));
-        return;
-      }
-
-      var result = await impl.getCards();
-      print("Fetched cards: $result");
-      emit(FavouriteState.allProduct(data: result));
-    } catch (e) {
-      print("Error fetching favourite products: $e");
-      emit(FavouriteState.allProduct(data: []));
-    }
+    var result = await impl.getCards();
+    print("Fetched cards: $result");
+    emit(FavouriteState.allProduct(data: result));
   }
 
   Future<void> _addProduct(
     _AddProduct event,
     Emitter<FavouriteState> emit,
   ) async {
-    try {
-      final isLoggedIn = await Utils().isLogin();
-      if (!isLoggedIn) {
-        return;
-      }
-
-      final result = await impl.addToCard(
-        CardModel(
-          titleUz: event.data.nameUz ?? "",
-          titleRu: event.data.nameRu ?? "",
-          titleCrl: event.data.nameCrl ?? "",
-          price: event.data.price ?? "",
-          productId: event.data.id.toString(),
-          image: event.data.images?.firstOrNull?.image ?? "",
-          productCount: 1,
-          qty: event.data.qty ?? 0,
-          discountEnd: event.data.discountEnd ?? "",
-          discountType: event.data.discountType ?? "",
-          discountedPrice: event.data.discountedPrice,
-          discount: event.data.discount ?? "",
-          discountStart: event.data.discountStart ?? "",
-          quantity: event.data.quantity ?? 0,
-        ),
-      );
-      add(FavouriteEvent.fetchData());
-    } catch (e) {
-      print("Error adding product to favourites: $e");
-    }
+    final result = await impl.addToCard(
+      CardModel(
+        titleUz: event.data.nameUz ?? "",
+        titleRu: event.data.nameRu ?? "",
+        titleCrl: event.data.nameCrl ?? "",
+        price: event.data.price ?? "",
+        productId: event.data.id.toString(),
+        image: event.data.images?.firstOrNull?.image ?? "",
+        productCount: 1,
+        qty: event.data.qty ?? 0,
+        discountEnd: event.data.discountEnd ?? "",
+        discountType: event.data.discountType ?? "",
+        discountedPrice: event.data.discountedPrice,
+        discount: event.data.discount ?? "",
+        discountStart: event.data.discountStart ?? "",
+        quantity: event.data.quantity ?? 0,
+      ),
+    );
+    add(FavouriteEvent.fetchData());
   }
 
   Future<void> _deleteProduct(
     _DeleteProduct event,
     Emitter<FavouriteState> emit,
   ) async {
-    try {
-      final isLoggedIn = await Utils().isLogin();
-      if (!isLoggedIn) {
-        return;
-      }
-
-      var result = await impl.deleteCard(event.id.toString());
-      add(FavouriteEvent.fetchData());
-    } catch (e) {
-      print("Error removing product from favourites: $e");
-    }
+    var result = await impl.deleteCard(event.id.toString());
+    add(FavouriteEvent.fetchData());
   }
 }

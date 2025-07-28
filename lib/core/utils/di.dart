@@ -20,6 +20,7 @@ import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/ca
 import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/category_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/hit_products/bloc/hit_products_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/new_products/bloc/new_products_bloc.dart';
+import 'package:elaro_app/feature/home/presentation/blocs/product/bloc/product_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:elaro_app/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:elaro_app/feature/profile/data/repository/profile_repository_impl.dart';
@@ -94,6 +95,7 @@ void _blocs() {
   sl.registerFactory(() => CardBloc(sl<CardRepositoryImpl>()));
   sl.registerFactory(() => ProfileBloc(sl<ProfileRepositoryImpl>()));
   sl.registerFactory(() => AuthBloc(sl<AuthRepositoryImpl>()));
+  sl.registerFactory(() => ProductBloc(sl<ProductsRepositoryImpl>()));
 }
 
 void _dataSources() {}
