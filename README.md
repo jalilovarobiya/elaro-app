@@ -1,3 +1,3 @@
-# clean_arxitekture
+# Elaro app
 
 A new Flutter project.
