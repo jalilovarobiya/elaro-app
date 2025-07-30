@@ -1,6 +1,6 @@
 import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/interceptor/interceptor.dart';
-import 'package:elaro_app/core/repository/favourite_repository.dart';
+import 'package:elaro_app/feature/favorite/data/repository/favourite_repository.dart';
 import 'package:elaro_app/feature/auth/data/repositories/auth_repository_impl.dart';
 import 'package:elaro_app/feature/card/data/repository/card_repository_impl.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
