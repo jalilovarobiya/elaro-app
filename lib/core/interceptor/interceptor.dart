@@ -43,8 +43,13 @@ class DioClient {
           return handler.next(response);
         },
         onError: (error, handler) {
-          log("Error: $error");
-          return handler.next(error);
+          log("Error 1: $error");
+          log("Resposne body ${error.response?.data}");
+          try {
+            return handler.resolve(error.response!);
+          } catch (e) {
+            return handler.next(error);
+          }
         },
       ),
     );
