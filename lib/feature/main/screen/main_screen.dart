@@ -1,6 +1,8 @@
+import 'package:app_links/app_links.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/source/main_source.dart';
+import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
@@ -10,14 +12,47 @@ import 'package:go_router/go_router.dart';
 
 class MainScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
+  final int? initIndex;
 
-  const MainScreen({super.key, required this.navigationShell});
+  const MainScreen({super.key, required this.navigationShell, this.initIndex});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+  late final AppLinks _appLinks;
+
+  @override
+  void initState() {
+    if (widget.initIndex != null) {
+      int initIndex = widget.initIndex!;
+      MainSources.currentPage.value = initIndex;
+    }
+    _appLinks = AppLinks();
+    _listenToLinks();
+    super.initState();
+  }
+
+  void _listenToLinks() async {
+    _appLinks.uriLinkStream.listen((Uri? uri) {
+      if (uri != null) {
+        _handleIncomingLink(uri);
+      }
+    });
+    final Uri? initialUri = await _appLinks.getLatestLink();
+    if (initialUri != null) {
+      _handleIncomingLink(initialUri);
+    }
+  }
+
+  void _handleIncomingLink(Uri uri) {
+    if (uri.pathSegments.contains('product')) {
+      final productId = uri.pathSegments.last;
+      context.push("/${uri.pathSegments.first}", extra: productId);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,30 +95,37 @@ class _MainScreenState extends State<MainScreen> {
               BottomNavigationBarItem(
                 icon: BlocBuilder<CardBloc, CardState>(
                   builder: (context, state) {
-                    var count = state.whenOrNull(
-                      success: (data, _) => data.length,
-                    );
-                    return badges.Badge(
-                      showBadge: count != null && count > 0,
-                      badgeContent: Text(
-                        count.toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                      badgeAnimation: badges.BadgeAnimation.scale(),
-                      badgeStyle: const badges.BadgeStyle(
-                        badgeColor: Colors.red,
-                      ),
-                      child: SvgPicture.asset(
-                        AppImages.card,
-                        height: 24,
-                        color:
-                            MainSources.currentPage.value == 2
-                                ? Colors.black
-                                : Colors.grey,
-                      ),
+                    var count =
+                        state.whenOrNull(success: (data, _) => data.length) ??
+                        0;
+                    return FutureBuilder(
+                      future: Utils().isLogin(),
+                      initialData: false,
+                      builder: (context, snapshot) {
+                        final logged = snapshot.data ?? false;
+                        return badges.Badge(
+                          showBadge: count > 0 && logged,
+                          badgeContent: Text(
+                            count.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                          badgeAnimation: badges.BadgeAnimation.scale(),
+                          badgeStyle: const badges.BadgeStyle(
+                            badgeColor: Colors.red,
+                          ),
+                          child: SvgPicture.asset(
+                            AppImages.card,
+                            height: 24,
+                            color:
+                                MainSources.currentPage.value == 2
+                                    ? Colors.black
+                                    : Colors.grey,
+                          ),
+                        );
+                      },
                     );
                   },
                 ),

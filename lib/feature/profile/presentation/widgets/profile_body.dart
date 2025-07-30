@@ -1,7 +1,10 @@
 import 'package:elaro_app/core/constants/app_colors.dart';
+import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
 import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
+import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
+import 'package:elaro_app/core/widgets/support_dialog.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/button_widget.dart';
 import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:elaro_app/feature/profile/presentation/widgets/profile_edit_page.dart';
@@ -9,6 +12,7 @@ import 'package:elaro_app/feature/profile/presentation/widgets/profile_widget.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shimmer/shimmer.dart';
@@ -27,7 +31,7 @@ class _ProfileBodyState extends State<ProfileBody> {
     context.read<ProfileBloc>().add(const ProfileEvent.fetchData());
     context.locale;
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
       child: Column(
         spacing: 15,
         children: [
@@ -48,6 +52,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             },
           ),
           Card(
+            color: Colors.white,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -92,52 +97,116 @@ class _ProfileBodyState extends State<ProfileBody> {
             ),
           ),
           Card(
+            color: Colors.white,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 ProfileWidget(
+                  onTap: () {
+                    SupportDialog.show(context);
+                  },
                   icon: CupertinoIcons.chat_bubble_2,
                   title: "support",
                 ),
                 ProfileWidget(icon: CupertinoIcons.info, title: "info"),
                 ProfileWidget(
                   onTap: () {
-                    // showDialog(
-                    //   context: context,
-                    //   builder:
-                    //       (context) => AlertDialog(
-                    //         title: Translator(
-                    //           maxLen: 3,
-                    //           textAlign: TextAlign.center,
-                    //           uz: "Hisobingizni o'chirib tashlamoqchisiz",
-                    //           ru: "Вы хотите удалить свой аккаунт",
-                    //           crl: "Ҳисобингизни ўчириб ташламоқчисиз",
-                    //         ),
-                    //         content: Translator(
-                    //           textAlign: TextAlign.center,
-                    //           uz: "Ishonchingiz komilmi?",
-                    //           ru: "Вы уверены?",
-                    //           crl: "Ишончингиз комилми?",
-                    //         ),
-                    //         actions: [
-                    //           TextButton(
-                    //             onPressed: () {
-                    //               context.pop();
-                    //             },
-                    //             child: Text("cancel".tr()),
-                    //           ),
-                    //           ElevatedButton(
-                    //             onPressed: () async {
-                    //               await SecureStorage().deleteAll();
-                    //               setState(() {});
-                    //               context.pop();
-                    //             },
-                    //             child: Text("delete".tr()),
-                    //           ),
-                    //         ],
-                    //       ),
-                    // );
-                    showCustomDeleteDialog(context);
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) {
+                        return Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            alignment: Alignment.topCenter,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(24, 60, 24, 24),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'deleteAkk'.tr(),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'sure'.tr(),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.grey.shade700,
+                                      ),
+                                    ),
+                                    SizedBox(height: 20),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              foregroundColor: Colors.white,
+                                              backgroundColor: Colors.black,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                            ),
+                                            onPressed:
+                                                () => context.pop(context),
+                                            child: Text('cancel'.tr()),
+                                          ),
+                                        ),
+                                        16.w,
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              foregroundColor: Colors.white,
+                                              backgroundColor: Colors.red,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                            ),
+                                            onPressed: () async {
+                                              await SecureStorage().deleteAll();
+                                              setState(() {});
+                                              context.pop();
+                                            },
+                                            child: Text('delete'.tr()),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                top: -32,
+                                child: CircleAvatar(
+                                  radius: 40,
+                                  child: SvgPicture.asset(
+                                    AppImages.error,
+                                    color: Colors.red,
+                                  ),
+                                  // Icon(
+                                  //   Icons.warning_amber_rounded,
+                                  //   color: Colors.red,
+                                  //   size: 32,
+                                  // ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
                   },
 
                   icon: Icons.logout,
@@ -252,85 +321,4 @@ class ProfileInfoTile extends StatelessWidget {
       ),
     );
   }
-}
-
-void showCustomDeleteDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) {
-      return Dialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.topCenter,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 60, 24, 24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'You are going to delete your account',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'You won\'t be able to restore your data',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey.shade700),
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          onPressed: () => Navigator.pop(context),
-                          child: Text('Cancel'),
-                        ),
-                      ),
-                      16.h,
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.red.shade400,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: const Text('Delete'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              top: -32,
-              child: CircleAvatar(
-                radius: 40,
-                child: Icon(
-                  Icons.warning_amber_rounded,
-                  color: Colors.red,
-                  size: 32,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
 }

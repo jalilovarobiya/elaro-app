@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:elaro_app/core/failure/failure_model.dart';
 import 'package:elaro_app/feature/auth/data/repositories/auth_repository_impl.dart';
+import 'package:elaro_app/feature/profile/data/model/profile_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';

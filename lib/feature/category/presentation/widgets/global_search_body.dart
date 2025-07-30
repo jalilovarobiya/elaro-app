@@ -6,9 +6,11 @@ import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/app_error_widget.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/search/bloc/search_bloc.dart';
+import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -97,12 +99,7 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                 builder: (context, state) {
                   return state.when(
                     initial: () => SizedBox(),
-                    loading:
-                        () => Center(
-                          child: CircularProgressIndicator(
-                            color: AppColor.primary,
-                          ),
-                        ),
+                    loading: () => LoadingWidget(),
                     success: (data) {
                       return Column(
                         children: [
@@ -198,18 +195,18 @@ class _GlobalSearchBodyState extends State<GlobalSearchBody> {
                             itemBuilder: (context, index) {
                               return InkWell(
                                 onTap: () {
-                                  // context.push(
-                                  //   AppRouter.category,
-                                  //   extra: CategoryConstructorModel(
-                                  //     id: data.products?[index].id ?? 0,
-                                  //     titleUz:
-                                  //         data.products?[index].nameUz ?? "",
-                                  //     titleCrl:
-                                  //         data.products?[index].nameCrl ?? "",
-                                  //     titleRu:
-                                  //         data.products?[index].nameRu ?? "",
-                                  //   ),
-                                  // );
+                                  context.push(
+                                    AppRouter.product,
+                                    extra: ProductConstructorModel(
+                                      id: data.products?[index].id ?? 0,
+                                      titleUzb:
+                                          data.products?[index].nameUz ?? "",
+                                      titleCrl:
+                                          data.products?[index].nameCrl ?? "",
+                                      titleRus:
+                                          data.products?[index].nameRu ?? "",
+                                    ),
+                                  );
                                 },
                                 child: Row(
                                   children: [

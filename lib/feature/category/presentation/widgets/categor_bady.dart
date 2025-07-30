@@ -7,6 +7,7 @@ import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
 import 'package:elaro_app/feature/category/data/model/sub_category_constructr_model.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/category/bloc/category_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/category_model.dart';
@@ -38,10 +39,7 @@ class _CategorBadyState extends State<CategoryBody> {
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) {
         return state.when(
-          loading:
-              () => Center(
-                child: CircularProgressIndicator(color: AppColor.primary),
-              ),
+          loading: () => LoadingWidget(),
           success: (
             CategoryModel data,
             List<String> color,

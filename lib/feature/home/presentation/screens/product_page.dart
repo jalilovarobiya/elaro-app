@@ -116,7 +116,6 @@ class _ProductPageState extends State<ProductPage> {
             return state.when(
               loading: () => const Center(child: CircularProgressIndicator()),
               success: (productModel) => ProductBody(product: productModel),
-
               failure: (message) => Center(child: Text("Xatolik: $message")),
             );
           },

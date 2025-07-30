@@ -29,7 +29,7 @@ class LocationScreen extends StatelessWidget {
             },
             leading: Icon(Icons.location_on_outlined),
             title: Text(
-              "Qashqadaryo viloyati, Qarshi shahri, Nasaf ko‘chasi, 180100",
+              "Qashqadaryo viloyati, Qarshi shahri, Nasaf ko'chasi, 180100",
               maxLines: 3,
             ),
             subtitle: Text("9:00-21:00"),

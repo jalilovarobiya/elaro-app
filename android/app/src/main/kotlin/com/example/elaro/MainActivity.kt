@@ -1,4 +1,4 @@
-package com.example.clean_arxitekture
+package uz.elaro
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -50,7 +50,6 @@ class DioClient {
           } catch (e) {
             return handler.next(error);
           }
-
         },
       ),
     );

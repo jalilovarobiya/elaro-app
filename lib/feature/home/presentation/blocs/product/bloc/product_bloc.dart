@@ -18,5 +18,9 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   Future<void> _fetchData(_FetchData event, Emitter<ProductState> emit) async {
     emit(const ProductState.loading());
     final request = await impl.product(event.id);
+    request.fold(
+      (left) => emit(ProductState.failure(left)),
+      (right) => emit(ProductState.success(right)),
+    );
   }
 }

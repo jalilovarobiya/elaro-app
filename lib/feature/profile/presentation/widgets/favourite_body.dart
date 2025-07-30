@@ -4,8 +4,10 @@ import 'package:elaro_app/core/mapper/card_to_product_model.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
 import 'package:elaro_app/feature/card/data/model/card_model.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart';
+import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_empty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +27,7 @@ class FavouriteBody extends StatelessWidget {
           child: BlocBuilder<FavouriteBloc, FavouriteState>(
             builder: (context, state) {
               return state.when(
-                loading: () => Center(child: CircularProgressIndicator()),
+                loading: () => LoadingWidget(),
                 allProduct: (List<CardModel> data) {
                   if (data.isEmpty) {
                     return SizedBox(
@@ -55,12 +57,12 @@ class FavouriteBody extends StatelessWidget {
                         ontap: () {
                           context.push(
                             AppRouter.product,
-                            // extra: ProductConstructorModel(
-                            //   id: product.data?.id ?? 0,
-                            //   titleUzb: "${product.data?.nameUz}",
-                            //   titleRus: "${product.data?.nameRu}",
-                            //   titleCrl: "${product.data?.nameCrl}",
-                            // ),
+                            extra: ProductConstructorModel(
+                              id: int.parse(product.productId),
+                              titleUzb: product.titleUz,
+                              titleRus: product.titleRu,
+                              titleCrl: product.titleCrl,
+                            ),
                           );
                         },
                         productData: ProductModel(

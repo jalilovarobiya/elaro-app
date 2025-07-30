@@ -29,6 +29,7 @@
     "empty_cart": "Savat bo'sh",
     "add_products_to_cart": "Savatga mahsulot qo'shing",
     "total": "Jami",
+    "available": "Mavjud",
     "checkout": "Buyurtma berish",
     "clear_cart": "Savatni tozalash",
     "see": "Mahsulotlarni ko'rish",
@@ -37,5 +38,12 @@
     "changePhone": "Telefon raqamni o'zgartirish",
     "name": "Ism",
     "lastname": "Familya",
-    "delete": "O‘chirish"
+    "delete": "O‘chirish",
+    "product": "ta maxsulot",
+    "have_over_products": "Savatchada tugab qolgan maxsulotlar mavjud yoki siz so'ralganchalik maxsulotlar mavjud emas, iltimos ularni tozalang!",
+    "save": "Saqlash",
+    "deleteAkk": "Hisobingizni olib tashlamoqchisiz",
+    "sure": "Ishonchingiz komilmi?",
+    "support_number": "Ishonch telefon raqami",
+    "required_min_price": "Buyurtma berish uchun minimal narx {minPrice} so'm"
 }

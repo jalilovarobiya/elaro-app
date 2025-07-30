@@ -4,6 +4,7 @@ import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/sub_category/bloc/sub_category_bloc.dart';
 import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,7 @@ class SubCategoryPageBody extends StatelessWidget {
     return BlocBuilder<SubCategoryBloc, SubCategoryState>(
       builder: (context, state) {
         return state.when(
-          loading:
-              () => Center(
-                child: CircularProgressIndicator(color: AppColor.primary),
-              ),
+          loading: () => LoadingWidget(),
           success: (data) {
             final products = data.data;
             if (products?.products?.isEmpty ?? true) {

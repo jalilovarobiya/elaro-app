@@ -17,7 +17,7 @@ import 'package:elaro_app/feature/home/presentation/screens/recomanded_products_
 import 'package:elaro_app/feature/auth/presentation/pages/otp_screen.dart';
 import 'package:elaro_app/feature/auth/presentation/pages/register_page.dart';
 import 'package:elaro_app/feature/main/screen/main_screen.dart';
-import 'package:elaro_app/feature/order/presentation/pages/order_screen.dart';
+import 'package:elaro_app/feature/order/presentation/pages/order_history_page.dart';
 import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/language_screen.dart';
@@ -140,7 +140,9 @@ class AppRouter {
                         future: Utils().isLogin(),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
-                            return snapshot.data! ? OrderScreen() : AuthPage();
+                            return snapshot.data!
+                                ? OrderHistoryPage()
+                                : AuthPage();
                           }
                           return SizedBox();
                         },

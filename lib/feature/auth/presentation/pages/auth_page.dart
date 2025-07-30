@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
+import 'package:elaro_app/core/source/main_source.dart';
 import 'package:elaro_app/core/utils/di.dart';
 import 'package:elaro_app/core/widgets/custom_toast.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
@@ -30,6 +31,7 @@ class AuthPage extends StatelessWidget {
               context.push(AppRouter.otp, extra: phone);
             },
             success: () {
+              MainSources.currentPage.value == 0;
               context.go(AppRouter.home);
             },
             failure: (failure) {
@@ -62,16 +64,19 @@ class _AuthScaffold extends StatelessWidget {
         leading:
             context.canPop()
                 ? IconButton(
-                  onPressed: () => context.go(AppRouter.home),
+                  onPressed: () {
+                    MainSources.currentPage.value == 0;
+                    context.go(AppRouter.home);
+                  },
                   icon: Icon(
                     CupertinoIcons.xmark,
                     color: AppColor.primary,
                     size: 16,
                   ),
                 )
-                : const SizedBox(),
+                : SizedBox(),
       ),
-      body: const AuthBody(),
+      body: AuthBody(),
     );
   }
 }

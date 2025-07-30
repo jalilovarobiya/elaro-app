@@ -1,8 +1,11 @@
 import 'package:elaro_app/core/widgets/custom_appbar.dart';
+import 'package:elaro_app/feature/home/data/model/products_model.dart';
 import 'package:flutter/material.dart';
 
 class OrderScreen extends StatefulWidget {
-  const OrderScreen({super.key});
+  final List<Datum> cards;
+
+  const OrderScreen({super.key, required this.cards});
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();

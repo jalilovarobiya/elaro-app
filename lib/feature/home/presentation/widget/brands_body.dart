@@ -4,6 +4,7 @@ import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/brand/bloc/brand_bloc.dart';
 import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
@@ -19,10 +20,7 @@ class BrandsBody extends StatelessWidget {
     return BlocBuilder<BrandBloc, BrandState>(
       builder: (context, state) {
         return state.when(
-          loading:
-              () => Center(
-                child: CircularProgressIndicator(color: AppColor.primary),
-              ),
+          loading: () => LoadingWidget(),
           success: (data) {
             if (data.data?.products?.isEmpty ?? true) {
               return EmptyWidget();
