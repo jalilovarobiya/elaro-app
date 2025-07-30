@@ -2,15 +2,17 @@ import 'package:elaro_app/core/interceptor/interceptor.dart';
 import 'package:elaro_app/feature/card/data/model/card_model.dart';
 import 'package:elaro_app/feature/home/data/model/products_model.dart';
 
-class FavouriteRepositoryImpl extends DioClient {
+import '../../domain/repository/favorite_repository.dart';
+
+class FavouriteRepositoryImpl extends DioClient implements FavoriteRepository{
+  @override
   Future<void> addToCard(CardModel data) async {
     final request = await get(url: "/like/${data.productId}");
-
     if (!request.isSuccess) {
       throw Exception("Failed to add product to favourites");
     }
   }
-
+  @override
   Future<List<CardModel>> getCards() async {
     final request = await get(url: "/favorites/");
 
@@ -39,6 +41,7 @@ class FavouriteRepositoryImpl extends DioClient {
     return [];
   }
 
+  @override
   Future<void> deleteCard(String id) async {
     final request = await get(url: "/dislike/$id");
 

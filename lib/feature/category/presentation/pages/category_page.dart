@@ -21,7 +21,7 @@ class CategoryPage extends StatelessWidget {
           titleRu: data.titleRu,
           titleCrl: data.titleCrl,
         ),
-        body: CategorBady(id: data.id, bloc: bloc),
+        body: CategoryBody(id: data.id, bloc: bloc),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:elaro_app/core/repository/favourite_repository.dart';
+import 'package:elaro_app/feature/favorite/data/repository/favourite_repository.dart';
 import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/feature/card/data/model/card_model.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart';

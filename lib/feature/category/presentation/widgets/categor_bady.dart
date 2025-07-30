@@ -17,16 +17,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-class CategorBady extends StatefulWidget {
+class CategoryBody extends StatefulWidget {
   final CategoryBloc bloc;
   final int id;
-  const CategorBady({super.key, required this.bloc, required this.id});
+  const CategoryBody({super.key, required this.bloc, required this.id});
 
   @override
-  State<CategorBady> createState() => _CategorBadyState();
+  State<CategoryBody> createState() => _CategorBadyState();
 }
 
-class _CategorBadyState extends State<CategorBady> {
+class _CategorBadyState extends State<CategoryBody> {
   @override
   void initState() {
     context.read<CategoryBloc>().add(CategoryEvent.fetchData(id: widget.id));

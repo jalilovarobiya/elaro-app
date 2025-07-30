@@ -17,7 +17,7 @@ PODS:
   - Flutter (1.0.0)
   - flutter_native_splash (2.4.3):
     - Flutter
-  - flutter_secure_storage (3.3.1):
+  - flutter_secure_storage (6.0.0):
     - Flutter
   - fluttertoast (0.0.2):
     - Flutter
@@ -99,7 +99,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 9afa45b1159304c963da48addb78275ef701c6b4
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
-  flutter_secure_storage: 50035aef357c5a8bdd67fd6bc81370d46efc4d16
+  flutter_secure_storage: 1ed9476fba7e7a782b22888f956cce43e2c62f13
   fluttertoast: 2c67e14dce98bbdb200df9e1acf610d7a6264ea1
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
