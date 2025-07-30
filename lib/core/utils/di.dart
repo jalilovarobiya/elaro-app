@@ -23,6 +23,8 @@ import 'package:elaro_app/feature/home/presentation/blocs/new_products/bloc/new_
 import 'package:elaro_app/feature/home/presentation/blocs/product/bloc/product_bloc.dart';
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:elaro_app/feature/auth/presentation/bloc/auth_bloc.dart';
+import 'package:elaro_app/feature/order/data/repository/order_repository_impl.dart';
+import 'package:elaro_app/feature/order/presentation/blocs/order_history_bloc/order_history_bloc.dart';
 import 'package:elaro_app/feature/profile/data/repository/profile_repository_impl.dart';
 import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -78,6 +80,9 @@ void _repositories() {
   sl.registerLazySingleton<AuthRepositoryImpl>(
     () => AuthRepositoryImpl(sl<DioClient>()),
   );
+  sl.registerLazySingleton<OrderRepositoryImpl>(
+    () => OrderRepositoryImpl(sl<DioClient>()),
+  );
 }
 
 void _blocs() {
@@ -96,6 +101,7 @@ void _blocs() {
   sl.registerFactory(() => ProfileBloc(sl<ProfileRepositoryImpl>()));
   sl.registerFactory(() => AuthBloc(sl<AuthRepositoryImpl>()));
   sl.registerFactory(() => ProductBloc(sl<ProductsRepositoryImpl>()));
+  sl.registerFactory(() => OrderHistoryBloc(sl<OrderRepositoryImpl>()));
 }
 
 void _dataSources() {}

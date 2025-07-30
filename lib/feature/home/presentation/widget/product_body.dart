@@ -18,6 +18,14 @@ class _ProductBodyState extends State<ProductBody> {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
+        Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            color: hexToColor(widget.product.data?.color ?? ""),
+          ),
+          // color: Color(int.parse(widget.product.data?.color ?? "#FFFFFF")),
+        ),
         Text(
           "${"available".tr()}: ${widget.product.data?.qty ?? "0"}",
           style: AppStyle.w500s15h20DarkBlue300.copyWith(
@@ -52,5 +60,17 @@ class _ProductBodyState extends State<ProductBody> {
         // ),
       ],
     );
+  }
+
+  static Color hexToColor(String hexColor) {
+    try {
+      hexColor = hexColor.replaceAll('#', '');
+      if (hexColor.length == 6) {
+        hexColor = 'FF$hexColor';
+      }
+      return Color(int.parse(hexColor, radix: 16));
+    } catch (e) {
+      return Colors.transparent;
+    }
   }
 }

@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.elaro_app">
+    package="uz.elaro">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:label="Elaro_App"
+        android:label="Elaro"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         

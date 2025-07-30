@@ -3,6 +3,7 @@ import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/app_error_widget.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
 import 'package:elaro_app/feature/category/presentation/blocs/categories/bloc/categories_bloc.dart';
 import 'package:flutter/material.dart';
@@ -30,45 +31,7 @@ class _CategoryBodyState extends State<CategoryBody> {
     return BlocBuilder<CategoriesBloc, CategoriesState>(
       builder: (context, state) {
         return state.when(
-          loading:
-              () =>
-              // () => Shimmer.fromColors(
-              //   baseColor: AppColor.lightGray200,
-              //   highlightColor: AppColor.lightGray500,
-              //   child: Container(
-              //     margin: const EdgeInsets.only(bottom: 12),
-              //     height: 200,
-              //     child: ListView.builder(
-              //       shrinkWrap: true,
-              //       // scrollDirection: Axis.horizontal,
-              //       itemCount: 6,
-              //       itemBuilder: (ctx, index) {
-              //         return ZoomTapAnimation(
-              //           child: Stack(
-              //             children: [
-              //               Container(
-              //                 decoration: BoxDecoration(
-              //                   borderRadius: BorderRadius.circular(16.0),
-              //                   color: Colors.white,
-              //                 ),
-              //               ),
-              //               const Padding(
-              //                 padding: EdgeInsets.only(left: 8.0, top: 8),
-              //                 // child: Text("nkdfj", maxLines: 2),
-              //               ),
-              //             ],
-              //           ),
-              //         );
-              //       },
-              //     ),
-              //   ),
-              // ),
-              Center(
-                child: CircularProgressIndicator(
-                  color: AppColor.primary,
-                  strokeWidth: 6,
-                ),
-              ),
+          loading: () => LoadingWidget(),
           success: (data) {
             var categories = data.data;
             return LiquidPullToRefresh(

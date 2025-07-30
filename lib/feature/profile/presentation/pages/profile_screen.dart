@@ -8,6 +8,6 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.locale;
-    return SafeArea(child: Scaffold(body: ProfileBody()));
+    return Scaffold(body: SafeArea(child: ProfileBody()));
   }
 }

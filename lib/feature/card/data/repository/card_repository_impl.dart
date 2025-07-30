@@ -5,6 +5,7 @@ import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/feature/card/data/model/card_model.dart';
 import 'package:elaro_app/feature/card/domain/repository/card_repositoyr.dart';
 import 'package:elaro_app/feature/home/data/model/products_model.dart';
+import 'package:elaro_app/feature/order/data/model/order_model.dart';
 
 class CardRepositoryImpl implements CardRepositoyr {
   final DioClient client;
@@ -42,13 +43,6 @@ class CardRepositoryImpl implements CardRepositoyr {
       );
 
       return request.isSuccess;
-
-      // return removeResult.fold((left) => Left(left), (right) async {
-      //   if (right) {
-
-      //   }
-      //   return Left(FailureModel("Mahsulot sonini o'zgartirishda xatolik"));
-      // });
     } catch (e) {
       return false;
     }
@@ -90,9 +84,6 @@ class CardRepositoryImpl implements CardRepositoyr {
       final request = await client.get(url: "/cart");
 
       if (request.isSuccess) {
-        // final List<dynamic> data = request.response['data'] ?? [];
-        // final cartItems = data.map((item) => CardModel.fromJson(item)).toList();
-        // log('Repository: Successfully fetched ${cartItems.length} cart items');
         return List<Datum>.from(
           request.response["data"][0]["products"].map((e) => Datum.fromJson(e)),
         );
@@ -104,5 +95,25 @@ class CardRepositoryImpl implements CardRepositoyr {
       log('Repository: Error fetching cart items: $e');
       return [];
     }
+  }
+
+  @override
+  Future<OrderModel> saveOrder({
+    required String adres,
+    required String paymentType,
+    required String id,
+  }) async {
+    final request = await client.post(
+      url: "/approval",
+      body: {
+        "shipping_address": adres,
+        "payment_type": paymentType,
+        "delivery_type": id,
+      },
+    );
+    if (request.isSuccess) {
+      return OrderModel.fromJson(request.response);
+    }
+    throw request.response;
   }
 }

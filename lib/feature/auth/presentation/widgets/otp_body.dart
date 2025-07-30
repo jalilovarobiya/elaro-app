@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/extension/sized_box_extension.dart';
+import 'package:elaro_app/core/source/main_source.dart';
 import 'package:elaro_app/core/widgets/custom_toast.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/pinput_widget.dart';
@@ -62,17 +63,19 @@ class _OtpBodyState extends State<OtpBody> with CodeAutoFill {
             );
           },
           success: () {
-            context.go(AppRouter.card);
+            MainSources.currentPage.value = 0;
+            context.pop();
+            context.go(AppRouter.home);
           },
         );
       },
 
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 50),
+            50.h,
             Translator(
               maxLen: 3,
               textAlign: TextAlign.center,
@@ -109,7 +112,7 @@ class _OtpBodyState extends State<OtpBody> with CodeAutoFill {
                 print('Timer is done!');
               },
             ),
-            const Spacer(),
+            Spacer(),
             24.h,
             ZoomTapAnimation(
               onTap: () => context.pop(),
