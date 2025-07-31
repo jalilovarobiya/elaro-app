@@ -17,7 +17,7 @@ extension CardToProduct on card.CardModel {
       discountedPrice: discountedPrice,
       discountStart: discountStart,
       discountEnd: discountEnd,
-      images: [pro.Image(id: 0, image: image)],
+      images: [pro.ProductImage(id: 0, image: image)],
       attributes: [],
     );
   }

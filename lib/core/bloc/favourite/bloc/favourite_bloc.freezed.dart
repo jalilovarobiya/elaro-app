@@ -12,8 +12,7 @@ part of 'favourite_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$FavouriteEvent {
@@ -22,47 +21,52 @@ mixin _$FavouriteEvent {
     required TResult Function() fetchData,
     required TResult Function(Data data) addProduct,
     required TResult Function(int id) deleteProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
     TResult? Function(Data data)? addProduct,
     TResult? Function(int id)? deleteProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
     TResult Function(Data data)? addProduct,
     TResult Function(int id)? deleteProduct,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchData value) fetchData,
     required TResult Function(_AddProduct value) addProduct,
     required TResult Function(_DeleteProduct value) deleteProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchData value)? fetchData,
     TResult? Function(_AddProduct value)? addProduct,
     TResult? Function(_DeleteProduct value)? deleteProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchData value)? fetchData,
     TResult Function(_AddProduct value)? addProduct,
     TResult Function(_DeleteProduct value)? deleteProduct,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FavouriteEventCopyWith<$Res> {
   factory $FavouriteEventCopyWith(
-    FavouriteEvent value,
-    $Res Function(FavouriteEvent) then,
-  ) = _$FavouriteEventCopyWithImpl<$Res, FavouriteEvent>;
+          FavouriteEvent value, $Res Function(FavouriteEvent) then) =
+      _$FavouriteEventCopyWithImpl<$Res, FavouriteEvent>;
 }
 
 /// @nodoc
@@ -82,9 +86,8 @@ class _$FavouriteEventCopyWithImpl<$Res, $Val extends FavouriteEvent>
 /// @nodoc
 abstract class _$$FetchDataImplCopyWith<$Res> {
   factory _$$FetchDataImplCopyWith(
-    _$FetchDataImpl value,
-    $Res Function(_$FetchDataImpl) then,
-  ) = __$$FetchDataImplCopyWithImpl<$Res>;
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -92,9 +95,8 @@ class __$$FetchDataImplCopyWithImpl<$Res>
     extends _$FavouriteEventCopyWithImpl<$Res, _$FetchDataImpl>
     implements _$$FetchDataImplCopyWith<$Res> {
   __$$FetchDataImplCopyWithImpl(
-    _$FetchDataImpl _value,
-    $Res Function(_$FetchDataImpl) _then,
-  ) : super(_value, _then);
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of FavouriteEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -195,9 +197,8 @@ abstract class _FetchData implements FavouriteEvent {
 /// @nodoc
 abstract class _$$AddProductImplCopyWith<$Res> {
   factory _$$AddProductImplCopyWith(
-    _$AddProductImpl value,
-    $Res Function(_$AddProductImpl) then,
-  ) = __$$AddProductImplCopyWithImpl<$Res>;
+          _$AddProductImpl value, $Res Function(_$AddProductImpl) then) =
+      __$$AddProductImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Data data});
 
@@ -209,23 +210,22 @@ class __$$AddProductImplCopyWithImpl<$Res>
     extends _$FavouriteEventCopyWithImpl<$Res, _$AddProductImpl>
     implements _$$AddProductImplCopyWith<$Res> {
   __$$AddProductImplCopyWithImpl(
-    _$AddProductImpl _value,
-    $Res Function(_$AddProductImpl) _then,
-  ) : super(_value, _then);
+      _$AddProductImpl _value, $Res Function(_$AddProductImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of FavouriteEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$AddProductImpl(
-        null == data
-            ? _value.data
-            : data // ignore: cast_nullable_to_non_nullable
-                as Data,
-      ),
-    );
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$AddProductImpl(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Data,
+    ));
   }
 
   /// Create a copy of FavouriteEvent
@@ -355,9 +355,8 @@ abstract class _AddProduct implements FavouriteEvent {
 /// @nodoc
 abstract class _$$DeleteProductImplCopyWith<$Res> {
   factory _$$DeleteProductImplCopyWith(
-    _$DeleteProductImpl value,
-    $Res Function(_$DeleteProductImpl) then,
-  ) = __$$DeleteProductImplCopyWithImpl<$Res>;
+          _$DeleteProductImpl value, $Res Function(_$DeleteProductImpl) then) =
+      __$$DeleteProductImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int id});
 }
@@ -367,23 +366,22 @@ class __$$DeleteProductImplCopyWithImpl<$Res>
     extends _$FavouriteEventCopyWithImpl<$Res, _$DeleteProductImpl>
     implements _$$DeleteProductImplCopyWith<$Res> {
   __$$DeleteProductImplCopyWithImpl(
-    _$DeleteProductImpl _value,
-    $Res Function(_$DeleteProductImpl) _then,
-  ) : super(_value, _then);
+      _$DeleteProductImpl _value, $Res Function(_$DeleteProductImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of FavouriteEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null}) {
-    return _then(
-      _$DeleteProductImpl(
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$DeleteProductImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -507,47 +505,52 @@ mixin _$FavouriteState {
     required TResult Function() loading,
     required TResult Function(List<CardModel> data) allProduct,
     required TResult Function() failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CardModel> data)? allProduct,
     TResult? Function()? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CardModel> data)? allProduct,
     TResult Function()? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_AllProduct value) allProduct,
     required TResult Function(_Failure value) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_AllProduct value)? allProduct,
     TResult? Function(_Failure value)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_AllProduct value)? allProduct,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FavouriteStateCopyWith<$Res> {
   factory $FavouriteStateCopyWith(
-    FavouriteState value,
-    $Res Function(FavouriteState) then,
-  ) = _$FavouriteStateCopyWithImpl<$Res, FavouriteState>;
+          FavouriteState value, $Res Function(FavouriteState) then) =
+      _$FavouriteStateCopyWithImpl<$Res, FavouriteState>;
 }
 
 /// @nodoc
@@ -567,9 +570,8 @@ class _$FavouriteStateCopyWithImpl<$Res, $Val extends FavouriteState>
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -577,9 +579,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$FavouriteStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of FavouriteState
   /// with the given fields replaced by the non-null parameter values.
@@ -680,9 +681,8 @@ abstract class _Loading implements FavouriteState {
 /// @nodoc
 abstract class _$$AllProductImplCopyWith<$Res> {
   factory _$$AllProductImplCopyWith(
-    _$AllProductImpl value,
-    $Res Function(_$AllProductImpl) then,
-  ) = __$$AllProductImplCopyWithImpl<$Res>;
+          _$AllProductImpl value, $Res Function(_$AllProductImpl) then) =
+      __$$AllProductImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CardModel> data});
 }
@@ -692,24 +692,22 @@ class __$$AllProductImplCopyWithImpl<$Res>
     extends _$FavouriteStateCopyWithImpl<$Res, _$AllProductImpl>
     implements _$$AllProductImplCopyWith<$Res> {
   __$$AllProductImplCopyWithImpl(
-    _$AllProductImpl _value,
-    $Res Function(_$AllProductImpl) _then,
-  ) : super(_value, _then);
+      _$AllProductImpl _value, $Res Function(_$AllProductImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of FavouriteState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$AllProductImpl(
-        data:
-            null == data
-                ? _value._data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as List<CardModel>,
-      ),
-    );
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$AllProductImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
+    ));
   }
 }
 
@@ -836,9 +834,8 @@ abstract class _AllProduct implements FavouriteState {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-    _$FailureImpl value,
-    $Res Function(_$FailureImpl) then,
-  ) = __$$FailureImplCopyWithImpl<$Res>;
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -846,9 +843,8 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$FavouriteStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-    _$FailureImpl _value,
-    $Res Function(_$FailureImpl) _then,
-  ) : super(_value, _then);
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of FavouriteState
   /// with the given fields replaced by the non-null parameter values.

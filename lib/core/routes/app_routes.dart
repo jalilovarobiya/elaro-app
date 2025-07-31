@@ -26,6 +26,9 @@ import 'package:elaro_app/feature/profile/presentation/pages/profile_screen.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../feature/home/data/model/description_constructor_model.dart';
+import '../../feature/home/data/model/features_constructor_model.dart';
+
 class AppRouter {
   static String home = "/home";
   static String category = "/category";
@@ -48,6 +51,12 @@ class AppRouter {
   static String otp = "/otp";
   static String register = "/register";
   static String product = "/product";
+  static String features = "/features";
+  static String description = "/description";
+  static String ourShops = "/ourShops";
+
+
+
 
   static GoRouter router = GoRouter(
     initialLocation: home,
@@ -182,6 +191,7 @@ class AppRouter {
           ),
         ],
       ),
+
       GoRoute(
         path: AppRouter.category,
         builder: (context, state) {
@@ -289,6 +299,26 @@ class AppRouter {
           );
         },
       ),
+      // GoRoute(
+      //   path: AppRouter.features,
+      //   builder: (context, state) {
+      //     final data = state.extra as FeaturesConstructorModel;
+      //     return FeaturesPage(data: data);
+      //   },
+      // ),
+      // GoRoute(
+      //   path: AppRouter.description,
+      //   builder: (context, state) {
+      //     final data = state.extra as DescriptionConstructorModel;
+      //     return DescriptionPage(data: data);
+      //   },
+      // ),
+      // GoRoute(
+      //     path: AppRouter.ourShops,
+      //     builder: (context, state){
+      //       return const OurShopsPage();
+      //     }
+      // ),
     ],
   );
 }

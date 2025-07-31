@@ -12,45 +12,49 @@ part of 'brends_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BrendsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchData value) fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchData value)? fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchData value)? fetchData,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BrendsEventCopyWith<$Res> {
   factory $BrendsEventCopyWith(
-    BrendsEvent value,
-    $Res Function(BrendsEvent) then,
-  ) = _$BrendsEventCopyWithImpl<$Res, BrendsEvent>;
+          BrendsEvent value, $Res Function(BrendsEvent) then) =
+      _$BrendsEventCopyWithImpl<$Res, BrendsEvent>;
 }
 
 /// @nodoc
@@ -70,9 +74,8 @@ class _$BrendsEventCopyWithImpl<$Res, $Val extends BrendsEvent>
 /// @nodoc
 abstract class _$$FetchDataImplCopyWith<$Res> {
   factory _$$FetchDataImplCopyWith(
-    _$FetchDataImpl value,
-    $Res Function(_$FetchDataImpl) then,
-  ) = __$$FetchDataImplCopyWithImpl<$Res>;
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -80,9 +83,8 @@ class __$$FetchDataImplCopyWithImpl<$Res>
     extends _$BrendsEventCopyWithImpl<$Res, _$FetchDataImpl>
     implements _$$FetchDataImplCopyWith<$Res> {
   __$$FetchDataImplCopyWithImpl(
-    _$FetchDataImpl _value,
-    $Res Function(_$FetchDataImpl) _then,
-  ) : super(_value, _then);
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BrendsEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -175,47 +177,52 @@ mixin _$BrendsState {
     required TResult Function() loading,
     required TResult Function(BrandsModel data) success,
     required TResult Function(FailureModel data) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(BrandsModel data)? success,
     TResult? Function(FailureModel data)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(BrandsModel data)? success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BrendsStateCopyWith<$Res> {
   factory $BrendsStateCopyWith(
-    BrendsState value,
-    $Res Function(BrendsState) then,
-  ) = _$BrendsStateCopyWithImpl<$Res, BrendsState>;
+          BrendsState value, $Res Function(BrendsState) then) =
+      _$BrendsStateCopyWithImpl<$Res, BrendsState>;
 }
 
 /// @nodoc
@@ -235,9 +242,8 @@ class _$BrendsStateCopyWithImpl<$Res, $Val extends BrendsState>
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -245,9 +251,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$BrendsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BrendsState
   /// with the given fields replaced by the non-null parameter values.
@@ -348,9 +353,8 @@ abstract class _Loading implements BrendsState {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
-    _$SuccessImpl value,
-    $Res Function(_$SuccessImpl) then,
-  ) = __$$SuccessImplCopyWithImpl<$Res>;
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BrandsModel data});
 
@@ -362,24 +366,22 @@ class __$$SuccessImplCopyWithImpl<$Res>
     extends _$BrendsStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl _value,
-    $Res Function(_$SuccessImpl) _then,
-  ) : super(_value, _then);
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BrendsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$SuccessImpl(
-        data:
-            null == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as BrandsModel,
-      ),
-    );
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$SuccessImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as BrandsModel,
+    ));
   }
 
   /// Create a copy of BrendsState
@@ -509,9 +511,8 @@ abstract class _Success implements BrendsState {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-    _$FailureImpl value,
-    $Res Function(_$FailureImpl) then,
-  ) = __$$FailureImplCopyWithImpl<$Res>;
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FailureModel data});
 }
@@ -521,24 +522,22 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$BrendsStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-    _$FailureImpl _value,
-    $Res Function(_$FailureImpl) _then,
-  ) : super(_value, _then);
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BrendsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$FailureImpl(
-        data:
-            null == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as FailureModel,
-      ),
-    );
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$FailureImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as FailureModel,
+    ));
   }
 }
 

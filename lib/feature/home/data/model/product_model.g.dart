@@ -8,42 +8,41 @@ part of 'product_model.dart';
 
 _$ProductModelImpl _$$ProductModelImplFromJson(Map<String, dynamic> json) =>
     _$ProductModelImpl(
-      data:
-          json['data'] == null
-              ? null
-              : Data.fromJson(json['data'] as Map<String, dynamic>),
+      data: json['data'] == null
+          ? null
+          : Data.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
-    <String, dynamic>{'data': instance.data};
+    <String, dynamic>{
+      'data': instance.data,
+    };
 
 _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
-  id: (json['id'] as num?)?.toInt(),
-  nameUz: json['name_uz'] as String?,
-  nameCrl: json['name_crl'] as String?,
-  nameRu: json['name_ru'] as String?,
-  color: json['color'] as String?,
-  price: json['price'] as String?,
-  qty: (json['qty'] as num?)?.toInt(),
-  quantity: (json['quantity'] as num?)?.toInt(),
-  discountedPrice: (json['discounted_price'] as num?)?.toInt(),
-  categoryId: (json['category_id'] as num?)?.toInt(),
-  discount: json['discount'] as String?,
-  discountType: json['discount_type'] as String?,
-  discountStart: json['discount_start'] as String?,
-  discountEnd: json['discount_end'] as String?,
-  descriptionUz: json['description_uz'] as String?,
-  descriptionCrl: json['description_crl'] as String?,
-  descriptionRu: json['description_ru'] as String?,
-  images:
-      (json['images'] as List<dynamic>?)
-          ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+      id: (json['id'] as num?)?.toInt(),
+      nameUz: json['name_uz'] as String?,
+      nameCrl: json['name_crl'] as String?,
+      nameRu: json['name_ru'] as String?,
+      color: json['color'] as String?,
+      price: json['price'] as String?,
+      qty: (json['qty'] as num?)?.toInt(),
+      quantity: (json['quantity'] as num?)?.toInt(),
+      discountedPrice: (json['discounted_price'] as num?)?.toInt(),
+      categoryId: (json['category_id'] as num?)?.toInt(),
+      discount: json['discount'] as String?,
+      discountType: json['discount_type'] as String?,
+      discountStart: json['discount_start'] as String?,
+      discountEnd: json['discount_end'] as String?,
+      descriptionUz: json['description_uz'] as String?,
+      descriptionCrl: json['description_crl'] as String?,
+      descriptionRu: json['description_ru'] as String?,
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
           .toList(),
-  attributes:
-      (json['attributes'] as List<dynamic>?)
+      attributes: (json['attributes'] as List<dynamic>?)
           ?.map((e) => Attribute.fromJson(e as Map<String, dynamic>))
           .toList(),
-);
+    );
 
 Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
     <String, dynamic>{
@@ -90,10 +89,14 @@ Map<String, dynamic> _$$AttributeImplToJson(_$AttributeImpl instance) =>
       'value_ru': instance.valueRu,
     };
 
-_$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
-  id: (json['id'] as num?)?.toInt(),
-  image: json['image'] as String?,
-);
+_$ProductImageImpl _$$ProductImageImplFromJson(Map<String, dynamic> json) =>
+    _$ProductImageImpl(
+      id: (json['id'] as num?)?.toInt(),
+      image: json['image'] as String?,
+    );
 
-Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
-    <String, dynamic>{'id': instance.id, 'image': instance.image};
+Map<String, dynamic> _$$ProductImageImplToJson(_$ProductImageImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'image': instance.image,
+    };

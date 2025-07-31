@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
 import 'package:elaro_app/core/status_model/status_model.dart';
 import 'package:elaro_app/core/utils/utils.dart';
@@ -9,6 +10,13 @@ class DioClient {
   final String baseUrl = "https://api.elaro.uz/api";
 
   late final Dio dioClient;
+  static Future<Map<String, dynamic>> defaultHeader() async {
+    String token = await SecureStorage().read(key: 'token') ?? "";
+    return {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json, text/plain',
+    };
+  }
 
   DioClient() {
     dioClient = Dio(
@@ -50,7 +58,7 @@ class DioClient {
           } catch (e) {
             return handler.next(error);
           }
-        },
+       },
       ),
     );
   }
@@ -175,4 +183,53 @@ class DioClient {
       throw Exception("Unexpected error: $e");
     }
   }
+
+
+  Future<StatusModel> getMethod(
+      {required pathUrl, Map<String, dynamic>? header, Map<String, dynamic>? body, required isHeader, bool anotherLink = false}) async {
+    try {
+      final res = await dioClient
+          .get(
+        "${anotherLink ? "" : baseUrl}$pathUrl",
+        options: Options(headers: isHeader ? await defaultHeader() : {"Content_type": "application/json"}),
+        data: jsonEncode(body ?? {}),
+      )
+          .timeout(const Duration(seconds: 120));
+      // logger.d([
+      //   'GET',
+      //   "$baseUrl$pathUrl",
+      //   body,
+      //   header,
+      //   res.statusCode,
+      //   res.statusMessage,
+      //   res.data,
+      // ]);
+      if (res.statusCode! >= 200 && res.statusCode! < 300) {
+        return StatusModel(response: res.data, isSuccess: true, code: res.statusCode);
+      }
+      return StatusModel(response: res.data, isSuccess: false, code: res.statusCode);
+    } on DioException catch (e) {
+      // logger.e([
+      //   'GET',
+      //   "$baseUrl$pathUrl",
+      //   body,
+      //   header,
+      //   e.response?.statusCode,
+      //   e.response?.statusMessage,
+      //   e.response?.data,
+      // ]);
+      return dioError(e);
+    }
+  }
+}
+StatusModel dioError(DioException e) {
+  try {
+    if((e.response!.statusCode! >= 500)){
+      return StatusModel(response: e.response, isSuccess: false, code: e.response?.statusCode);
+    }
+    if ((e.type == DioExceptionType.connectionError) || (e.type == DioExceptionType.connectionTimeout)) {
+      return StatusModel(response: {"message": "connection_error".tr}, isSuccess: false, code: e.response?.statusCode);
+    }
+  } catch (e) {}
+  return StatusModel(response: e.response, isSuccess: false, code: e.response?.statusCode);
 }

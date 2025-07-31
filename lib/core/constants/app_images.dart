@@ -11,4 +11,8 @@ abstract class AppImages {
 
   static const String lottieErrorJson = "assets/lottie/error.json";
   static const String lottieLoadingJson = "assets/lottie/loading_2.json";
+  static const String done = "assets/svg/logo.svg";
+//-------------------------------------------
+  static String diagramPNG="assets/svg/logo.svg";
+
 }

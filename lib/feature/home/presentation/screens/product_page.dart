@@ -14,6 +14,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../widget/product_body.dart';
+
 class ProductPage extends StatefulWidget {
   final int id;
   final String titleUzb;

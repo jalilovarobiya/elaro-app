@@ -23,7 +23,7 @@ extension ProductPorductModel on Product {
         discount: discount,
         discountType: discountType,
         images:
-            (images ?? []).map((e) => product.Image(image: e.image)).toList(),
+            (images ?? []).map((e) => product.ProductImage(image: e.image)).toList(),
         attributes: [],
       ),
     );

@@ -12,8 +12,7 @@ part of 'send_otp_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SendOtpModel _$SendOtpModelFromJson(Map<String, dynamic> json) {
   return _SendOtpModel.fromJson(json);
@@ -36,9 +35,8 @@ mixin _$SendOtpModel {
 /// @nodoc
 abstract class $SendOtpModelCopyWith<$Res> {
   factory $SendOtpModelCopyWith(
-    SendOtpModel value,
-    $Res Function(SendOtpModel) then,
-  ) = _$SendOtpModelCopyWithImpl<$Res, SendOtpModel>;
+          SendOtpModel value, $Res Function(SendOtpModel) then) =
+      _$SendOtpModelCopyWithImpl<$Res, SendOtpModel>;
   @useResult
   $Res call({String message});
 }
@@ -57,17 +55,15 @@ class _$SendOtpModelCopyWithImpl<$Res, $Val extends SendOtpModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _value.copyWith(
-            message:
-                null == message
-                    ? _value.message
-                    : message // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_value.copyWith(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -75,9 +71,8 @@ class _$SendOtpModelCopyWithImpl<$Res, $Val extends SendOtpModel>
 abstract class _$$SendOtpModelImplCopyWith<$Res>
     implements $SendOtpModelCopyWith<$Res> {
   factory _$$SendOtpModelImplCopyWith(
-    _$SendOtpModelImpl value,
-    $Res Function(_$SendOtpModelImpl) then,
-  ) = __$$SendOtpModelImplCopyWithImpl<$Res>;
+          _$SendOtpModelImpl value, $Res Function(_$SendOtpModelImpl) then) =
+      __$$SendOtpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
@@ -88,24 +83,22 @@ class __$$SendOtpModelImplCopyWithImpl<$Res>
     extends _$SendOtpModelCopyWithImpl<$Res, _$SendOtpModelImpl>
     implements _$$SendOtpModelImplCopyWith<$Res> {
   __$$SendOtpModelImplCopyWithImpl(
-    _$SendOtpModelImpl _value,
-    $Res Function(_$SendOtpModelImpl) _then,
-  ) : super(_value, _then);
+      _$SendOtpModelImpl _value, $Res Function(_$SendOtpModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SendOtpModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$SendOtpModelImpl(
-        message:
-            null == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$SendOtpModelImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -147,7 +140,9 @@ class _$SendOtpModelImpl implements _SendOtpModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SendOtpModelImplToJson(this);
+    return _$$SendOtpModelImplToJson(
+      this,
+    );
   }
 }
 

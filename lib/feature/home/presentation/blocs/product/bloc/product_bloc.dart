@@ -5,7 +5,9 @@ import 'package:elaro_app/feature/home/data/repository/products_repository_impl.
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_event.dart';
+
 part 'product_state.dart';
+
 part 'product_bloc.freezed.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
@@ -17,6 +19,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   Future<void> _fetchData(_FetchData event, Emitter<ProductState> emit) async {
     emit(const ProductState.loading());
+
     final request = await impl.product(event.id);
     request.fold(
       (left) => emit(ProductState.failure(left)),

@@ -1,13 +1,14 @@
+
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'product_model.freezed.dart';
 part 'product_model.g.dart';
 
 @freezed
 class ProductModel with _$ProductModel {
-  const factory ProductModel({@JsonKey(name: "data") Data? data}) =
-      _ProductModel;
+  const factory ProductModel({
+    @JsonKey(name: "data") Data? data,
+  }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
@@ -33,7 +34,7 @@ class Data with _$Data {
     @JsonKey(name: "description_uz") String? descriptionUz,
     @JsonKey(name: "description_crl") String? descriptionCrl,
     @JsonKey(name: "description_ru") String? descriptionRu,
-    @JsonKey(name: "images") List<Image>? images,
+    @JsonKey(name: "images") List<ProductImage>? images,
     @JsonKey(name: "attributes") List<Attribute>? attributes,
   }) = _Data;
 
@@ -57,11 +58,12 @@ class Attribute with _$Attribute {
 }
 
 @freezed
-class Image with _$Image {
-  const factory Image({
+class ProductImage with _$ProductImage {
+  const factory ProductImage({
     @JsonKey(name: "id") int? id,
     @JsonKey(name: "image") String? image,
-  }) = _Image;
+  }) = _ProductImage;
 
-  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
+  factory ProductImage.fromJson(Map<String, dynamic> json) =>
+      _$ProductImageFromJson(json);
 }

@@ -3,7 +3,22 @@ import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../utils/utils.dart';
+
 class AppStyle {
+  static BoxDecoration get cardBox => BoxDecoration(
+    borderRadius: BorderRadius.circular(20),
+    border: Border.all(color: AppColor.lightGray400, width: 0.5),
+  );
+  static BoxDecoration get lightGray100R14B1White => BoxDecoration(
+    color: AppColor.lightGray200,
+    borderRadius: BorderRadius.circular(14),
+    border: Border.all(width: 1, color: Colors.white),
+  );
+  static BoxDecoration get lightGray400R16NoBorder => BoxDecoration(
+    color: AppColor.lightGray400,
+    borderRadius: BorderRadius.circular(16),
+  );
   static TextStyle w600s15h20DarkBluePrimary = GoogleFonts.roboto(
     fontWeight: FontWeight.w600,
     fontSize: 15,
@@ -93,10 +108,7 @@ class AppStyle {
     // color: AppColor.darkBlue300,
   );
 
-  static BoxDecoration get lightGray400R16NoBorder => BoxDecoration(
-    color: AppColor.lightGray400,
-    borderRadius: BorderRadius.circular(16),
-  );
+
 
   static TextStyle w600s18h22DarkBluePrimary = GoogleFonts.roboto(
     fontWeight: FontWeight.w600,
@@ -107,6 +119,10 @@ class AppStyle {
 
   static BoxDecoration get cyan75 => BoxDecoration(
     color: AppColor.cyan75,
+    borderRadius: BorderRadius.circular(16),
+  );
+  static BoxDecoration colorBox([String color = ""]) => BoxDecoration(
+    color: Utils.hexToColor(color),
     borderRadius: BorderRadius.circular(8),
   );
 }

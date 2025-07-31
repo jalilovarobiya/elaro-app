@@ -20,7 +20,7 @@ extension DatumToProductModel on Datum {
       discountEnd: discountEnd,
       discountStart: discountStart,
       discountType: discountType,
-      images: (images ?? []).map((e) => pModel.Image(image: e.image)).toList(),
+      images: (images ?? []).map((e) => pModel.ProductImage(image: e.image)).toList(),
       attributes: [],
     ),
   );

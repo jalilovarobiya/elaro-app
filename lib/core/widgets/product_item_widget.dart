@@ -10,7 +10,7 @@ import 'package:elaro_app/core/widgets/favourite_button.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart'
-    as product;
+as product;
 import 'package:elaro_app/feature/home/data/model/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,29 +55,29 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                     margin: const EdgeInsets.all(4),
                     padding: const EdgeInsets.all(16),
                     child:
-                        (widget.productData.data?.images ?? []).isNotEmpty
-                            ? Center(
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fitWidth,
-                                imageUrl:
-                                    widget
-                                        .productData
-                                        .data
-                                        ?.images
-                                        ?.firstOrNull
-                                        ?.image ??
-                                    "",
-                                progressIndicatorBuilder:
-                                    (context, url, downloadProgress) =>
-                                        CircularProgressIndicator(
-                                          color: AppColor.primary,
-                                        ),
-                                errorWidget:
-                                    (context, url, error) =>
-                                        const Icon(Icons.error),
-                              ),
-                            )
-                            : SizedBox(),
+                    (widget.productData.data?.images ?? []).isNotEmpty
+                        ? Center(
+                      child: CachedNetworkImage(
+                        fit: BoxFit.fitWidth,
+                        imageUrl:
+                        widget
+                            .productData
+                            .data
+                            ?.images
+                            ?.firstOrNull
+                            ?.image ??
+                            "",
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) =>
+                            CircularProgressIndicator(
+                              color: AppColor.primary,
+                            ),
+                        errorWidget:
+                            (context, url, error) =>
+                        const Icon(Icons.error),
+                      ),
+                    )
+                        : SizedBox(),
                   ),
                   Positioned(
                     top: 6,
@@ -85,41 +85,41 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                     child: BlocBuilder<FavouriteBloc, FavouriteState>(
                       builder: (context, state) {
                         return state.whenOrNull(
-                              allProduct: (data) {
-                                final isSelected = data.any(
+                          allProduct: (data) {
+                            final isSelected = data.any(
                                   (e) =>
-                                      e.productId ==
-                                      widget.productData.data?.id.toString(),
-                                );
-                                return FavouriteButton(
-                                  ontap: () async {
-                                    if (!(await Utils().isLogin())) {
-                                      CustomToast.showToast(
-                                        context,
-                                        AppImages.error,
-                                        "required_login".tr(),
-                                        Colors.white,
-                                        Colors.red,
-                                      );
-                                    }
-                                    if (isSelected) {
-                                      context.read<FavouriteBloc>().add(
-                                        FavouriteEvent.deleteProduct(
-                                          widget.productData.data?.id ?? 0,
-                                        ),
-                                      );
-                                    } else {
-                                      context.read<FavouriteBloc>().add(
-                                        FavouriteEvent.addProduct(
-                                          widget.productData.data!,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  isSelected: isSelected,
-                                );
+                              e.productId ==
+                                  widget.productData.data?.id.toString(),
+                            );
+                            return FavouriteButton(
+                              ontap: () async {
+                                if (!(await Utils().isLogin())) {
+                                  CustomToast.showToast(
+                                    context,
+                                    AppImages.error,
+                                    "required_login".tr(),
+                                    Colors.white,
+                                    Colors.red,
+                                  );
+                                }
+                                if (isSelected) {
+                                  context.read<FavouriteBloc>().add(
+                                    FavouriteEvent.deleteProduct(
+                                      widget.productData.data?.id ?? 0,
+                                    ),
+                                  );
+                                } else {
+                                  context.read<FavouriteBloc>().add(
+                                    FavouriteEvent.addProduct(
+                                      widget.productData.data!,
+                                    ),
+                                  );
+                                }
                               },
-                            ) ??
+                              isSelected: isSelected,
+                            );
+                          },
+                        ) ??
                             SizedBox();
                       },
                     ),
@@ -172,25 +172,25 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                 "${Utils.cashFormat(widget.productData.data?.price ?? "")} ${"sum".tr()}",
                                 style: AppStyle.w600s15h20DarkBluePrimary
                                     .copyWith(
-                                      decoration:
-                                          (widget
-                                                          .productData
-                                                          .data
-                                                          ?.discountType ??
-                                                      "")
-                                                  .isNotEmpty
-                                              ? TextDecoration.lineThrough
-                                              : TextDecoration.none,
-                                      color:
-                                          (widget
-                                                          .productData
-                                                          .data
-                                                          ?.discountType ??
-                                                      "")
-                                                  .isNotEmpty
-                                              ? AppColor.lightGray50
-                                              : AppColor.primaryDark,
-                                    ),
+                                  decoration:
+                                  (widget
+                                      .productData
+                                      .data
+                                      ?.discountType ??
+                                      "")
+                                      .isNotEmpty
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
+                                  color:
+                                  (widget
+                                      .productData
+                                      .data
+                                      ?.discountType ??
+                                      "")
+                                      .isNotEmpty
+                                      ? AppColor.lightGray50
+                                      : AppColor.primaryDark,
+                                ),
                               ),
                               if ((widget.productData.data?.discountType ?? "")
                                   .isNotEmpty)
@@ -212,8 +212,8 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                   bool isSelect = false;
                                   try {
                                     isSelect = success.any(
-                                      (e) =>
-                                          (e.id == widget.productData.data!.id),
+                                          (e) =>
+                                      (e.id == widget.productData.data!.id),
                                     );
                                   } catch (e) {}
                                   return GestureDetector(
@@ -242,10 +242,10 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                             Datum(
                                               id: widget.productData.data!.id,
                                               qty:
-                                                  widget
-                                                      .productData
-                                                      .data!
-                                                      .quantity ??
+                                              widget
+                                                  .productData
+                                                  .data!
+                                                  .quantity ??
                                                   1,
                                             ),
                                           ),
@@ -260,9 +260,9 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                       width: 40,
                                       decoration: BoxDecoration(
                                         color:
-                                            isSelect
-                                                ? AppColor.primary
-                                                : Colors.white,
+                                        isSelect
+                                            ? AppColor.primary
+                                            : Colors.white,
                                         borderRadius: BorderRadius.circular(12),
                                         border: Border.all(
                                           width: 2,
@@ -278,26 +278,26 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                                 height: 24,
                                                 width: 24,
                                                 child:
-                                                    CircularProgressIndicator(
-                                                      color:
-                                                          isSelect
-                                                              ? Colors.white
-                                                              : AppColor
-                                                                  .primary,
-                                                    ),
+                                                CircularProgressIndicator(
+                                                  color:
+                                                  isSelect
+                                                      ? Colors.white
+                                                      : AppColor
+                                                      .primary,
+                                                ),
                                               ),
                                             );
                                           }
                                           return Icon(
                                             isSelect
                                                 ? Icons
-                                                    .shopping_cart_checkout_rounded
+                                                .shopping_cart_checkout_rounded
                                                 : Icons.shopping_cart_outlined,
                                             size: 20,
                                             color:
-                                                isSelect
-                                                    ? Colors.white
-                                                    : Colors.black,
+                                            isSelect
+                                                ? Colors.white
+                                                : Colors.black,
                                           );
                                         },
                                       ),

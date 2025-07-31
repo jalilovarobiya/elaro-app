@@ -8,18 +8,15 @@ part of 'search_model.dart';
 
 _$SearchModelImpl _$$SearchModelImplFromJson(Map<String, dynamic> json) =>
     _$SearchModelImpl(
-      products:
-          (json['products'] as List<dynamic>?)
-              ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
-              .toList(),
-      categories:
-          (json['categories'] as List<dynamic>?)
-              ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
-              .toList(),
-      subCategories:
-          (json['sub_categories'] as List<dynamic>?)
-              ?.map((e) => SubCategory.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      categories: (json['categories'] as List<dynamic>?)
+          ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      subCategories: (json['sub_categories'] as List<dynamic>?)
+          ?.map((e) => SubCategory.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$SearchModelImplToJson(_$SearchModelImpl instance) =>
@@ -53,10 +50,9 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       nameUz: json['name_uz'] as String?,
       nameRu: json['name_ru'] as String?,
       nameCrl: json['name_crl'] as String?,
-      images:
-          (json['images'] as List<dynamic>?)
-              ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
@@ -69,13 +65,13 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
     };
 
 _$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
-  id: (json['id'] as num?)?.toInt(),
-  image: json['image'] as String?,
-  productId: (json['product_id'] as num?)?.toInt(),
-  createdAt: json['created_at'] as String?,
-  updatedAt: json['updated_at'] as String?,
-  imageUrl: json['image_url'] as String?,
-);
+      id: (json['id'] as num?)?.toInt(),
+      image: json['image'] as String?,
+      productId: (json['product_id'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      imageUrl: json['image_url'] as String?,
+    );
 
 Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
     <String, dynamic>{

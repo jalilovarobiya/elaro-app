@@ -17,7 +17,7 @@ class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return BlocProvider(
       create: (_) => sl<AuthBloc>(),
       child: BlocListener<AuthBloc, AuthState>(
@@ -64,6 +64,7 @@ class _AuthScaffold extends StatelessWidget {
         leading:
             context.canPop()
                 ? IconButton(
+
                   onPressed: () {
                     MainSources.currentPage.value == 0;
                     context.go(AppRouter.home);

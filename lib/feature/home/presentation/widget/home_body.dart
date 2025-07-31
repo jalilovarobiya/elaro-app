@@ -115,7 +115,7 @@ class _HomeBodyState extends State<HomeBody> {
               },
               category: "recomand",
             ),
-            AllProducts(),
+            // AllProducts(),
             12.h,
             Text("brand".tr(), style: AppStyle.w600s17h22DarkBluePrimary),
             12.h,

@@ -12,8 +12,7 @@ part of 'search_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SearchModel _$SearchModelFromJson(Map<String, dynamic> json) {
   return _SearchModel.fromJson(json);
@@ -41,15 +40,13 @@ mixin _$SearchModel {
 /// @nodoc
 abstract class $SearchModelCopyWith<$Res> {
   factory $SearchModelCopyWith(
-    SearchModel value,
-    $Res Function(SearchModel) then,
-  ) = _$SearchModelCopyWithImpl<$Res, SearchModel>;
+          SearchModel value, $Res Function(SearchModel) then) =
+      _$SearchModelCopyWithImpl<$Res, SearchModel>;
   @useResult
-  $Res call({
-    @JsonKey(name: "products") List<Product>? products,
-    @JsonKey(name: "categories") List<Category>? categories,
-    @JsonKey(name: "sub_categories") List<SubCategory>? subCategories,
-  });
+  $Res call(
+      {@JsonKey(name: "products") List<Product>? products,
+      @JsonKey(name: "categories") List<Category>? categories,
+      @JsonKey(name: "sub_categories") List<SubCategory>? subCategories});
 }
 
 /// @nodoc
@@ -71,26 +68,20 @@ class _$SearchModelCopyWithImpl<$Res, $Val extends SearchModel>
     Object? categories = freezed,
     Object? subCategories = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            products:
-                freezed == products
-                    ? _value.products
-                    : products // ignore: cast_nullable_to_non_nullable
-                        as List<Product>?,
-            categories:
-                freezed == categories
-                    ? _value.categories
-                    : categories // ignore: cast_nullable_to_non_nullable
-                        as List<Category>?,
-            subCategories:
-                freezed == subCategories
-                    ? _value.subCategories
-                    : subCategories // ignore: cast_nullable_to_non_nullable
-                        as List<SubCategory>?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      products: freezed == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
+      categories: freezed == categories
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<Category>?,
+      subCategories: freezed == subCategories
+          ? _value.subCategories
+          : subCategories // ignore: cast_nullable_to_non_nullable
+              as List<SubCategory>?,
+    ) as $Val);
   }
 }
 
@@ -98,16 +89,14 @@ class _$SearchModelCopyWithImpl<$Res, $Val extends SearchModel>
 abstract class _$$SearchModelImplCopyWith<$Res>
     implements $SearchModelCopyWith<$Res> {
   factory _$$SearchModelImplCopyWith(
-    _$SearchModelImpl value,
-    $Res Function(_$SearchModelImpl) then,
-  ) = __$$SearchModelImplCopyWithImpl<$Res>;
+          _$SearchModelImpl value, $Res Function(_$SearchModelImpl) then) =
+      __$$SearchModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "products") List<Product>? products,
-    @JsonKey(name: "categories") List<Category>? categories,
-    @JsonKey(name: "sub_categories") List<SubCategory>? subCategories,
-  });
+  $Res call(
+      {@JsonKey(name: "products") List<Product>? products,
+      @JsonKey(name: "categories") List<Category>? categories,
+      @JsonKey(name: "sub_categories") List<SubCategory>? subCategories});
 }
 
 /// @nodoc
@@ -115,9 +104,8 @@ class __$$SearchModelImplCopyWithImpl<$Res>
     extends _$SearchModelCopyWithImpl<$Res, _$SearchModelImpl>
     implements _$$SearchModelImplCopyWith<$Res> {
   __$$SearchModelImplCopyWithImpl(
-    _$SearchModelImpl _value,
-    $Res Function(_$SearchModelImpl) _then,
-  ) : super(_value, _then);
+      _$SearchModelImpl _value, $Res Function(_$SearchModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SearchModel
   /// with the given fields replaced by the non-null parameter values.
@@ -128,38 +116,33 @@ class __$$SearchModelImplCopyWithImpl<$Res>
     Object? categories = freezed,
     Object? subCategories = freezed,
   }) {
-    return _then(
-      _$SearchModelImpl(
-        products:
-            freezed == products
-                ? _value._products
-                : products // ignore: cast_nullable_to_non_nullable
-                    as List<Product>?,
-        categories:
-            freezed == categories
-                ? _value._categories
-                : categories // ignore: cast_nullable_to_non_nullable
-                    as List<Category>?,
-        subCategories:
-            freezed == subCategories
-                ? _value._subCategories
-                : subCategories // ignore: cast_nullable_to_non_nullable
-                    as List<SubCategory>?,
-      ),
-    );
+    return _then(_$SearchModelImpl(
+      products: freezed == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
+      categories: freezed == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<Category>?,
+      subCategories: freezed == subCategories
+          ? _value._subCategories
+          : subCategories // ignore: cast_nullable_to_non_nullable
+              as List<SubCategory>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$SearchModelImpl implements _SearchModel {
-  const _$SearchModelImpl({
-    @JsonKey(name: "products") final List<Product>? products,
-    @JsonKey(name: "categories") final List<Category>? categories,
-    @JsonKey(name: "sub_categories") final List<SubCategory>? subCategories,
-  }) : _products = products,
-       _categories = categories,
-       _subCategories = subCategories;
+  const _$SearchModelImpl(
+      {@JsonKey(name: "products") final List<Product>? products,
+      @JsonKey(name: "categories") final List<Category>? categories,
+      @JsonKey(name: "sub_categories") final List<SubCategory>? subCategories})
+      : _products = products,
+        _categories = categories,
+        _subCategories = subCategories;
 
   factory _$SearchModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchModelImplFromJson(json);
@@ -208,24 +191,19 @@ class _$SearchModelImpl implements _SearchModel {
         (other.runtimeType == runtimeType &&
             other is _$SearchModelImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
-            const DeepCollectionEquality().equals(
-              other._categories,
-              _categories,
-            ) &&
-            const DeepCollectionEquality().equals(
-              other._subCategories,
-              _subCategories,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories) &&
+            const DeepCollectionEquality()
+                .equals(other._subCategories, _subCategories));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_products),
-    const DeepCollectionEquality().hash(_categories),
-    const DeepCollectionEquality().hash(_subCategories),
-  );
+      runtimeType,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_categories),
+      const DeepCollectionEquality().hash(_subCategories));
 
   /// Create a copy of SearchModel
   /// with the given fields replaced by the non-null parameter values.
@@ -237,16 +215,18 @@ class _$SearchModelImpl implements _SearchModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SearchModelImplToJson(this);
+    return _$$SearchModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _SearchModel implements SearchModel {
-  const factory _SearchModel({
-    @JsonKey(name: "products") final List<Product>? products,
-    @JsonKey(name: "categories") final List<Category>? categories,
-    @JsonKey(name: "sub_categories") final List<SubCategory>? subCategories,
-  }) = _$SearchModelImpl;
+  const factory _SearchModel(
+      {@JsonKey(name: "products") final List<Product>? products,
+      @JsonKey(name: "categories") final List<Category>? categories,
+      @JsonKey(name: "sub_categories")
+      final List<SubCategory>? subCategories}) = _$SearchModelImpl;
 
   factory _SearchModel.fromJson(Map<String, dynamic> json) =
       _$SearchModelImpl.fromJson;
@@ -301,13 +281,12 @@ abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
       _$CategoryCopyWithImpl<$Res, Category>;
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name_uz") String? nameUz,
-    @JsonKey(name: "name_ru") String? nameRu,
-    @JsonKey(name: "name_crl") String? nameCrl,
-    @JsonKey(name: "image_url") dynamic imageUrl,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name_uz") String? nameUz,
+      @JsonKey(name: "name_ru") String? nameRu,
+      @JsonKey(name: "name_crl") String? nameCrl,
+      @JsonKey(name: "image_url") dynamic imageUrl});
 }
 
 /// @nodoc
@@ -331,36 +310,28 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? nameCrl = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            nameUz:
-                freezed == nameUz
-                    ? _value.nameUz
-                    : nameUz // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nameRu:
-                freezed == nameRu
-                    ? _value.nameRu
-                    : nameRu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nameCrl:
-                freezed == nameCrl
-                    ? _value.nameCrl
-                    : nameCrl // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            imageUrl:
-                freezed == imageUrl
-                    ? _value.imageUrl
-                    : imageUrl // ignore: cast_nullable_to_non_nullable
-                        as dynamic,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nameUz: freezed == nameUz
+          ? _value.nameUz
+          : nameUz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameRu: freezed == nameRu
+          ? _value.nameRu
+          : nameRu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameCrl: freezed == nameCrl
+          ? _value.nameCrl
+          : nameCrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ) as $Val);
   }
 }
 
@@ -368,18 +339,16 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
 abstract class _$$CategoryImplCopyWith<$Res>
     implements $CategoryCopyWith<$Res> {
   factory _$$CategoryImplCopyWith(
-    _$CategoryImpl value,
-    $Res Function(_$CategoryImpl) then,
-  ) = __$$CategoryImplCopyWithImpl<$Res>;
+          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
+      __$$CategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name_uz") String? nameUz,
-    @JsonKey(name: "name_ru") String? nameRu,
-    @JsonKey(name: "name_crl") String? nameCrl,
-    @JsonKey(name: "image_url") dynamic imageUrl,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name_uz") String? nameUz,
+      @JsonKey(name: "name_ru") String? nameRu,
+      @JsonKey(name: "name_crl") String? nameCrl,
+      @JsonKey(name: "image_url") dynamic imageUrl});
 }
 
 /// @nodoc
@@ -387,9 +356,8 @@ class __$$CategoryImplCopyWithImpl<$Res>
     extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
     implements _$$CategoryImplCopyWith<$Res> {
   __$$CategoryImplCopyWithImpl(
-    _$CategoryImpl _value,
-    $Res Function(_$CategoryImpl) _then,
-  ) : super(_value, _then);
+      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -402,48 +370,40 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? nameCrl = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(
-      _$CategoryImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        nameUz:
-            freezed == nameUz
-                ? _value.nameUz
-                : nameUz // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nameRu:
-            freezed == nameRu
-                ? _value.nameRu
-                : nameRu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nameCrl:
-            freezed == nameCrl
-                ? _value.nameCrl
-                : nameCrl // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        imageUrl:
-            freezed == imageUrl
-                ? _value.imageUrl
-                : imageUrl // ignore: cast_nullable_to_non_nullable
-                    as dynamic,
-      ),
-    );
+    return _then(_$CategoryImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nameUz: freezed == nameUz
+          ? _value.nameUz
+          : nameUz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameRu: freezed == nameRu
+          ? _value.nameRu
+          : nameRu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameCrl: freezed == nameCrl
+          ? _value.nameCrl
+          : nameCrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CategoryImpl implements _Category {
-  const _$CategoryImpl({
-    @JsonKey(name: "id") this.id,
-    @JsonKey(name: "name_uz") this.nameUz,
-    @JsonKey(name: "name_ru") this.nameRu,
-    @JsonKey(name: "name_crl") this.nameCrl,
-    @JsonKey(name: "image_url") this.imageUrl,
-  });
+  const _$CategoryImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "name_uz") this.nameUz,
+      @JsonKey(name: "name_ru") this.nameRu,
+      @JsonKey(name: "name_crl") this.nameCrl,
+      @JsonKey(name: "image_url") this.imageUrl});
 
   factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryImplFromJson(json);
@@ -483,14 +443,8 @@ class _$CategoryImpl implements _Category {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    nameUz,
-    nameRu,
-    nameCrl,
-    const DeepCollectionEquality().hash(imageUrl),
-  );
+  int get hashCode => Object.hash(runtimeType, id, nameUz, nameRu, nameCrl,
+      const DeepCollectionEquality().hash(imageUrl));
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -502,18 +456,19 @@ class _$CategoryImpl implements _Category {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CategoryImplToJson(this);
+    return _$$CategoryImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Category implements Category {
-  const factory _Category({
-    @JsonKey(name: "id") final int? id,
-    @JsonKey(name: "name_uz") final String? nameUz,
-    @JsonKey(name: "name_ru") final String? nameRu,
-    @JsonKey(name: "name_crl") final String? nameCrl,
-    @JsonKey(name: "image_url") final dynamic imageUrl,
-  }) = _$CategoryImpl;
+  const factory _Category(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "name_uz") final String? nameUz,
+      @JsonKey(name: "name_ru") final String? nameRu,
+      @JsonKey(name: "name_crl") final String? nameCrl,
+      @JsonKey(name: "image_url") final dynamic imageUrl}) = _$CategoryImpl;
 
   factory _Category.fromJson(Map<String, dynamic> json) =
       _$CategoryImpl.fromJson;
@@ -573,13 +528,12 @@ abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name_uz") String? nameUz,
-    @JsonKey(name: "name_ru") String? nameRu,
-    @JsonKey(name: "name_crl") String? nameCrl,
-    @JsonKey(name: "images") List<Image>? images,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name_uz") String? nameUz,
+      @JsonKey(name: "name_ru") String? nameRu,
+      @JsonKey(name: "name_crl") String? nameCrl,
+      @JsonKey(name: "images") List<Image>? images});
 }
 
 /// @nodoc
@@ -603,54 +557,44 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? nameCrl = freezed,
     Object? images = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            nameUz:
-                freezed == nameUz
-                    ? _value.nameUz
-                    : nameUz // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nameRu:
-                freezed == nameRu
-                    ? _value.nameRu
-                    : nameRu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nameCrl:
-                freezed == nameCrl
-                    ? _value.nameCrl
-                    : nameCrl // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            images:
-                freezed == images
-                    ? _value.images
-                    : images // ignore: cast_nullable_to_non_nullable
-                        as List<Image>?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nameUz: freezed == nameUz
+          ? _value.nameUz
+          : nameUz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameRu: freezed == nameRu
+          ? _value.nameRu
+          : nameRu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameCrl: freezed == nameCrl
+          ? _value.nameCrl
+          : nameCrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<Image>?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$$ProductImplCopyWith(
-    _$ProductImpl value,
-    $Res Function(_$ProductImpl) then,
-  ) = __$$ProductImplCopyWithImpl<$Res>;
+          _$ProductImpl value, $Res Function(_$ProductImpl) then) =
+      __$$ProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name_uz") String? nameUz,
-    @JsonKey(name: "name_ru") String? nameRu,
-    @JsonKey(name: "name_crl") String? nameCrl,
-    @JsonKey(name: "images") List<Image>? images,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name_uz") String? nameUz,
+      @JsonKey(name: "name_ru") String? nameRu,
+      @JsonKey(name: "name_crl") String? nameCrl,
+      @JsonKey(name: "images") List<Image>? images});
 }
 
 /// @nodoc
@@ -658,9 +602,8 @@ class __$$ProductImplCopyWithImpl<$Res>
     extends _$ProductCopyWithImpl<$Res, _$ProductImpl>
     implements _$$ProductImplCopyWith<$Res> {
   __$$ProductImplCopyWithImpl(
-    _$ProductImpl _value,
-    $Res Function(_$ProductImpl) _then,
-  ) : super(_value, _then);
+      _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -673,48 +616,41 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? nameCrl = freezed,
     Object? images = freezed,
   }) {
-    return _then(
-      _$ProductImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        nameUz:
-            freezed == nameUz
-                ? _value.nameUz
-                : nameUz // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nameRu:
-            freezed == nameRu
-                ? _value.nameRu
-                : nameRu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nameCrl:
-            freezed == nameCrl
-                ? _value.nameCrl
-                : nameCrl // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        images:
-            freezed == images
-                ? _value._images
-                : images // ignore: cast_nullable_to_non_nullable
-                    as List<Image>?,
-      ),
-    );
+    return _then(_$ProductImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nameUz: freezed == nameUz
+          ? _value.nameUz
+          : nameUz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameRu: freezed == nameRu
+          ? _value.nameRu
+          : nameRu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameCrl: freezed == nameCrl
+          ? _value.nameCrl
+          : nameCrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<Image>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ProductImpl implements _Product {
-  const _$ProductImpl({
-    @JsonKey(name: "id") this.id,
-    @JsonKey(name: "name_uz") this.nameUz,
-    @JsonKey(name: "name_ru") this.nameRu,
-    @JsonKey(name: "name_crl") this.nameCrl,
-    @JsonKey(name: "images") final List<Image>? images,
-  }) : _images = images;
+  const _$ProductImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "name_uz") this.nameUz,
+      @JsonKey(name: "name_ru") this.nameRu,
+      @JsonKey(name: "name_crl") this.nameCrl,
+      @JsonKey(name: "images") final List<Image>? images})
+      : _images = images;
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -761,14 +697,8 @@ class _$ProductImpl implements _Product {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    nameUz,
-    nameRu,
-    nameCrl,
-    const DeepCollectionEquality().hash(_images),
-  );
+  int get hashCode => Object.hash(runtimeType, id, nameUz, nameRu, nameCrl,
+      const DeepCollectionEquality().hash(_images));
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -780,18 +710,19 @@ class _$ProductImpl implements _Product {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProductImplToJson(this);
+    return _$$ProductImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Product implements Product {
-  const factory _Product({
-    @JsonKey(name: "id") final int? id,
-    @JsonKey(name: "name_uz") final String? nameUz,
-    @JsonKey(name: "name_ru") final String? nameRu,
-    @JsonKey(name: "name_crl") final String? nameCrl,
-    @JsonKey(name: "images") final List<Image>? images,
-  }) = _$ProductImpl;
+  const factory _Product(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "name_uz") final String? nameUz,
+      @JsonKey(name: "name_ru") final String? nameRu,
+      @JsonKey(name: "name_crl") final String? nameCrl,
+      @JsonKey(name: "images") final List<Image>? images}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -852,14 +783,13 @@ abstract class $ImageCopyWith<$Res> {
   factory $ImageCopyWith(Image value, $Res Function(Image) then) =
       _$ImageCopyWithImpl<$Res, Image>;
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "image") String? image,
-    @JsonKey(name: "product_id") int? productId,
-    @JsonKey(name: "created_at") String? createdAt,
-    @JsonKey(name: "updated_at") String? updatedAt,
-    @JsonKey(name: "image_url") String? imageUrl,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "product_id") int? productId,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "image_url") String? imageUrl});
 }
 
 /// @nodoc
@@ -884,60 +814,49 @@ class _$ImageCopyWithImpl<$Res, $Val extends Image>
     Object? updatedAt = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            image:
-                freezed == image
-                    ? _value.image
-                    : image // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            productId:
-                freezed == productId
-                    ? _value.productId
-                    : productId // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            createdAt:
-                freezed == createdAt
-                    ? _value.createdAt
-                    : createdAt // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            updatedAt:
-                freezed == updatedAt
-                    ? _value.updatedAt
-                    : updatedAt // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            imageUrl:
-                freezed == imageUrl
-                    ? _value.imageUrl
-                    : imageUrl // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productId: freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ImageImplCopyWith<$Res> implements $ImageCopyWith<$Res> {
   factory _$$ImageImplCopyWith(
-    _$ImageImpl value,
-    $Res Function(_$ImageImpl) then,
-  ) = __$$ImageImplCopyWithImpl<$Res>;
+          _$ImageImpl value, $Res Function(_$ImageImpl) then) =
+      __$$ImageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "image") String? image,
-    @JsonKey(name: "product_id") int? productId,
-    @JsonKey(name: "created_at") String? createdAt,
-    @JsonKey(name: "updated_at") String? updatedAt,
-    @JsonKey(name: "image_url") String? imageUrl,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "product_id") int? productId,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "image_url") String? imageUrl});
 }
 
 /// @nodoc
@@ -945,9 +864,8 @@ class __$$ImageImplCopyWithImpl<$Res>
     extends _$ImageCopyWithImpl<$Res, _$ImageImpl>
     implements _$$ImageImplCopyWith<$Res> {
   __$$ImageImplCopyWithImpl(
-    _$ImageImpl _value,
-    $Res Function(_$ImageImpl) _then,
-  ) : super(_value, _then);
+      _$ImageImpl _value, $Res Function(_$ImageImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of Image
   /// with the given fields replaced by the non-null parameter values.
@@ -961,54 +879,45 @@ class __$$ImageImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(
-      _$ImageImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        image:
-            freezed == image
-                ? _value.image
-                : image // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        productId:
-            freezed == productId
-                ? _value.productId
-                : productId // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        createdAt:
-            freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        updatedAt:
-            freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        imageUrl:
-            freezed == imageUrl
-                ? _value.imageUrl
-                : imageUrl // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$ImageImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productId: freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ImageImpl implements _Image {
-  const _$ImageImpl({
-    @JsonKey(name: "id") this.id,
-    @JsonKey(name: "image") this.image,
-    @JsonKey(name: "product_id") this.productId,
-    @JsonKey(name: "created_at") this.createdAt,
-    @JsonKey(name: "updated_at") this.updatedAt,
-    @JsonKey(name: "image_url") this.imageUrl,
-  });
+  const _$ImageImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "image") this.image,
+      @JsonKey(name: "product_id") this.productId,
+      @JsonKey(name: "created_at") this.createdAt,
+      @JsonKey(name: "updated_at") this.updatedAt,
+      @JsonKey(name: "image_url") this.imageUrl});
 
   factory _$ImageImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageImplFromJson(json);
@@ -1057,14 +966,7 @@ class _$ImageImpl implements _Image {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    image,
-    productId,
-    createdAt,
-    updatedAt,
-    imageUrl,
-  );
+      runtimeType, id, image, productId, createdAt, updatedAt, imageUrl);
 
   /// Create a copy of Image
   /// with the given fields replaced by the non-null parameter values.
@@ -1076,19 +978,20 @@ class _$ImageImpl implements _Image {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ImageImplToJson(this);
+    return _$$ImageImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Image implements Image {
-  const factory _Image({
-    @JsonKey(name: "id") final int? id,
-    @JsonKey(name: "image") final String? image,
-    @JsonKey(name: "product_id") final int? productId,
-    @JsonKey(name: "created_at") final String? createdAt,
-    @JsonKey(name: "updated_at") final String? updatedAt,
-    @JsonKey(name: "image_url") final String? imageUrl,
-  }) = _$ImageImpl;
+  const factory _Image(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "image") final String? image,
+      @JsonKey(name: "product_id") final int? productId,
+      @JsonKey(name: "created_at") final String? createdAt,
+      @JsonKey(name: "updated_at") final String? updatedAt,
+      @JsonKey(name: "image_url") final String? imageUrl}) = _$ImageImpl;
 
   factory _Image.fromJson(Map<String, dynamic> json) = _$ImageImpl.fromJson;
 
@@ -1151,18 +1054,16 @@ mixin _$SubCategory {
 /// @nodoc
 abstract class $SubCategoryCopyWith<$Res> {
   factory $SubCategoryCopyWith(
-    SubCategory value,
-    $Res Function(SubCategory) then,
-  ) = _$SubCategoryCopyWithImpl<$Res, SubCategory>;
+          SubCategory value, $Res Function(SubCategory) then) =
+      _$SubCategoryCopyWithImpl<$Res, SubCategory>;
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name_uz") String? nameUz,
-    @JsonKey(name: "name_ru") String? nameRu,
-    @JsonKey(name: "name_crl") String? nameCrl,
-    @JsonKey(name: "image") String? image,
-    @JsonKey(name: "image_url") String? imageUrl,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name_uz") String? nameUz,
+      @JsonKey(name: "name_ru") String? nameRu,
+      @JsonKey(name: "name_crl") String? nameCrl,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "image_url") String? imageUrl});
 }
 
 /// @nodoc
@@ -1187,41 +1088,32 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
     Object? image = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            nameUz:
-                freezed == nameUz
-                    ? _value.nameUz
-                    : nameUz // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nameRu:
-                freezed == nameRu
-                    ? _value.nameRu
-                    : nameRu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            nameCrl:
-                freezed == nameCrl
-                    ? _value.nameCrl
-                    : nameCrl // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            image:
-                freezed == image
-                    ? _value.image
-                    : image // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            imageUrl:
-                freezed == imageUrl
-                    ? _value.imageUrl
-                    : imageUrl // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nameUz: freezed == nameUz
+          ? _value.nameUz
+          : nameUz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameRu: freezed == nameRu
+          ? _value.nameRu
+          : nameRu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameCrl: freezed == nameCrl
+          ? _value.nameCrl
+          : nameCrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -1229,19 +1121,17 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
 abstract class _$$SubCategoryImplCopyWith<$Res>
     implements $SubCategoryCopyWith<$Res> {
   factory _$$SubCategoryImplCopyWith(
-    _$SubCategoryImpl value,
-    $Res Function(_$SubCategoryImpl) then,
-  ) = __$$SubCategoryImplCopyWithImpl<$Res>;
+          _$SubCategoryImpl value, $Res Function(_$SubCategoryImpl) then) =
+      __$$SubCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name_uz") String? nameUz,
-    @JsonKey(name: "name_ru") String? nameRu,
-    @JsonKey(name: "name_crl") String? nameCrl,
-    @JsonKey(name: "image") String? image,
-    @JsonKey(name: "image_url") String? imageUrl,
-  });
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name_uz") String? nameUz,
+      @JsonKey(name: "name_ru") String? nameRu,
+      @JsonKey(name: "name_crl") String? nameCrl,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "image_url") String? imageUrl});
 }
 
 /// @nodoc
@@ -1249,9 +1139,8 @@ class __$$SubCategoryImplCopyWithImpl<$Res>
     extends _$SubCategoryCopyWithImpl<$Res, _$SubCategoryImpl>
     implements _$$SubCategoryImplCopyWith<$Res> {
   __$$SubCategoryImplCopyWithImpl(
-    _$SubCategoryImpl _value,
-    $Res Function(_$SubCategoryImpl) _then,
-  ) : super(_value, _then);
+      _$SubCategoryImpl _value, $Res Function(_$SubCategoryImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SubCategory
   /// with the given fields replaced by the non-null parameter values.
@@ -1265,54 +1154,45 @@ class __$$SubCategoryImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(
-      _$SubCategoryImpl(
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        nameUz:
-            freezed == nameUz
-                ? _value.nameUz
-                : nameUz // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nameRu:
-            freezed == nameRu
-                ? _value.nameRu
-                : nameRu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        nameCrl:
-            freezed == nameCrl
-                ? _value.nameCrl
-                : nameCrl // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        image:
-            freezed == image
-                ? _value.image
-                : image // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        imageUrl:
-            freezed == imageUrl
-                ? _value.imageUrl
-                : imageUrl // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$SubCategoryImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nameUz: freezed == nameUz
+          ? _value.nameUz
+          : nameUz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameRu: freezed == nameRu
+          ? _value.nameRu
+          : nameRu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameCrl: freezed == nameCrl
+          ? _value.nameCrl
+          : nameCrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$SubCategoryImpl implements _SubCategory {
-  const _$SubCategoryImpl({
-    @JsonKey(name: "id") this.id,
-    @JsonKey(name: "name_uz") this.nameUz,
-    @JsonKey(name: "name_ru") this.nameRu,
-    @JsonKey(name: "name_crl") this.nameCrl,
-    @JsonKey(name: "image") this.image,
-    @JsonKey(name: "image_url") this.imageUrl,
-  });
+  const _$SubCategoryImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "name_uz") this.nameUz,
+      @JsonKey(name: "name_ru") this.nameRu,
+      @JsonKey(name: "name_crl") this.nameCrl,
+      @JsonKey(name: "image") this.image,
+      @JsonKey(name: "image_url") this.imageUrl});
 
   factory _$SubCategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubCategoryImplFromJson(json);
@@ -1370,19 +1250,20 @@ class _$SubCategoryImpl implements _SubCategory {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SubCategoryImplToJson(this);
+    return _$$SubCategoryImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _SubCategory implements SubCategory {
-  const factory _SubCategory({
-    @JsonKey(name: "id") final int? id,
-    @JsonKey(name: "name_uz") final String? nameUz,
-    @JsonKey(name: "name_ru") final String? nameRu,
-    @JsonKey(name: "name_crl") final String? nameCrl,
-    @JsonKey(name: "image") final String? image,
-    @JsonKey(name: "image_url") final String? imageUrl,
-  }) = _$SubCategoryImpl;
+  const factory _SubCategory(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "name_uz") final String? nameUz,
+      @JsonKey(name: "name_ru") final String? nameRu,
+      @JsonKey(name: "name_crl") final String? nameCrl,
+      @JsonKey(name: "image") final String? image,
+      @JsonKey(name: "image_url") final String? imageUrl}) = _$SubCategoryImpl;
 
   factory _SubCategory.fromJson(Map<String, dynamic> json) =
       _$SubCategoryImpl.fromJson;

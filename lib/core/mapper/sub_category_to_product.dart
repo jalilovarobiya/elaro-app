@@ -15,7 +15,7 @@ extension SubcategoryProductToProductMapper on sub.Product {
       descriptionUz: descriptionUz,
       descriptionCrl: descriptionCrl,
       descriptionRu: descriptionRu,
-      images: (images ?? []).map((e) => pro.Image(image: e.image)).toList(),
+      images: (images ?? []).map((e) => pro.ProductImage(image: e.image)).toList(),
     ),
   );
 }

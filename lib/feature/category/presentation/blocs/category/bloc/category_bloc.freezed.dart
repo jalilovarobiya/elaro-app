@@ -12,8 +12,7 @@ part of 'category_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CategoryEvent {
@@ -21,29 +20,35 @@ mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id) fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id)? fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id)? fetchData,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchData value) fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchData value)? fetchData,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchData value)? fetchData,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of CategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -55,9 +60,8 @@ mixin _$CategoryEvent {
 /// @nodoc
 abstract class $CategoryEventCopyWith<$Res> {
   factory $CategoryEventCopyWith(
-    CategoryEvent value,
-    $Res Function(CategoryEvent) then,
-  ) = _$CategoryEventCopyWithImpl<$Res, CategoryEvent>;
+          CategoryEvent value, $Res Function(CategoryEvent) then) =
+      _$CategoryEventCopyWithImpl<$Res, CategoryEvent>;
   @useResult
   $Res call({int id});
 }
@@ -76,17 +80,15 @@ class _$CategoryEventCopyWithImpl<$Res, $Val extends CategoryEvent>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null}) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
@@ -94,9 +96,8 @@ class _$CategoryEventCopyWithImpl<$Res, $Val extends CategoryEvent>
 abstract class _$$FetchDataImplCopyWith<$Res>
     implements $CategoryEventCopyWith<$Res> {
   factory _$$FetchDataImplCopyWith(
-    _$FetchDataImpl value,
-    $Res Function(_$FetchDataImpl) then,
-  ) = __$$FetchDataImplCopyWithImpl<$Res>;
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id});
@@ -107,24 +108,22 @@ class __$$FetchDataImplCopyWithImpl<$Res>
     extends _$CategoryEventCopyWithImpl<$Res, _$FetchDataImpl>
     implements _$$FetchDataImplCopyWith<$Res> {
   __$$FetchDataImplCopyWithImpl(
-    _$FetchDataImpl _value,
-    $Res Function(_$FetchDataImpl) _then,
-  ) : super(_value, _then);
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CategoryEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null}) {
-    return _then(
-      _$FetchDataImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$FetchDataImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -236,70 +235,60 @@ mixin _$CategoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )
-    success,
+    required TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)
+        success,
     required TResult Function(FailureModel data) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult? Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult? Function(FailureModel data)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CategoryStateCopyWith<$Res> {
   factory $CategoryStateCopyWith(
-    CategoryState value,
-    $Res Function(CategoryState) then,
-  ) = _$CategoryStateCopyWithImpl<$Res, CategoryState>;
+          CategoryState value, $Res Function(CategoryState) then) =
+      _$CategoryStateCopyWithImpl<$Res, CategoryState>;
 }
 
 /// @nodoc
@@ -319,9 +308,8 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -329,9 +317,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$CategoryStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -360,14 +347,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )
-    success,
+    required TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)
+        success,
     required TResult Function(FailureModel data) failure,
   }) {
     return loading();
@@ -377,14 +359,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult? Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult? Function(FailureModel data)? failure,
   }) {
     return loading?.call();
@@ -394,14 +371,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
   }) {
@@ -453,17 +425,15 @@ abstract class _Loading implements CategoryState {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
-    _$SuccessImpl value,
-    $Res Function(_$SuccessImpl) then,
-  ) = __$$SuccessImplCopyWithImpl<$Res>;
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({
-    CategoryModel data,
-    List<String> colors,
-    String selectedColor,
-    String minPrice,
-    String maxPrice,
-  });
+  $Res call(
+      {CategoryModel data,
+      List<String> colors,
+      String selectedColor,
+      String minPrice,
+      String maxPrice});
 
   $CategoryModelCopyWith<$Res> get data;
 }
@@ -473,9 +443,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
     extends _$CategoryStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl _value,
-    $Res Function(_$SuccessImpl) _then,
-  ) : super(_value, _then);
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -488,35 +457,28 @@ class __$$SuccessImplCopyWithImpl<$Res>
     Object? minPrice = null,
     Object? maxPrice = null,
   }) {
-    return _then(
-      _$SuccessImpl(
-        data:
-            null == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as CategoryModel,
-        colors:
-            null == colors
-                ? _value._colors
-                : colors // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-        selectedColor:
-            null == selectedColor
-                ? _value.selectedColor
-                : selectedColor // ignore: cast_nullable_to_non_nullable
-                    as String,
-        minPrice:
-            null == minPrice
-                ? _value.minPrice
-                : minPrice // ignore: cast_nullable_to_non_nullable
-                    as String,
-        maxPrice:
-            null == maxPrice
-                ? _value.maxPrice
-                : maxPrice // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$SuccessImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as CategoryModel,
+      colors: null == colors
+          ? _value._colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      selectedColor: null == selectedColor
+          ? _value.selectedColor
+          : selectedColor // ignore: cast_nullable_to_non_nullable
+              as String,
+      minPrice: null == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxPrice: null == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 
   /// Create a copy of CategoryState
@@ -533,13 +495,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({
-    required this.data,
-    required final List<String> colors,
-    required this.selectedColor,
-    required this.minPrice,
-    required this.maxPrice,
-  }) : _colors = colors;
+  const _$SuccessImpl(
+      {required this.data,
+      required final List<String> colors,
+      required this.selectedColor,
+      required this.minPrice,
+      required this.maxPrice})
+      : _colors = colors;
 
   @override
   final CategoryModel data;
@@ -580,13 +542,12 @@ class _$SuccessImpl implements _Success {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    data,
-    const DeepCollectionEquality().hash(_colors),
-    selectedColor,
-    minPrice,
-    maxPrice,
-  );
+      runtimeType,
+      data,
+      const DeepCollectionEquality().hash(_colors),
+      selectedColor,
+      minPrice,
+      maxPrice);
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -600,14 +561,9 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )
-    success,
+    required TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)
+        success,
     required TResult Function(FailureModel data) failure,
   }) {
     return success(data, colors, selectedColor, minPrice, maxPrice);
@@ -617,14 +573,9 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult? Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult? Function(FailureModel data)? failure,
   }) {
     return success?.call(data, colors, selectedColor, minPrice, maxPrice);
@@ -634,14 +585,9 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
   }) {
@@ -687,13 +633,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements CategoryState {
-  const factory _Success({
-    required final CategoryModel data,
-    required final List<String> colors,
-    required final String selectedColor,
-    required final String minPrice,
-    required final String maxPrice,
-  }) = _$SuccessImpl;
+  const factory _Success(
+      {required final CategoryModel data,
+      required final List<String> colors,
+      required final String selectedColor,
+      required final String minPrice,
+      required final String maxPrice}) = _$SuccessImpl;
 
   CategoryModel get data;
   List<String> get colors;
@@ -711,9 +656,8 @@ abstract class _Success implements CategoryState {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-    _$FailureImpl value,
-    $Res Function(_$FailureImpl) then,
-  ) = __$$FailureImplCopyWithImpl<$Res>;
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FailureModel data});
 }
@@ -723,24 +667,22 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$CategoryStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-    _$FailureImpl _value,
-    $Res Function(_$FailureImpl) _then,
-  ) : super(_value, _then);
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CategoryState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$FailureImpl(
-        data:
-            null == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as FailureModel,
-      ),
-    );
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$FailureImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as FailureModel,
+    ));
   }
 }
 
@@ -780,14 +722,9 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )
-    success,
+    required TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)
+        success,
     required TResult Function(FailureModel data) failure,
   }) {
     return failure(data);
@@ -797,14 +734,9 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult? Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult? Function(FailureModel data)? failure,
   }) {
     return failure?.call(data);
@@ -814,14 +746,9 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-      CategoryModel data,
-      List<String> colors,
-      String selectedColor,
-      String minPrice,
-      String maxPrice,
-    )?
-    success,
+    TResult Function(CategoryModel data, List<String> colors,
+            String selectedColor, String minPrice, String maxPrice)?
+        success,
     TResult Function(FailureModel data)? failure,
     required TResult orElse(),
   }) {

@@ -12,8 +12,7 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -22,58 +21,52 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String number) checkRegister,
     required TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )
-    register,
+            String number, String name, String surname, String password)
+        register,
     required TResult Function(String number, String otpCode) otpVerify,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String number)? checkRegister,
     TResult? Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult? Function(String number, String otpCode)? otpVerify,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String number)? checkRegister,
     TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult Function(String number, String otpCode)? otpVerify,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckRegister value) checkRegister,
     required TResult Function(_Register value) register,
     required TResult Function(_OtpVerify value) otpVerify,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckRegister value)? checkRegister,
     TResult? Function(_Register value)? register,
     TResult? Function(_OtpVerify value)? otpVerify,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckRegister value)? checkRegister,
     TResult Function(_Register value)? register,
     TResult Function(_OtpVerify value)? otpVerify,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -104,17 +97,15 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? number = null}) {
-    return _then(
-      _value.copyWith(
-            number:
-                null == number
-                    ? _value.number
-                    : number // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? number = null,
+  }) {
+    return _then(_value.copyWith(
+      number: null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -122,9 +113,8 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
 abstract class _$$CheckRegisterImplCopyWith<$Res>
     implements $AuthEventCopyWith<$Res> {
   factory _$$CheckRegisterImplCopyWith(
-    _$CheckRegisterImpl value,
-    $Res Function(_$CheckRegisterImpl) then,
-  ) = __$$CheckRegisterImplCopyWithImpl<$Res>;
+          _$CheckRegisterImpl value, $Res Function(_$CheckRegisterImpl) then) =
+      __$$CheckRegisterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String number});
@@ -135,23 +125,22 @@ class __$$CheckRegisterImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$CheckRegisterImpl>
     implements _$$CheckRegisterImplCopyWith<$Res> {
   __$$CheckRegisterImplCopyWithImpl(
-    _$CheckRegisterImpl _value,
-    $Res Function(_$CheckRegisterImpl) _then,
-  ) : super(_value, _then);
+      _$CheckRegisterImpl _value, $Res Function(_$CheckRegisterImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? number = null}) {
-    return _then(
-      _$CheckRegisterImpl(
-        null == number
-            ? _value.number
-            : number // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? number = null,
+  }) {
+    return _then(_$CheckRegisterImpl(
+      null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -192,12 +181,8 @@ class _$CheckRegisterImpl implements _CheckRegister {
   TResult when<TResult extends Object?>({
     required TResult Function(String number) checkRegister,
     required TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )
-    register,
+            String number, String name, String surname, String password)
+        register,
     required TResult Function(String number, String otpCode) otpVerify,
   }) {
     return checkRegister(number);
@@ -208,12 +193,8 @@ class _$CheckRegisterImpl implements _CheckRegister {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String number)? checkRegister,
     TResult? Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult? Function(String number, String otpCode)? otpVerify,
   }) {
     return checkRegister?.call(number);
@@ -224,12 +205,8 @@ class _$CheckRegisterImpl implements _CheckRegister {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String number)? checkRegister,
     TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult Function(String number, String otpCode)? otpVerify,
     required TResult orElse(),
   }) {
@@ -292,9 +269,8 @@ abstract class _CheckRegister implements AuthEvent {
 abstract class _$$RegisterImplCopyWith<$Res>
     implements $AuthEventCopyWith<$Res> {
   factory _$$RegisterImplCopyWith(
-    _$RegisterImpl value,
-    $Res Function(_$RegisterImpl) then,
-  ) = __$$RegisterImplCopyWithImpl<$Res>;
+          _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
+      __$$RegisterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String number, String name, String surname, String password});
@@ -305,9 +281,8 @@ class __$$RegisterImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$RegisterImpl>
     implements _$$RegisterImplCopyWith<$Res> {
   __$$RegisterImplCopyWithImpl(
-    _$RegisterImpl _value,
-    $Res Function(_$RegisterImpl) _then,
-  ) : super(_value, _then);
+      _$RegisterImpl _value, $Res Function(_$RegisterImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -319,42 +294,35 @@ class __$$RegisterImplCopyWithImpl<$Res>
     Object? surname = null,
     Object? password = null,
   }) {
-    return _then(
-      _$RegisterImpl(
-        number:
-            null == number
-                ? _value.number
-                : number // ignore: cast_nullable_to_non_nullable
-                    as String,
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        surname:
-            null == surname
-                ? _value.surname
-                : surname // ignore: cast_nullable_to_non_nullable
-                    as String,
-        password:
-            null == password
-                ? _value.password
-                : password // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$RegisterImpl(
+      number: null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$RegisterImpl implements _Register {
-  const _$RegisterImpl({
-    required this.number,
-    required this.name,
-    required this.surname,
-    required this.password,
-  });
+  const _$RegisterImpl(
+      {required this.number,
+      required this.name,
+      required this.surname,
+      required this.password});
 
   @override
   final String number;
@@ -398,12 +366,8 @@ class _$RegisterImpl implements _Register {
   TResult when<TResult extends Object?>({
     required TResult Function(String number) checkRegister,
     required TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )
-    register,
+            String number, String name, String surname, String password)
+        register,
     required TResult Function(String number, String otpCode) otpVerify,
   }) {
     return register(number, name, surname, password);
@@ -414,12 +378,8 @@ class _$RegisterImpl implements _Register {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String number)? checkRegister,
     TResult? Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult? Function(String number, String otpCode)? otpVerify,
   }) {
     return register?.call(number, name, surname, password);
@@ -430,12 +390,8 @@ class _$RegisterImpl implements _Register {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String number)? checkRegister,
     TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult Function(String number, String otpCode)? otpVerify,
     required TResult orElse(),
   }) {
@@ -481,12 +437,11 @@ class _$RegisterImpl implements _Register {
 }
 
 abstract class _Register implements AuthEvent {
-  const factory _Register({
-    required final String number,
-    required final String name,
-    required final String surname,
-    required final String password,
-  }) = _$RegisterImpl;
+  const factory _Register(
+      {required final String number,
+      required final String name,
+      required final String surname,
+      required final String password}) = _$RegisterImpl;
 
   @override
   String get number;
@@ -506,9 +461,8 @@ abstract class _Register implements AuthEvent {
 abstract class _$$OtpVerifyImplCopyWith<$Res>
     implements $AuthEventCopyWith<$Res> {
   factory _$$OtpVerifyImplCopyWith(
-    _$OtpVerifyImpl value,
-    $Res Function(_$OtpVerifyImpl) then,
-  ) = __$$OtpVerifyImplCopyWithImpl<$Res>;
+          _$OtpVerifyImpl value, $Res Function(_$OtpVerifyImpl) then) =
+      __$$OtpVerifyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String number, String otpCode});
@@ -519,29 +473,27 @@ class __$$OtpVerifyImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$OtpVerifyImpl>
     implements _$$OtpVerifyImplCopyWith<$Res> {
   __$$OtpVerifyImplCopyWithImpl(
-    _$OtpVerifyImpl _value,
-    $Res Function(_$OtpVerifyImpl) _then,
-  ) : super(_value, _then);
+      _$OtpVerifyImpl _value, $Res Function(_$OtpVerifyImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? number = null, Object? otpCode = null}) {
-    return _then(
-      _$OtpVerifyImpl(
-        number:
-            null == number
-                ? _value.number
-                : number // ignore: cast_nullable_to_non_nullable
-                    as String,
-        otpCode:
-            null == otpCode
-                ? _value.otpCode
-                : otpCode // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? number = null,
+    Object? otpCode = null,
+  }) {
+    return _then(_$OtpVerifyImpl(
+      number: null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+      otpCode: null == otpCode
+          ? _value.otpCode
+          : otpCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -585,12 +537,8 @@ class _$OtpVerifyImpl implements _OtpVerify {
   TResult when<TResult extends Object?>({
     required TResult Function(String number) checkRegister,
     required TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )
-    register,
+            String number, String name, String surname, String password)
+        register,
     required TResult Function(String number, String otpCode) otpVerify,
   }) {
     return otpVerify(number, otpCode);
@@ -601,12 +549,8 @@ class _$OtpVerifyImpl implements _OtpVerify {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String number)? checkRegister,
     TResult? Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult? Function(String number, String otpCode)? otpVerify,
   }) {
     return otpVerify?.call(number, otpCode);
@@ -617,12 +561,8 @@ class _$OtpVerifyImpl implements _OtpVerify {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String number)? checkRegister,
     TResult Function(
-      String number,
-      String name,
-      String surname,
-      String password,
-    )?
-    register,
+            String number, String name, String surname, String password)?
+        register,
     TResult Function(String number, String otpCode)? otpVerify,
     required TResult orElse(),
   }) {
@@ -668,10 +608,9 @@ class _$OtpVerifyImpl implements _OtpVerify {
 }
 
 abstract class _OtpVerify implements AuthEvent {
-  const factory _OtpVerify({
-    required final String number,
-    required final String otpCode,
-  }) = _$OtpVerifyImpl;
+  const factory _OtpVerify(
+      {required final String number,
+      required final String otpCode}) = _$OtpVerifyImpl;
 
   @override
   String get number;
@@ -695,7 +634,8 @@ mixin _$AuthState {
     required TResult Function(String phone) goToOtp,
     required TResult Function() success,
     required TResult Function(FailureModel failure) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -704,7 +644,8 @@ mixin _$AuthState {
     TResult? Function(String phone)? goToOtp,
     TResult? Function()? success,
     TResult? Function(FailureModel failure)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -714,7 +655,8 @@ mixin _$AuthState {
     TResult Function()? success,
     TResult Function(FailureModel failure)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -723,7 +665,8 @@ mixin _$AuthState {
     required TResult Function(_GoToOtp value) goToOtp,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -732,7 +675,8 @@ mixin _$AuthState {
     TResult? Function(_GoToOtp value)? goToOtp,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -742,7 +686,8 @@ mixin _$AuthState {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -768,9 +713,8 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -778,9 +722,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -899,9 +842,8 @@ abstract class _Initial implements AuthState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -909,9 +851,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -1029,10 +970,9 @@ abstract class _Loading implements AuthState {
 
 /// @nodoc
 abstract class _$$RegisterNeededImplCopyWith<$Res> {
-  factory _$$RegisterNeededImplCopyWith(
-    _$RegisterNeededImpl value,
-    $Res Function(_$RegisterNeededImpl) then,
-  ) = __$$RegisterNeededImplCopyWithImpl<$Res>;
+  factory _$$RegisterNeededImplCopyWith(_$RegisterNeededImpl value,
+          $Res Function(_$RegisterNeededImpl) then) =
+      __$$RegisterNeededImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phone});
 }
@@ -1042,24 +982,22 @@ class __$$RegisterNeededImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$RegisterNeededImpl>
     implements _$$RegisterNeededImplCopyWith<$Res> {
   __$$RegisterNeededImplCopyWithImpl(
-    _$RegisterNeededImpl _value,
-    $Res Function(_$RegisterNeededImpl) _then,
-  ) : super(_value, _then);
+      _$RegisterNeededImpl _value, $Res Function(_$RegisterNeededImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? phone = null}) {
-    return _then(
-      _$RegisterNeededImpl(
-        phone:
-            null == phone
-                ? _value.phone
-                : phone // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? phone = null,
+  }) {
+    return _then(_$RegisterNeededImpl(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1094,9 +1032,7 @@ class _$RegisterNeededImpl implements _RegisterNeeded {
   @pragma('vm:prefer-inline')
   _$$RegisterNeededImplCopyWith<_$RegisterNeededImpl> get copyWith =>
       __$$RegisterNeededImplCopyWithImpl<_$RegisterNeededImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1201,9 +1137,8 @@ abstract class _RegisterNeeded implements AuthState {
 /// @nodoc
 abstract class _$$GoToOtpImplCopyWith<$Res> {
   factory _$$GoToOtpImplCopyWith(
-    _$GoToOtpImpl value,
-    $Res Function(_$GoToOtpImpl) then,
-  ) = __$$GoToOtpImplCopyWithImpl<$Res>;
+          _$GoToOtpImpl value, $Res Function(_$GoToOtpImpl) then) =
+      __$$GoToOtpImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phone});
 }
@@ -1213,24 +1148,22 @@ class __$$GoToOtpImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$GoToOtpImpl>
     implements _$$GoToOtpImplCopyWith<$Res> {
   __$$GoToOtpImplCopyWithImpl(
-    _$GoToOtpImpl _value,
-    $Res Function(_$GoToOtpImpl) _then,
-  ) : super(_value, _then);
+      _$GoToOtpImpl _value, $Res Function(_$GoToOtpImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? phone = null}) {
-    return _then(
-      _$GoToOtpImpl(
-        phone:
-            null == phone
-                ? _value.phone
-                : phone // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? phone = null,
+  }) {
+    return _then(_$GoToOtpImpl(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1368,9 +1301,8 @@ abstract class _GoToOtp implements AuthState {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
-    _$SuccessImpl value,
-    $Res Function(_$SuccessImpl) then,
-  ) = __$$SuccessImplCopyWithImpl<$Res>;
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1378,9 +1310,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl _value,
-    $Res Function(_$SuccessImpl) _then,
-  ) : super(_value, _then);
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -1499,9 +1430,8 @@ abstract class _Success implements AuthState {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-    _$FailureImpl value,
-    $Res Function(_$FailureImpl) then,
-  ) = __$$FailureImplCopyWithImpl<$Res>;
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FailureModel failure});
 }
@@ -1511,23 +1441,22 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-    _$FailureImpl _value,
-    $Res Function(_$FailureImpl) _then,
-  ) : super(_value, _then);
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? failure = null}) {
-    return _then(
-      _$FailureImpl(
-        null == failure
-            ? _value.failure
-            : failure // ignore: cast_nullable_to_non_nullable
-                as FailureModel,
-      ),
-    );
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailureImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as FailureModel,
+    ));
   }
 }
 

@@ -12,8 +12,7 @@ part of 'card_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CardEvent {
@@ -24,7 +23,8 @@ mixin _$CardEvent {
     required TResult Function(String id, int quantity) clearCart,
     required TResult Function(String id, int count) updateQuantity,
     required TResult Function(String id) removeProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchData,
@@ -32,7 +32,8 @@ mixin _$CardEvent {
     TResult? Function(String id, int quantity)? clearCart,
     TResult? Function(String id, int count)? updateQuantity,
     TResult? Function(String id)? removeProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchData,
@@ -41,7 +42,8 @@ mixin _$CardEvent {
     TResult Function(String id, int count)? updateQuantity,
     TResult Function(String id)? removeProduct,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchData value) fetchData,
@@ -49,7 +51,8 @@ mixin _$CardEvent {
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_UpdateQuantity value) updateQuantity,
     required TResult Function(_RemoveProduct value) removeProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchData value)? fetchData,
@@ -57,7 +60,8 @@ mixin _$CardEvent {
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
     TResult? Function(_RemoveProduct value)? removeProduct,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchData value)? fetchData,
@@ -66,7 +70,8 @@ mixin _$CardEvent {
     TResult Function(_UpdateQuantity value)? updateQuantity,
     TResult Function(_RemoveProduct value)? removeProduct,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -92,9 +97,8 @@ class _$CardEventCopyWithImpl<$Res, $Val extends CardEvent>
 /// @nodoc
 abstract class _$$FetchDataImplCopyWith<$Res> {
   factory _$$FetchDataImplCopyWith(
-    _$FetchDataImpl value,
-    $Res Function(_$FetchDataImpl) then,
-  ) = __$$FetchDataImplCopyWithImpl<$Res>;
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -102,9 +106,8 @@ class __$$FetchDataImplCopyWithImpl<$Res>
     extends _$CardEventCopyWithImpl<$Res, _$FetchDataImpl>
     implements _$$FetchDataImplCopyWith<$Res> {
   __$$FetchDataImplCopyWithImpl(
-    _$FetchDataImpl _value,
-    $Res Function(_$FetchDataImpl) _then,
-  ) : super(_value, _then);
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -217,9 +220,8 @@ abstract class _FetchData implements CardEvent {
 /// @nodoc
 abstract class _$$AddProductImplCopyWith<$Res> {
   factory _$$AddProductImplCopyWith(
-    _$AddProductImpl value,
-    $Res Function(_$AddProductImpl) then,
-  ) = __$$AddProductImplCopyWithImpl<$Res>;
+          _$AddProductImpl value, $Res Function(_$AddProductImpl) then) =
+      __$$AddProductImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Datum product});
 
@@ -231,23 +233,22 @@ class __$$AddProductImplCopyWithImpl<$Res>
     extends _$CardEventCopyWithImpl<$Res, _$AddProductImpl>
     implements _$$AddProductImplCopyWith<$Res> {
   __$$AddProductImplCopyWithImpl(
-    _$AddProductImpl _value,
-    $Res Function(_$AddProductImpl) _then,
-  ) : super(_value, _then);
+      _$AddProductImpl _value, $Res Function(_$AddProductImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? product = null}) {
-    return _then(
-      _$AddProductImpl(
-        null == product
-            ? _value.product
-            : product // ignore: cast_nullable_to_non_nullable
-                as Datum,
-      ),
-    );
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_$AddProductImpl(
+      null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Datum,
+    ));
   }
 
   /// Create a copy of CardEvent
@@ -389,9 +390,8 @@ abstract class _AddProduct implements CardEvent {
 /// @nodoc
 abstract class _$$ClearCartImplCopyWith<$Res> {
   factory _$$ClearCartImplCopyWith(
-    _$ClearCartImpl value,
-    $Res Function(_$ClearCartImpl) then,
-  ) = __$$ClearCartImplCopyWithImpl<$Res>;
+          _$ClearCartImpl value, $Res Function(_$ClearCartImpl) then) =
+      __$$ClearCartImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String id, int quantity});
 }
@@ -401,27 +401,27 @@ class __$$ClearCartImplCopyWithImpl<$Res>
     extends _$CardEventCopyWithImpl<$Res, _$ClearCartImpl>
     implements _$$ClearCartImplCopyWith<$Res> {
   __$$ClearCartImplCopyWithImpl(
-    _$ClearCartImpl _value,
-    $Res Function(_$ClearCartImpl) _then,
-  ) : super(_value, _then);
+      _$ClearCartImpl _value, $Res Function(_$ClearCartImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? quantity = null}) {
-    return _then(
-      _$ClearCartImpl(
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                as String,
-        null == quantity
-            ? _value.quantity
-            : quantity // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? quantity = null,
+  }) {
+    return _then(_$ClearCartImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -558,10 +558,9 @@ abstract class _ClearCart implements CardEvent {
 
 /// @nodoc
 abstract class _$$UpdateQuantityImplCopyWith<$Res> {
-  factory _$$UpdateQuantityImplCopyWith(
-    _$UpdateQuantityImpl value,
-    $Res Function(_$UpdateQuantityImpl) then,
-  ) = __$$UpdateQuantityImplCopyWithImpl<$Res>;
+  factory _$$UpdateQuantityImplCopyWith(_$UpdateQuantityImpl value,
+          $Res Function(_$UpdateQuantityImpl) then) =
+      __$$UpdateQuantityImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String id, int count});
 }
@@ -571,27 +570,27 @@ class __$$UpdateQuantityImplCopyWithImpl<$Res>
     extends _$CardEventCopyWithImpl<$Res, _$UpdateQuantityImpl>
     implements _$$UpdateQuantityImplCopyWith<$Res> {
   __$$UpdateQuantityImplCopyWithImpl(
-    _$UpdateQuantityImpl _value,
-    $Res Function(_$UpdateQuantityImpl) _then,
-  ) : super(_value, _then);
+      _$UpdateQuantityImpl _value, $Res Function(_$UpdateQuantityImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? count = null}) {
-    return _then(
-      _$UpdateQuantityImpl(
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                as String,
-        null == count
-            ? _value.count
-            : count // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? count = null,
+  }) {
+    return _then(_$UpdateQuantityImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -629,9 +628,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @pragma('vm:prefer-inline')
   _$$UpdateQuantityImplCopyWith<_$UpdateQuantityImpl> get copyWith =>
       __$$UpdateQuantityImplCopyWithImpl<_$UpdateQuantityImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -731,9 +728,8 @@ abstract class _UpdateQuantity implements CardEvent {
 /// @nodoc
 abstract class _$$RemoveProductImplCopyWith<$Res> {
   factory _$$RemoveProductImplCopyWith(
-    _$RemoveProductImpl value,
-    $Res Function(_$RemoveProductImpl) then,
-  ) = __$$RemoveProductImplCopyWithImpl<$Res>;
+          _$RemoveProductImpl value, $Res Function(_$RemoveProductImpl) then) =
+      __$$RemoveProductImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String id});
 }
@@ -743,23 +739,22 @@ class __$$RemoveProductImplCopyWithImpl<$Res>
     extends _$CardEventCopyWithImpl<$Res, _$RemoveProductImpl>
     implements _$$RemoveProductImplCopyWith<$Res> {
   __$$RemoveProductImplCopyWithImpl(
-    _$RemoveProductImpl _value,
-    $Res Function(_$RemoveProductImpl) _then,
-  ) : super(_value, _then);
+      _$RemoveProductImpl _value, $Res Function(_$RemoveProductImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null}) {
-    return _then(
-      _$RemoveProductImpl(
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$RemoveProductImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -895,39 +890,45 @@ mixin _$CardState {
     required TResult Function() loading,
     required TResult Function(List<Datum> data, int? qty) success,
     required TResult Function() failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<Datum> data, int? qty)? success,
     TResult? Function()? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<Datum> data, int? qty)? success,
     TResult Function()? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -953,9 +954,8 @@ class _$CardStateCopyWithImpl<$Res, $Val extends CardState>
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -963,9 +963,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$CardStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardState
   /// with the given fields replaced by the non-null parameter values.
@@ -1066,9 +1065,8 @@ abstract class _Loading implements CardState {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
-    _$SuccessImpl value,
-    $Res Function(_$SuccessImpl) then,
-  ) = __$$SuccessImplCopyWithImpl<$Res>;
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Datum> data, int? qty});
 }
@@ -1078,29 +1076,27 @@ class __$$SuccessImplCopyWithImpl<$Res>
     extends _$CardStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl _value,
-    $Res Function(_$SuccessImpl) _then,
-  ) : super(_value, _then);
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null, Object? qty = freezed}) {
-    return _then(
-      _$SuccessImpl(
-        data:
-            null == data
-                ? _value._data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as List<Datum>,
-        qty:
-            freezed == qty
-                ? _value.qty
-                : qty // ignore: cast_nullable_to_non_nullable
-                    as int?,
-      ),
-    );
+  $Res call({
+    Object? data = null,
+    Object? qty = freezed,
+  }) {
+    return _then(_$SuccessImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Datum>,
+      qty: freezed == qty
+          ? _value.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
   }
 }
 
@@ -1108,7 +1104,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 class _$SuccessImpl implements _Success {
   const _$SuccessImpl({required final List<Datum> data, required this.qty})
-    : _data = data;
+      : _data = data;
 
   final List<Datum> _data;
   @override
@@ -1217,10 +1213,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements CardState {
-  const factory _Success({
-    required final List<Datum> data,
-    required final int? qty,
-  }) = _$SuccessImpl;
+  const factory _Success(
+      {required final List<Datum> data,
+      required final int? qty}) = _$SuccessImpl;
 
   List<Datum> get data;
   int? get qty;
@@ -1235,9 +1230,8 @@ abstract class _Success implements CardState {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-    _$FailureImpl value,
-    $Res Function(_$FailureImpl) then,
-  ) = __$$FailureImplCopyWithImpl<$Res>;
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1245,9 +1239,8 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$CardStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-    _$FailureImpl _value,
-    $Res Function(_$FailureImpl) _then,
-  ) : super(_value, _then);
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CardState
   /// with the given fields replaced by the non-null parameter values.

@@ -7,7 +7,11 @@ part of 'send_otp_model.dart';
 // **************************************************************************
 
 _$SendOtpModelImpl _$$SendOtpModelImplFromJson(Map<String, dynamic> json) =>
-    _$SendOtpModelImpl(message: json['message'] as String);
+    _$SendOtpModelImpl(
+      message: json['message'] as String,
+    );
 
 Map<String, dynamic> _$$SendOtpModelImplToJson(_$SendOtpModelImpl instance) =>
-    <String, dynamic>{'message': instance.message};
+    <String, dynamic>{
+      'message': instance.message,
+    };

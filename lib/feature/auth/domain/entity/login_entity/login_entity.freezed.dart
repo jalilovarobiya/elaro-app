@@ -12,8 +12,7 @@ part of 'login_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LoginEntity {
@@ -34,15 +33,13 @@ mixin _$LoginEntity {
 /// @nodoc
 abstract class $LoginEntityCopyWith<$Res> {
   factory $LoginEntityCopyWith(
-    LoginEntity value,
-    $Res Function(LoginEntity) then,
-  ) = _$LoginEntityCopyWithImpl<$Res, LoginEntity>;
+          LoginEntity value, $Res Function(LoginEntity) then) =
+      _$LoginEntityCopyWithImpl<$Res, LoginEntity>;
   @useResult
-  $Res call({
-    @JsonKey(name: "message") String? message,
-    @JsonKey(name: "access_token") String? accessToken,
-    @JsonKey(name: "token_type") String? tokenType,
-  });
+  $Res call(
+      {@JsonKey(name: "message") String? message,
+      @JsonKey(name: "access_token") String? accessToken,
+      @JsonKey(name: "token_type") String? tokenType});
 }
 
 /// @nodoc
@@ -64,26 +61,20 @@ class _$LoginEntityCopyWithImpl<$Res, $Val extends LoginEntity>
     Object? accessToken = freezed,
     Object? tokenType = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            message:
-                freezed == message
-                    ? _value.message
-                    : message // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            accessToken:
-                freezed == accessToken
-                    ? _value.accessToken
-                    : accessToken // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            tokenType:
-                freezed == tokenType
-                    ? _value.tokenType
-                    : tokenType // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenType: freezed == tokenType
+          ? _value.tokenType
+          : tokenType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -91,16 +82,14 @@ class _$LoginEntityCopyWithImpl<$Res, $Val extends LoginEntity>
 abstract class _$$LoginEntityImplCopyWith<$Res>
     implements $LoginEntityCopyWith<$Res> {
   factory _$$LoginEntityImplCopyWith(
-    _$LoginEntityImpl value,
-    $Res Function(_$LoginEntityImpl) then,
-  ) = __$$LoginEntityImplCopyWithImpl<$Res>;
+          _$LoginEntityImpl value, $Res Function(_$LoginEntityImpl) then) =
+      __$$LoginEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "message") String? message,
-    @JsonKey(name: "access_token") String? accessToken,
-    @JsonKey(name: "token_type") String? tokenType,
-  });
+  $Res call(
+      {@JsonKey(name: "message") String? message,
+      @JsonKey(name: "access_token") String? accessToken,
+      @JsonKey(name: "token_type") String? tokenType});
 }
 
 /// @nodoc
@@ -108,9 +97,8 @@ class __$$LoginEntityImplCopyWithImpl<$Res>
     extends _$LoginEntityCopyWithImpl<$Res, _$LoginEntityImpl>
     implements _$$LoginEntityImplCopyWith<$Res> {
   __$$LoginEntityImplCopyWithImpl(
-    _$LoginEntityImpl _value,
-    $Res Function(_$LoginEntityImpl) _then,
-  ) : super(_value, _then);
+      _$LoginEntityImpl _value, $Res Function(_$LoginEntityImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of LoginEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -121,36 +109,30 @@ class __$$LoginEntityImplCopyWithImpl<$Res>
     Object? accessToken = freezed,
     Object? tokenType = freezed,
   }) {
-    return _then(
-      _$LoginEntityImpl(
-        message:
-            freezed == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        accessToken:
-            freezed == accessToken
-                ? _value.accessToken
-                : accessToken // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        tokenType:
-            freezed == tokenType
-                ? _value.tokenType
-                : tokenType // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$LoginEntityImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenType: freezed == tokenType
+          ? _value.tokenType
+          : tokenType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$LoginEntityImpl implements _LoginEntity {
-  const _$LoginEntityImpl({
-    @JsonKey(name: "message") this.message,
-    @JsonKey(name: "access_token") this.accessToken,
-    @JsonKey(name: "token_type") this.tokenType,
-  });
+  const _$LoginEntityImpl(
+      {@JsonKey(name: "message") this.message,
+      @JsonKey(name: "access_token") this.accessToken,
+      @JsonKey(name: "token_type") this.tokenType});
 
   @override
   @JsonKey(name: "message")
@@ -192,11 +174,11 @@ class _$LoginEntityImpl implements _LoginEntity {
 }
 
 abstract class _LoginEntity implements LoginEntity {
-  const factory _LoginEntity({
-    @JsonKey(name: "message") final String? message,
-    @JsonKey(name: "access_token") final String? accessToken,
-    @JsonKey(name: "token_type") final String? tokenType,
-  }) = _$LoginEntityImpl;
+  const factory _LoginEntity(
+          {@JsonKey(name: "message") final String? message,
+          @JsonKey(name: "access_token") final String? accessToken,
+          @JsonKey(name: "token_type") final String? tokenType}) =
+      _$LoginEntityImpl;
 
   @override
   @JsonKey(name: "message")

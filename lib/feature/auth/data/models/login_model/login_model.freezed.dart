@@ -12,8 +12,7 @@ part of 'login_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LoginModel _$LoginModelFromJson(Map<String, dynamic> json) {
   return _LoginModel.fromJson(json);
@@ -41,15 +40,13 @@ mixin _$LoginModel {
 /// @nodoc
 abstract class $LoginModelCopyWith<$Res> {
   factory $LoginModelCopyWith(
-    LoginModel value,
-    $Res Function(LoginModel) then,
-  ) = _$LoginModelCopyWithImpl<$Res, LoginModel>;
+          LoginModel value, $Res Function(LoginModel) then) =
+      _$LoginModelCopyWithImpl<$Res, LoginModel>;
   @useResult
-  $Res call({
-    @JsonKey(name: "message") String? message,
-    @JsonKey(name: "access_token") String? accessToken,
-    @JsonKey(name: "token_type") String? tokenType,
-  });
+  $Res call(
+      {@JsonKey(name: "message") String? message,
+      @JsonKey(name: "access_token") String? accessToken,
+      @JsonKey(name: "token_type") String? tokenType});
 }
 
 /// @nodoc
@@ -71,26 +68,20 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
     Object? accessToken = freezed,
     Object? tokenType = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            message:
-                freezed == message
-                    ? _value.message
-                    : message // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            accessToken:
-                freezed == accessToken
-                    ? _value.accessToken
-                    : accessToken // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            tokenType:
-                freezed == tokenType
-                    ? _value.tokenType
-                    : tokenType // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenType: freezed == tokenType
+          ? _value.tokenType
+          : tokenType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -98,16 +89,14 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
 abstract class _$$LoginModelImplCopyWith<$Res>
     implements $LoginModelCopyWith<$Res> {
   factory _$$LoginModelImplCopyWith(
-    _$LoginModelImpl value,
-    $Res Function(_$LoginModelImpl) then,
-  ) = __$$LoginModelImplCopyWithImpl<$Res>;
+          _$LoginModelImpl value, $Res Function(_$LoginModelImpl) then) =
+      __$$LoginModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "message") String? message,
-    @JsonKey(name: "access_token") String? accessToken,
-    @JsonKey(name: "token_type") String? tokenType,
-  });
+  $Res call(
+      {@JsonKey(name: "message") String? message,
+      @JsonKey(name: "access_token") String? accessToken,
+      @JsonKey(name: "token_type") String? tokenType});
 }
 
 /// @nodoc
@@ -115,9 +104,8 @@ class __$$LoginModelImplCopyWithImpl<$Res>
     extends _$LoginModelCopyWithImpl<$Res, _$LoginModelImpl>
     implements _$$LoginModelImplCopyWith<$Res> {
   __$$LoginModelImplCopyWithImpl(
-    _$LoginModelImpl _value,
-    $Res Function(_$LoginModelImpl) _then,
-  ) : super(_value, _then);
+      _$LoginModelImpl _value, $Res Function(_$LoginModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of LoginModel
   /// with the given fields replaced by the non-null parameter values.
@@ -128,36 +116,30 @@ class __$$LoginModelImplCopyWithImpl<$Res>
     Object? accessToken = freezed,
     Object? tokenType = freezed,
   }) {
-    return _then(
-      _$LoginModelImpl(
-        message:
-            freezed == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        accessToken:
-            freezed == accessToken
-                ? _value.accessToken
-                : accessToken // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        tokenType:
-            freezed == tokenType
-                ? _value.tokenType
-                : tokenType // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$LoginModelImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenType: freezed == tokenType
+          ? _value.tokenType
+          : tokenType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$LoginModelImpl implements _LoginModel {
-  const _$LoginModelImpl({
-    @JsonKey(name: "message") this.message,
-    @JsonKey(name: "access_token") this.accessToken,
-    @JsonKey(name: "token_type") this.tokenType,
-  });
+  const _$LoginModelImpl(
+      {@JsonKey(name: "message") this.message,
+      @JsonKey(name: "access_token") this.accessToken,
+      @JsonKey(name: "token_type") this.tokenType});
 
   factory _$LoginModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginModelImplFromJson(json);
@@ -203,16 +185,17 @@ class _$LoginModelImpl implements _LoginModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LoginModelImplToJson(this);
+    return _$$LoginModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _LoginModel implements LoginModel {
-  const factory _LoginModel({
-    @JsonKey(name: "message") final String? message,
-    @JsonKey(name: "access_token") final String? accessToken,
-    @JsonKey(name: "token_type") final String? tokenType,
-  }) = _$LoginModelImpl;
+  const factory _LoginModel(
+      {@JsonKey(name: "message") final String? message,
+      @JsonKey(name: "access_token") final String? accessToken,
+      @JsonKey(name: "token_type") final String? tokenType}) = _$LoginModelImpl;
 
   factory _LoginModel.fromJson(Map<String, dynamic> json) =
       _$LoginModelImpl.fromJson;

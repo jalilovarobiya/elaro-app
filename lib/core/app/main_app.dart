@@ -51,6 +51,9 @@ class MainApp extends StatelessWidget {
         ],
         child: MaterialApp.router(
           localizationsDelegates: context.localizationDelegates,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
