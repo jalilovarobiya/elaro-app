@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
+// import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
@@ -9,8 +9,9 @@ import 'package:elaro_app/core/widgets/custom_toast.dart';
 import 'package:elaro_app/core/widgets/favourite_button.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
+import 'package:elaro_app/feature/favorite/presentation/bloc/favourite_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/product_model.dart'
-as product;
+    as product;
 import 'package:elaro_app/feature/home/data/model/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,29 +55,22 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                     ),
                     margin: const EdgeInsets.all(4),
                     padding: const EdgeInsets.all(16),
-                    child:
-                    (widget.productData.data?.images ?? []).isNotEmpty
+                    child: (widget.productData.data?.images ?? []).isNotEmpty
                         ? Center(
-                      child: CachedNetworkImage(
-                        fit: BoxFit.fitWidth,
-                        imageUrl:
-                        widget
-                            .productData
-                            .data
-                            ?.images
-                            ?.firstOrNull
-                            ?.image ??
-                            "",
-                        progressIndicatorBuilder:
-                            (context, url, downloadProgress) =>
-                            CircularProgressIndicator(
-                              color: AppColor.primary,
+                            child: CachedNetworkImage(
+                              fit: BoxFit.fitWidth,
+                              imageUrl: widget.productData.data?.images
+                                      ?.firstOrNull?.image ??
+                                  "",
+                              progressIndicatorBuilder:
+                                  (context, url, downloadProgress) =>
+                                      CircularProgressIndicator(
+                                color: AppColor.primary,
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
                             ),
-                        errorWidget:
-                            (context, url, error) =>
-                        const Icon(Icons.error),
-                      ),
-                    )
+                          )
                         : SizedBox(),
                   ),
                   Positioned(
@@ -85,41 +79,41 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                     child: BlocBuilder<FavouriteBloc, FavouriteState>(
                       builder: (context, state) {
                         return state.whenOrNull(
-                          allProduct: (data) {
-                            final isSelected = data.any(
+                              allProduct: (data) {
+                                final isSelected = data.any(
                                   (e) =>
-                              e.productId ==
-                                  widget.productData.data?.id.toString(),
-                            );
-                            return FavouriteButton(
-                              ontap: () async {
-                                if (!(await Utils().isLogin())) {
-                                  CustomToast.showToast(
-                                    context,
-                                    AppImages.error,
-                                    "required_login".tr(),
-                                    Colors.white,
-                                    Colors.red,
-                                  );
-                                }
-                                if (isSelected) {
-                                  context.read<FavouriteBloc>().add(
-                                    FavouriteEvent.deleteProduct(
-                                      widget.productData.data?.id ?? 0,
-                                    ),
-                                  );
-                                } else {
-                                  context.read<FavouriteBloc>().add(
-                                    FavouriteEvent.addProduct(
-                                      widget.productData.data!,
-                                    ),
-                                  );
-                                }
+                                      e.productId ==
+                                      widget.productData.data?.id.toString(),
+                                );
+                                return FavouriteButton(
+                                  ontap: () async {
+                                    if (!(await Utils().isLogin())) {
+                                      CustomToast.showToast(
+                                        context,
+                                        AppImages.error,
+                                        "required_login".tr(),
+                                        Colors.white,
+                                        Colors.red,
+                                      );
+                                    }
+                                    if (isSelected) {
+                                      context.read<FavouriteBloc>().add(
+                                            FavouriteEvent.deleteProduct(
+                                              widget.productData.data?.id ?? 0,
+                                            ),
+                                          );
+                                    } else {
+                                      context.read<FavouriteBloc>().add(
+                                            FavouriteEvent.addProduct(
+                                              widget.productData.data!,
+                                            ),
+                                          );
+                                    }
+                                  },
+                                  isSelected: isSelected,
+                                );
                               },
-                              isSelected: isSelected,
-                            );
-                          },
-                        ) ??
+                            ) ??
                             SizedBox();
                       },
                     ),
@@ -170,26 +164,20 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                             children: [
                               Text(
                                 "${Utils.cashFormat(widget.productData.data?.price ?? "")} ${"sum".tr()}",
-                                style: AppStyle.w600s15h20DarkBluePrimary
-                                    .copyWith(
+                                style:
+                                    AppStyle.w600s15h20DarkBluePrimary.copyWith(
                                   decoration:
-                                  (widget
-                                      .productData
-                                      .data
-                                      ?.discountType ??
-                                      "")
-                                      .isNotEmpty
-                                      ? TextDecoration.lineThrough
-                                      : TextDecoration.none,
+                                      (widget.productData.data?.discountType ??
+                                                  "")
+                                              .isNotEmpty
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.none,
                                   color:
-                                  (widget
-                                      .productData
-                                      .data
-                                      ?.discountType ??
-                                      "")
-                                      .isNotEmpty
-                                      ? AppColor.lightGray50
-                                      : AppColor.primaryDark,
+                                      (widget.productData.data?.discountType ??
+                                                  "")
+                                              .isNotEmpty
+                                          ? AppColor.lightGray50
+                                          : AppColor.primaryDark,
                                 ),
                               ),
                               if ((widget.productData.data?.discountType ?? "")
@@ -212,8 +200,8 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                   bool isSelect = false;
                                   try {
                                     isSelect = success.any(
-                                          (e) =>
-                                      (e.id == widget.productData.data!.id),
+                                      (e) =>
+                                          (e.id == widget.productData.data!.id),
                                     );
                                   } catch (e) {}
                                   return GestureDetector(
@@ -231,25 +219,24 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                       loading.value = true;
                                       if (isSelect) {
                                         context.read<CardBloc>().add(
-                                          CardEvent.removeProduct(
-                                            (widget.productData.data?.id ?? 0)
-                                                .toString(),
-                                          ),
-                                        );
+                                              CardEvent.removeProduct(
+                                                (widget.productData.data?.id ??
+                                                        0)
+                                                    .toString(),
+                                              ),
+                                            );
                                       } else {
                                         context.read<CardBloc>().add(
-                                          CardEvent.addProduct(
-                                            Datum(
-                                              id: widget.productData.data!.id,
-                                              qty:
-                                              widget
-                                                  .productData
-                                                  .data!
-                                                  .quantity ??
-                                                  1,
-                                            ),
-                                          ),
-                                        );
+                                              CardEvent.addProduct(
+                                                Datum(
+                                                  id: widget
+                                                      .productData.data!.id,
+                                                  qty: widget.productData.data!
+                                                          .quantity ??
+                                                      1,
+                                                ),
+                                              ),
+                                            );
                                       }
                                     },
                                     child: AnimatedContainer(
@@ -259,8 +246,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                       height: 40,
                                       width: 40,
                                       decoration: BoxDecoration(
-                                        color:
-                                        isSelect
+                                        color: isSelect
                                             ? AppColor.primary
                                             : Colors.white,
                                         borderRadius: BorderRadius.circular(12),
@@ -278,12 +264,10 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                                 height: 24,
                                                 width: 24,
                                                 child:
-                                                CircularProgressIndicator(
-                                                  color:
-                                                  isSelect
+                                                    CircularProgressIndicator(
+                                                  color: isSelect
                                                       ? Colors.white
-                                                      : AppColor
-                                                      .primary,
+                                                      : AppColor.primary,
                                                 ),
                                               ),
                                             );
@@ -291,11 +275,10 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                                           return Icon(
                                             isSelect
                                                 ? Icons
-                                                .shopping_cart_checkout_rounded
+                                                    .shopping_cart_checkout_rounded
                                                 : Icons.shopping_cart_outlined,
                                             size: 20,
-                                            color:
-                                            isSelect
+                                            color: isSelect
                                                 ? Colors.white
                                                 : Colors.black,
                                           );

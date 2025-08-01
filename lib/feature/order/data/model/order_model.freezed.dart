@@ -12,8 +12,7 @@ part of 'order_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OrderModel _$OrderModelFromJson(Map<String, dynamic> json) {
   return _OrderModel.fromJson(json);
@@ -45,17 +44,15 @@ mixin _$OrderModel {
 /// @nodoc
 abstract class $OrderModelCopyWith<$Res> {
   factory $OrderModelCopyWith(
-    OrderModel value,
-    $Res Function(OrderModel) then,
-  ) = _$OrderModelCopyWithImpl<$Res, OrderModel>;
+          OrderModel value, $Res Function(OrderModel) then) =
+      _$OrderModelCopyWithImpl<$Res, OrderModel>;
   @useResult
-  $Res call({
-    @JsonKey(name: "message") String? message,
-    @JsonKey(name: "order_id") int? orderId,
-    @JsonKey(name: "total_amount") int? totalAmount,
-    @JsonKey(name: "payment_url") String? paymentUrl,
-    @JsonKey(name: "payment_type") String? paymentType,
-  });
+  $Res call(
+      {@JsonKey(name: "message") String? message,
+      @JsonKey(name: "order_id") int? orderId,
+      @JsonKey(name: "total_amount") int? totalAmount,
+      @JsonKey(name: "payment_url") String? paymentUrl,
+      @JsonKey(name: "payment_type") String? paymentType});
 }
 
 /// @nodoc
@@ -79,36 +76,28 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
     Object? paymentUrl = freezed,
     Object? paymentType = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            message:
-                freezed == message
-                    ? _value.message
-                    : message // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            orderId:
-                freezed == orderId
-                    ? _value.orderId
-                    : orderId // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            totalAmount:
-                freezed == totalAmount
-                    ? _value.totalAmount
-                    : totalAmount // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            paymentUrl:
-                freezed == paymentUrl
-                    ? _value.paymentUrl
-                    : paymentUrl // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            paymentType:
-                freezed == paymentType
-                    ? _value.paymentType
-                    : paymentType // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalAmount: freezed == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      paymentUrl: freezed == paymentUrl
+          ? _value.paymentUrl
+          : paymentUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paymentType: freezed == paymentType
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -116,18 +105,16 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
 abstract class _$$OrderModelImplCopyWith<$Res>
     implements $OrderModelCopyWith<$Res> {
   factory _$$OrderModelImplCopyWith(
-    _$OrderModelImpl value,
-    $Res Function(_$OrderModelImpl) then,
-  ) = __$$OrderModelImplCopyWithImpl<$Res>;
+          _$OrderModelImpl value, $Res Function(_$OrderModelImpl) then) =
+      __$$OrderModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    @JsonKey(name: "message") String? message,
-    @JsonKey(name: "order_id") int? orderId,
-    @JsonKey(name: "total_amount") int? totalAmount,
-    @JsonKey(name: "payment_url") String? paymentUrl,
-    @JsonKey(name: "payment_type") String? paymentType,
-  });
+  $Res call(
+      {@JsonKey(name: "message") String? message,
+      @JsonKey(name: "order_id") int? orderId,
+      @JsonKey(name: "total_amount") int? totalAmount,
+      @JsonKey(name: "payment_url") String? paymentUrl,
+      @JsonKey(name: "payment_type") String? paymentType});
 }
 
 /// @nodoc
@@ -135,9 +122,8 @@ class __$$OrderModelImplCopyWithImpl<$Res>
     extends _$OrderModelCopyWithImpl<$Res, _$OrderModelImpl>
     implements _$$OrderModelImplCopyWith<$Res> {
   __$$OrderModelImplCopyWithImpl(
-    _$OrderModelImpl _value,
-    $Res Function(_$OrderModelImpl) _then,
-  ) : super(_value, _then);
+      _$OrderModelImpl _value, $Res Function(_$OrderModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OrderModel
   /// with the given fields replaced by the non-null parameter values.
@@ -150,48 +136,40 @@ class __$$OrderModelImplCopyWithImpl<$Res>
     Object? paymentUrl = freezed,
     Object? paymentType = freezed,
   }) {
-    return _then(
-      _$OrderModelImpl(
-        message:
-            freezed == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        orderId:
-            freezed == orderId
-                ? _value.orderId
-                : orderId // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        totalAmount:
-            freezed == totalAmount
-                ? _value.totalAmount
-                : totalAmount // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        paymentUrl:
-            freezed == paymentUrl
-                ? _value.paymentUrl
-                : paymentUrl // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        paymentType:
-            freezed == paymentType
-                ? _value.paymentType
-                : paymentType // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$OrderModelImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalAmount: freezed == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      paymentUrl: freezed == paymentUrl
+          ? _value.paymentUrl
+          : paymentUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paymentType: freezed == paymentType
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$OrderModelImpl implements _OrderModel {
-  const _$OrderModelImpl({
-    @JsonKey(name: "message") this.message,
-    @JsonKey(name: "order_id") this.orderId,
-    @JsonKey(name: "total_amount") this.totalAmount,
-    @JsonKey(name: "payment_url") this.paymentUrl,
-    @JsonKey(name: "payment_type") this.paymentType,
-  });
+  const _$OrderModelImpl(
+      {@JsonKey(name: "message") this.message,
+      @JsonKey(name: "order_id") this.orderId,
+      @JsonKey(name: "total_amount") this.totalAmount,
+      @JsonKey(name: "payment_url") this.paymentUrl,
+      @JsonKey(name: "payment_type") this.paymentType});
 
   factory _$OrderModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderModelImplFromJson(json);
@@ -235,13 +213,7 @@ class _$OrderModelImpl implements _OrderModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    message,
-    orderId,
-    totalAmount,
-    paymentUrl,
-    paymentType,
-  );
+      runtimeType, message, orderId, totalAmount, paymentUrl, paymentType);
 
   /// Create a copy of OrderModel
   /// with the given fields replaced by the non-null parameter values.
@@ -253,18 +225,20 @@ class _$OrderModelImpl implements _OrderModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderModelImplToJson(this);
+    return _$$OrderModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _OrderModel implements OrderModel {
-  const factory _OrderModel({
-    @JsonKey(name: "message") final String? message,
-    @JsonKey(name: "order_id") final int? orderId,
-    @JsonKey(name: "total_amount") final int? totalAmount,
-    @JsonKey(name: "payment_url") final String? paymentUrl,
-    @JsonKey(name: "payment_type") final String? paymentType,
-  }) = _$OrderModelImpl;
+  const factory _OrderModel(
+          {@JsonKey(name: "message") final String? message,
+          @JsonKey(name: "order_id") final int? orderId,
+          @JsonKey(name: "total_amount") final int? totalAmount,
+          @JsonKey(name: "payment_url") final String? paymentUrl,
+          @JsonKey(name: "payment_type") final String? paymentType}) =
+      _$OrderModelImpl;
 
   factory _OrderModel.fromJson(Map<String, dynamic> json) =
       _$OrderModelImpl.fromJson;

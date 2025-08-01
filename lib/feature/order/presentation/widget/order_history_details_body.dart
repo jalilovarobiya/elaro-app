@@ -9,7 +9,6 @@ import 'package:elaro_app/feature/auth/presentation/widgets/button_widget.dart';
 import 'package:elaro_app/feature/order/data/model/order_history_model.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class OrderHistoryDetailsBody extends StatefulWidget {
   final Datum data;

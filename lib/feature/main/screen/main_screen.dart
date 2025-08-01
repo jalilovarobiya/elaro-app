@@ -12,47 +12,13 @@ import 'package:go_router/go_router.dart';
 
 class MainScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
-  final int? initIndex;
-
-  const MainScreen({super.key, required this.navigationShell, this.initIndex});
+  const MainScreen({super.key, required this.navigationShell});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  late final AppLinks _appLinks;
-
-  @override
-  void initState() {
-    if (widget.initIndex != null) {
-      int initIndex = widget.initIndex!;
-      MainSources.currentPage.value = initIndex;
-    }
-    _appLinks = AppLinks();
-    _listenToLinks();
-    super.initState();
-  }
-
-  void _listenToLinks() async {
-    _appLinks.uriLinkStream.listen((Uri? uri) {
-      if (uri != null) {
-        _handleIncomingLink(uri);
-      }
-    });
-    final Uri? initialUri = await _appLinks.getLatestLink();
-    if (initialUri != null) {
-      _handleIncomingLink(initialUri);
-    }
-  }
-
-  void _handleIncomingLink(Uri uri) {
-    if (uri.pathSegments.contains('product')) {
-      final productId = uri.pathSegments.last;
-      context.push("/${uri.pathSegments.first}", extra: productId);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

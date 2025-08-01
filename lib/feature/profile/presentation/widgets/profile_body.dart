@@ -7,7 +7,7 @@ import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
 import 'package:elaro_app/core/widgets/support_dialog.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/button_widget.dart';
 import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
-import 'package:elaro_app/feature/profile/presentation/widgets/profile_edit_page.dart';
+import 'package:elaro_app/feature/profile/presentation/widgets/profile_info_tile.dart';
 import 'package:elaro_app/feature/profile/presentation/widgets/profile_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileBody extends StatefulWidget {
   const ProfileBody({super.key});
@@ -89,7 +89,6 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ),
                 ProfileWidget(
                   onTap: () => context.push(AppRouter.location),
-
                   icon: CupertinoIcons.location_solid,
                   title: "location",
                 ),
@@ -108,7 +107,15 @@ class _ProfileBodyState extends State<ProfileBody> {
                   icon: CupertinoIcons.chat_bubble_2,
                   title: "support",
                 ),
-                ProfileWidget(icon: CupertinoIcons.info, title: "info"),
+                ProfileWidget(
+                  icon: CupertinoIcons.info,
+                  title: "info",
+                  onTap: () {
+                    launch(
+                      "https://elaro-uz-app.vercel.app/delivery?isApp=true",
+                    );
+                  },
+                ),
                 ProfileWidget(
                   onTap: () {
                     showDialog(
@@ -195,11 +202,6 @@ class _ProfileBodyState extends State<ProfileBody> {
                                     AppImages.error,
                                     color: Colors.red,
                                   ),
-                                  // Icon(
-                                  //   Icons.warning_amber_rounded,
-                                  //   color: Colors.red,
-                                  //   size: 32,
-                                  // ),
                                 ),
                               ),
                             ],
@@ -273,51 +275,6 @@ class ProfileInfoLoadingTile extends StatelessWidget {
           color: Colors.white,
         ),
         child: const ListTile(),
-      ),
-    );
-  }
-}
-
-class ProfileInfoTile extends StatelessWidget {
-  final String name;
-  final String last;
-  final String address;
-  final String phone;
-
-  const ProfileInfoTile({
-    required this.name,
-    required this.phone,
-    required this.address,
-    required this.last,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ZoomTapAnimation(
-      onTap: () {
-        Navigator.of(context).push(
-          CupertinoPageRoute(
-            builder:
-                (context) => ProfileEditPage(
-                  firstName: name,
-                  lastName: last,
-                  address: address,
-                ),
-          ),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: ListTile(
-          leading: const Icon(Icons.person, size: 30),
-          title: Text("$name $last"),
-          subtitle: Text(phone),
-          trailing: const Icon(Icons.arrow_forward_ios_sharp, size: 24),
-        ),
       ),
     );
   }

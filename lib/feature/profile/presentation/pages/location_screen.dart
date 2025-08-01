@@ -1,5 +1,6 @@
 import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/core/widgets/custom_appbar.dart';
+import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,9 +29,11 @@ class LocationScreen extends StatelessWidget {
               }
             },
             leading: Icon(Icons.location_on_outlined),
-            title: Text(
-              "Qashqadaryo viloyati, Qarshi shahri, Nasaf ko'chasi, 180100",
-              maxLines: 3,
+            title: Translator(
+              uz: "Qashqadaryo viloyati, Qarshi shahri, Nasaf ko'chasi, 180100",
+              ru: "Кашкадарьинская область, Карши, улица Насаф, 180100",
+              crl: "Қашқадарё вилояти, Қарши шаҳри, Насаф кўчаси, 180100",
+              maxLen: 3,
             ),
             subtitle: Text("9:00-21:00"),
             trailing: Icon(Icons.arrow_forward_ios, size: 16),

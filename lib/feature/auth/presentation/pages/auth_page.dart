@@ -17,7 +17,7 @@ class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<AuthBloc>(),
       child: BlocListener<AuthBloc, AuthState>(
@@ -61,21 +61,19 @@ class _AuthScaffold extends StatelessWidget {
       appBar: AppBar(
         title: Text("welcome".tr()),
         centerTitle: true,
-        leading:
-            context.canPop()
-                ? IconButton(
-
-                  onPressed: () {
-                    MainSources.currentPage.value == 0;
-                    context.go(AppRouter.home);
-                  },
-                  icon: Icon(
-                    CupertinoIcons.xmark,
-                    color: AppColor.primary,
-                    size: 16,
-                  ),
-                )
-                : SizedBox(),
+        leading: context.canPop()
+            ? IconButton(
+                onPressed: () {
+                  MainSources.currentPage.value == 0;
+                  context.pop();
+                },
+                icon: Icon(
+                  CupertinoIcons.xmark,
+                  color: AppColor.primary,
+                  size: 16,
+                ),
+              )
+            : SizedBox(),
       ),
       body: AuthBody(),
     );

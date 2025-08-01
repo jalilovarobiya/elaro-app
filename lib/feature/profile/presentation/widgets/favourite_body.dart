@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
+import 'package:elaro_app/feature/favorite/presentation/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/mapper/card_to_product_model.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/empty_widget.dart';

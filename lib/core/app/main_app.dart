@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
+import 'package:elaro_app/feature/favorite/presentation/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/interceptor/interceptor.dart';
 import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/utils/di.dart';
@@ -37,7 +37,6 @@ class MainApp extends StatelessWidget {
                 (context) =>
                     sl<ProfileBloc>()..add(const ProfileEvent.fetchData()),
           ),
-
           BlocProvider(create: (context) => sl<HitProductsBloc>()),
           BlocProvider(
             create:

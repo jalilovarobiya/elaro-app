@@ -83,9 +83,14 @@ class _OrderHistoryBodyState extends State<OrderHistoryBody> {
                                     ),
                                     12.h,
                                     Text(
-                                      "ID: ${data.orderDateTime}",
+                                      DateFormat('yyyy-MM-dd HH:mm').format(
+                                        DateTime.parse(
+                                          data.orderDateTime ?? "",
+                                        ).add(const Duration(hours: 5)),
+                                      ),
                                       style: AppStyle.w400s13h18DarkBlue300,
                                     ),
+
                                     6.h,
                                     Divider(thickness: 0.4, height: 1),
                                     6.h,

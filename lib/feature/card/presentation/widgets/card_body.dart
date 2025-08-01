@@ -43,36 +43,35 @@ class _CardBodyState extends State<CardBody> {
               success: (data, qty) {
                 return _buildSuccessWidget(data, qty);
               },
-              failure:
-                  () => Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.error_outline,
-                          size: 64,
-                          color: Colors.grey,
-                        ),
-                        16.h,
-                        Text(
-                          "error_occurred".tr(),
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                        16.h,
-                        ElevatedButton(
-                          onPressed: () {
-                            context.read<CardBloc>().add(
+              failure: () => Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.error_outline,
+                      size: 64,
+                      color: Colors.grey,
+                    ),
+                    16.h,
+                    Text(
+                      "error_occurred".tr(),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    16.h,
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<CardBloc>().add(
                               const CardEvent.fetchData(),
                             );
-                          },
-                          child: Text("retry".tr()),
-                        ),
-                      ],
+                      },
+                      child: Text("retry".tr()),
                     ),
-                  ),
+                  ],
+                ),
+              ),
             );
           },
         ),
@@ -103,6 +102,8 @@ class _CardBodyState extends State<CardBody> {
   }
 
   Widget _buildCartItem(Datum item) {
+    bool overProduct = (item.qty ?? 0) < (item.quantity ?? 0);
+
     return ZoomTapAnimation(
       onTap: () {
         context.push(
@@ -127,6 +128,9 @@ class _CardBodyState extends State<CardBody> {
               offset: const Offset(0, 2),
             ),
           ],
+          border: overProduct
+              ? Border.all(color: Colors.red, width: 2)
+              : Border.all(color: Colors.transparent),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,13 +143,12 @@ class _CardBodyState extends State<CardBody> {
                 width: 80,
                 maxHeightDiskCache: 100,
                 maxWidthDiskCache: 100,
-                placeholder:
-                    (context, url) => const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColor.primary,
-                        strokeWidth: 2,
-                      ),
-                    ),
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColor.primary,
+                    strokeWidth: 2,
+                  ),
+                ),
               ),
             ),
             12.h,
@@ -155,6 +158,11 @@ class _CardBodyState extends State<CardBody> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (overProduct)
+                    Text(
+                      "end".tr(),
+                      style: TextStyle(color: Colors.red),
+                    ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -232,20 +240,27 @@ class _CardBodyState extends State<CardBody> {
                           children: [
                             ZoomTapAnimation(
                               onTap: () {
-                                context.read<CardBloc>().add(
-                                  CardEvent.updateQuantity(
-                                    int.parse("${item.id ?? 0}").toString(),
-                                    (item.quantity ?? 0) + 1,
-                                  ),
-                                );
+                                // if (overProduct) {
+                                //   // return null;
+                                // } else {
+                                overProduct
+                                    ? null
+                                    : context.read<CardBloc>().add(
+                                          CardEvent.updateQuantity(
+                                            int.parse("${item.id ?? 0}")
+                                                .toString(),
+                                            (item.quantity ?? 0) + 1,
+                                          ),
+                                        );
+                                // }
                               },
                               child: Text(
                                 " + ",
-                                style: AppStyle.w700s18h28DarkBluePrimary
-                                    .copyWith(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                    ),
+                                style:
+                                    AppStyle.w700s18h28DarkBluePrimary.copyWith(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                             Container(
@@ -259,19 +274,19 @@ class _CardBodyState extends State<CardBody> {
                             ZoomTapAnimation(
                               onTap: () {
                                 context.read<CardBloc>().add(
-                                  CardEvent.clearCart(
-                                    int.parse("${item.id ?? 0}").toString(),
-                                    (item.quantity ?? 0) - 1,
-                                  ),
-                                );
+                                      CardEvent.clearCart(
+                                        int.parse("${item.id ?? 0}").toString(),
+                                        (item.quantity ?? 0) - 1,
+                                      ),
+                                    );
                               },
                               child: Text(
                                 " - ",
-                                style: AppStyle.w600s15h20DarkBluePrimary
-                                    .copyWith(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                    ),
+                                style:
+                                    AppStyle.w600s15h20DarkBluePrimary.copyWith(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ],
@@ -280,8 +295,9 @@ class _CardBodyState extends State<CardBody> {
                       IconButton(
                         onPressed: () {
                           context.read<CardBloc>().add(
-                            CardEvent.removeProduct((item.id ?? 0).toString()),
-                          );
+                                CardEvent.removeProduct(
+                                    (item.id ?? 0).toString()),
+                              );
                         },
                         icon: Icon(
                           CupertinoIcons.delete,

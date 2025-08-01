@@ -1,4 +1,3 @@
-import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/feature/auth/presentation/pages/auth_page.dart';
 import 'package:elaro_app/feature/card/presentation/pages/card_creen.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
@@ -19,15 +18,15 @@ import 'package:elaro_app/feature/auth/presentation/pages/register_page.dart';
 import 'package:elaro_app/feature/main/screen/main_screen.dart';
 import 'package:elaro_app/feature/order/presentation/pages/order_history_page.dart';
 import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
+import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/language_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/location_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/profile_screen.dart';
+import 'package:elaro_app/feature/profile/presentation/pages/region_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../feature/home/data/model/description_constructor_model.dart';
-import '../../feature/home/data/model/features_constructor_model.dart';
 
 class AppRouter {
   static String home = "/home";
@@ -51,39 +50,32 @@ class AppRouter {
   static String otp = "/otp";
   static String register = "/register";
   static String product = "/product";
-  static String features = "/features";
-  static String description = "/description";
-  static String ourShops = "/ourShops";
-
-
-
+  static String region = "/region";
 
   static GoRouter router = GoRouter(
     initialLocation: home,
     routes: [
       StatefulShellRoute.indexedStack(
-        builder:
-            (context, state, navigationshell) =>
-                MainScreen(navigationShell: navigationshell),
+        builder: (context, state, navigationshell) =>
+            MainScreen(navigationShell: navigationshell),
         branches: [
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: home,
                 name: home,
-                pageBuilder:
-                    (context, state) => CustomTransitionPage(
-                      key: state.pageKey,
-                      child: HomeScreen(),
-                      transitionsBuilder: (
-                        context,
-                        animation,
-                        animation2,
-                        child,
-                      ) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                    ),
+                pageBuilder: (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: HomeScreen(),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    animation2,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
               ),
             ],
           ),
@@ -92,19 +84,18 @@ class AppRouter {
               GoRoute(
                 path: globalSearch,
                 name: globalSearch,
-                pageBuilder:
-                    (context, state) => CustomTransitionPage(
-                      key: state.pageKey,
-                      child: CategoryScreen(),
-                      transitionsBuilder: (
-                        context,
-                        animation,
-                        animation2,
-                        child,
-                      ) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                    ),
+                pageBuilder: (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: CategoryScreen(),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    animation2,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
               ),
             ],
           ),
@@ -113,27 +104,33 @@ class AppRouter {
               GoRoute(
                 path: card,
                 name: card,
-                pageBuilder:
-                    (context, state) => CustomTransitionPage(
-                      key: state.pageKey,
-                      child: FutureBuilder<bool>(
-                        future: Utils().isLogin(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return snapshot.data! ? CardScreen() : AuthPage();
-                          }
-                          return SizedBox();
-                        },
-                      ),
-                      transitionsBuilder: (
-                        context,
-                        animation,
-                        animation2,
-                        child,
-                      ) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                    ),
+                pageBuilder: (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: BlocBuilder<ProfileBloc, ProfileState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        success: (_) => CardScreen(),
+                        orElse: () => AuthPage(),
+                      );
+                    },
+                    // )(
+                    //   future: Utils().isLogin(),
+                    //   builder: (context, snapshot) {
+                    //     if (snapshot.hasData) {
+                    //       return snapshot.data! ? CardScreen() : AuthPage();
+                    //     }
+                    //     return SizedBox();
+                    //   },
+                  ),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    animation2,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
               ),
             ],
           ),
@@ -142,29 +139,35 @@ class AppRouter {
               GoRoute(
                 path: order,
                 name: order,
-                pageBuilder:
-                    (context, state) => CustomTransitionPage(
-                      key: state.pageKey,
-                      child: FutureBuilder<bool>(
-                        future: Utils().isLogin(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return snapshot.data!
-                                ? OrderHistoryPage()
-                                : AuthPage();
-                          }
-                          return SizedBox();
-                        },
-                      ),
-                      transitionsBuilder: (
-                        context,
-                        animation,
-                        animation2,
-                        child,
-                      ) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                    ),
+                pageBuilder: (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: BlocBuilder<ProfileBloc, ProfileState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        success: (_) => OrderHistoryPage(),
+                        orElse: () => AuthPage(),
+                      );
+                    },
+                    // FutureBuilder<bool>(
+                    //   future: Utils().isLogin(),
+                    //   builder: (context, snapshot) {
+                    //     if (snapshot.hasData) {
+                    //       return snapshot.data!
+                    //           ? OrderHistoryPage()
+                    //           : AuthPage();
+                    //     }
+                    //     return SizedBox();
+                    //   },
+                  ),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    animation2,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
               ),
             ],
           ),
@@ -173,25 +176,23 @@ class AppRouter {
               GoRoute(
                 path: profile,
                 name: profile,
-                pageBuilder:
-                    (context, state) => CustomTransitionPage(
-                      key: state.pageKey,
-                      child: ProfileScreen(),
-                      transitionsBuilder: (
-                        context,
-                        animation,
-                        animation2,
-                        child,
-                      ) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                    ),
+                pageBuilder: (context, state) => CustomTransitionPage(
+                  key: state.pageKey,
+                  child: ProfileScreen(),
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    animation2,
+                    child,
+                  ) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                ),
               ),
             ],
           ),
         ],
       ),
-
       GoRoute(
         path: AppRouter.category,
         builder: (context, state) {
@@ -257,6 +258,13 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: AppRouter.region,
+        name: AppRouter.region,
+        builder: (context, state) {
+          return RegionPage();
+        },
+      ),
+      GoRoute(
         path: AppRouter.newProducts,
         name: AppRouter.newProducts,
         builder: (context, state) {
@@ -299,26 +307,6 @@ class AppRouter {
           );
         },
       ),
-      // GoRoute(
-      //   path: AppRouter.features,
-      //   builder: (context, state) {
-      //     final data = state.extra as FeaturesConstructorModel;
-      //     return FeaturesPage(data: data);
-      //   },
-      // ),
-      // GoRoute(
-      //   path: AppRouter.description,
-      //   builder: (context, state) {
-      //     final data = state.extra as DescriptionConstructorModel;
-      //     return DescriptionPage(data: data);
-      //   },
-      // ),
-      // GoRoute(
-      //     path: AppRouter.ourShops,
-      //     builder: (context, state){
-      //       return const OurShopsPage();
-      //     }
-      // ),
     ],
   );
 }

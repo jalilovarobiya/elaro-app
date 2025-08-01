@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';
+import 'package:elaro_app/core/routes/app_routes.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/app_textfiled.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/button_widget.dart';
 import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
+import 'package:elaro_app/feature/profile/presentation/pages/region_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -72,15 +74,13 @@ class _ProfileEditBodyState extends State<ProfileEditBody> {
             style: AppStyle.w400s13h18DarkBlue300,
           ),
           ZoomTapAnimation(
-            // onTap: () async {
-            //   final address = await Navigator.of(
-            //     context,
-            //   ).push(CupertinoPageRoute(builder: (_) => const RegionsPage()));
-            //   if (address == null) return;
-            //   try {
-            //     addressController.text = address;
-            //   } catch (e) {}
-            // },
+            onTap: () async {
+              final address = await context.push(AppRouter.region);
+              if (address == null) return;
+              try {
+                addressController.text = address.toString();
+              } catch (e) {}
+            },
             child: AppTextfiled(enable: false, controller: addressController),
           ),
           const Divider(thickness: 1, height: 1),
@@ -92,12 +92,12 @@ class _ProfileEditBodyState extends State<ProfileEditBody> {
                 text: "save".tr(),
                 onTap: () {
                   context.read<ProfileBloc>().add(
-                    ProfileEvent.editProfile(
-                      name: firstNameController.text,
-                      surname: lastNameController.text,
-                      address: addressController.text,
-                    ),
-                  );
+                        ProfileEvent.editProfile(
+                          name: firstNameController.text,
+                          surname: lastNameController.text,
+                          address: addressController.text,
+                        ),
+                      );
                   context.pop();
                 },
               );

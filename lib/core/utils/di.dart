@@ -1,4 +1,4 @@
-import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
+import 'package:elaro_app/feature/favorite/presentation/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/interceptor/interceptor.dart';
 import 'package:elaro_app/feature/favorite/data/repository/favourite_repository.dart';
 import 'package:elaro_app/feature/auth/data/repositories/auth_repository_impl.dart';
@@ -24,9 +24,12 @@ import 'package:elaro_app/feature/home/presentation/blocs/product/bloc/product_b
 import 'package:elaro_app/feature/home/presentation/blocs/products/bloc/products_bloc.dart';
 import 'package:elaro_app/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:elaro_app/feature/order/data/repository/order_repository_impl.dart';
+import 'package:elaro_app/feature/order/presentation/blocs/order_bloc/order_bloc.dart';
 import 'package:elaro_app/feature/order/presentation/blocs/order_history_bloc/order_history_bloc.dart';
 import 'package:elaro_app/feature/profile/data/repository/profile_repository_impl.dart';
+import 'package:elaro_app/feature/profile/data/repository/region_repository_impl.dart';
 import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
+import 'package:elaro_app/feature/profile/presentation/bloc/bloc/region_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -83,6 +86,9 @@ void _repositories() {
   sl.registerLazySingleton<OrderRepositoryImpl>(
     () => OrderRepositoryImpl(sl<DioClient>()),
   );
+  sl.registerLazySingleton<RegionRepositoryImpl>(
+    () => RegionRepositoryImpl(sl<DioClient>()),
+  );
 }
 
 void _blocs() {
@@ -102,6 +108,8 @@ void _blocs() {
   sl.registerFactory(() => AuthBloc(sl<AuthRepositoryImpl>()));
   sl.registerFactory(() => ProductBloc(sl<ProductsRepositoryImpl>()));
   sl.registerFactory(() => OrderHistoryBloc(sl<OrderRepositoryImpl>()));
+  sl.registerFactory(() => OrderBloc(sl<CardRepositoryImpl>()));
+  sl.registerFactory(() => RegionBloc(sl<RegionRepositoryImpl>()));
 }
 
 void _dataSources() {}

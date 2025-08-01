@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
+import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
+import 'package:elaro_app/feature/favorite/presentation/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/mapper/datum_to_product_model.dart';
 import 'package:elaro_app/core/utils/di.dart';
@@ -13,8 +14,6 @@ import 'package:elaro_app/feature/home/presentation/widget/product_body.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../widget/product_body.dart';
 
 class ProductPage extends StatefulWidget {
   final int id;
@@ -82,21 +81,22 @@ class _ProductPageState extends State<ProductPage> {
                                         }
                                         if (isSelected) {
                                           context.read<FavouriteBloc>().add(
-                                            FavouriteEvent.deleteProduct(
-                                              widget.id ?? 0,
-                                            ),
-                                          );
+                                                FavouriteEvent.deleteProduct(
+                                                  widget.id ?? 0,
+                                                ),
+                                              );
                                         } else {
                                           context.read<FavouriteBloc>().add(
-                                            FavouriteEvent.addProduct(
-                                              ((data.data ?? [])
-                                                  .firstWhere(
-                                                    (e) => e.id == widget.id,
-                                                  )
-                                                  .toProductModel()
-                                                  .data!),
-                                            ),
-                                          );
+                                                FavouriteEvent.addProduct(
+                                                  ((data.data ?? [])
+                                                      .firstWhere(
+                                                        (e) =>
+                                                            e.id == widget.id,
+                                                      )
+                                                      .toProductModel()
+                                                      .data!),
+                                                ),
+                                              );
                                         }
                                       },
                                       isSelected: isSelected,
@@ -116,10 +116,9 @@ class _ProductPageState extends State<ProductPage> {
         body: BlocBuilder<ProductBloc, ProductState>(
           builder: (context, state) {
             return state.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              success: (productModel) => ProductBody(product: productModel),
-              failure: (message) => Center(child: Text("Xatolik: $message")),
-            );
+                loading: () => LoadingWidget(),
+                success: (productModel) => ProductBody(product: productModel),
+                failure: (message) => ErrorWidget(message));
           },
         ),
       ),

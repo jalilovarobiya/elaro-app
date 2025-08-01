@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
+import 'package:elaro_app/core/extension/sized_box_extension.dart';
 import 'package:elaro_app/core/mapper/category_to_product.dart';
 import 'package:elaro_app/core/widgets/product_item_widget.dart';
 import 'package:elaro_app/core/widgets/translator.dart';
@@ -24,12 +25,9 @@ import '../../../auth/presentation/widgets/loading_widget.dart';
 import '../../../card/presentation/blocs/card/bloc/card_bloc.dart';
 import '../../../category/presentation/blocs/category/bloc/category_bloc.dart';
 import '../../../profile/data/model/product_constructor_model.dart';
-import '../../data/model/description_constructor_model.dart';
-import '../../data/model/features_constructor_model.dart';
+
 import '../../data/model/product_model.dart';
-import 'credit_info_dialog.dart';
 import 'image_view_page.dart';
-import 'package:get/get.dart' as getX;
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -46,6 +44,8 @@ class _ProductBodyState extends State<ProductBody> {
   final ValueNotifier<int> _pageNotifier = ValueNotifier(0);
   final ScrollController controller = ScrollController();
   ValueNotifier<bool> isScrolled = ValueNotifier(false);
+  bool readMore = false;
+  bool atrebute = false;
 
   @override
   void initState() {
@@ -61,8 +61,36 @@ class _ProductBodyState extends State<ProductBody> {
     final size = MediaQuery.of(context).size;
     final imageList = widget.product.data?.images?.map((e) => e.image).toList();
     final attributes = widget.product.data?.attributes;
-    final attributesLen =
-        (attributes?.length ?? 0) > 5 ? 5 : (attributes?.length ?? 0);
+    final attributesLen = atrebute
+        ? (attributes?.length ?? 0)
+        : ((attributes?.length ?? 0) > 3 ? 3 : (attributes?.length ?? 0));
+
+    String description(
+      String lang,
+    ) {
+      final desc = lang == "uz"
+          ? widget.product.data?.descriptionUz ?? ""
+          : lang == "ru"
+              ? widget.product.data?.descriptionRu ?? ""
+              : widget.product.data?.descriptionCrl ?? "";
+      if (readMore || desc.length <= 500) {
+        return "${desc.substring(0, 500)}.";
+      }
+      return desc;
+    }
+
+    // String seeAllAtrebutes(String lang, int index) {
+    //   final desc = lang == "uz"
+    //       ? "${attributes?[index].nameUz}"
+    //       : lang == "ru"
+    //           ? "${attributes?[index].nameRu}"
+    //           : "${attributes?[index].nameCrl}";
+    //   if (atrebute || desc.length == 3) {
+    //     return desc;
+    //   }
+    //   return desc;
+    // }
+
     return Stack(
       children: [
         ListView(
@@ -109,7 +137,7 @@ class _ProductBodyState extends State<ProductBody> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            10.h,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ListenableBuilder(
@@ -139,7 +167,7 @@ class _ProductBodyState extends State<ProductBody> {
                 },
               ),
             ),
-            const SizedBox(height: 10),
+            10.h,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
@@ -170,7 +198,7 @@ class _ProductBodyState extends State<ProductBody> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            16.h,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Translator(
@@ -181,14 +209,14 @@ class _ProductBodyState extends State<ProductBody> {
                     .copyWith(fontSize: 18, color: AppColor.primaryDark),
               ),
             ),
-            const SizedBox(height: 20),
+            20.h,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(StringTranslateExtension("color").tr(),
                   style: AppStyle.w400s15h20DarkBlue500
                       .copyWith(color: AppColor.primaryDark)),
             ),
-            const SizedBox(height: 10),
+            10.h,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
@@ -202,7 +230,7 @@ class _ProductBodyState extends State<ProductBody> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            16.h,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Container(
@@ -261,9 +289,8 @@ class _ProductBodyState extends State<ProductBody> {
                                       AppColor.red);
                                 }
                                 if (isHave) {
-                                  // context.go();
                                   GoRouter.of(context)
-                                      .go(AppRouter.home, extra: 3);
+                                      .go(AppRouter.card, extra: 3);
                                   MainSources.currentPage.value = 2;
                                 } else {
                                   context.read<CardBloc>().add(
@@ -292,7 +319,7 @@ class _ProductBodyState extends State<ProductBody> {
             ),
             GestureDetector(
               onTap: () {
-                context.push(AppRouter.ourShops);
+                context.push(AppRouter.location);
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -321,7 +348,6 @@ class _ProductBodyState extends State<ProductBody> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ListTile(
-                onTap: _available,
                 dense: false,
                 contentPadding: EdgeInsets.zero,
                 title: Text(StringTranslateExtension("description").tr(),
@@ -331,47 +357,50 @@ class _ProductBodyState extends State<ProductBody> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 6,
                   children: [
-                    const SizedBox(height: 12),
+                    12.h,
                     Translator(
-                      maxLen: 5,
-                      uz: (widget.product.data?.descriptionUz ?? "").length >
-                              500
-                          ? "${widget.product.data?.descriptionUz?.substring(0, 500)}..."
-                          : widget.product.data?.descriptionUz ?? "",
-                      ru: (widget.product.data?.descriptionRu ?? "").length >
-                              500
-                          ? "${widget.product.data?.descriptionRu?.substring(0, 500)}..."
-                          : widget.product.data?.descriptionRu ?? "",
-                      crl: (widget.product.data?.descriptionCrl ?? "").length >
-                              500
-                          ? "${widget.product.data?.descriptionCrl?.substring(0, 500)}..."
-                          : widget.product.data?.descriptionCrl ?? "",
+                      maxLen: readMore ? null : 20,
+                      uz: description("uz"),
+                      ru: description("ru"),
+                      crl: description("crl"),
                     ),
-                    Text(
-                      StringTranslateExtension("read_more").tr(),
-                      style: AppStyle.w500s15h20Primary
-                          .copyWith(color: AppColor.blue),
-                    )
+                    if ((widget.product.data?.descriptionUz ?? "").length > 500 ||
+                        (widget.product.data?.descriptionRu ?? "").length >
+                            500 ||
+                        (widget.product.data?.descriptionCrl ?? "").length >
+                            500)
+                      ZoomTapAnimation(
+                        onTap: () {
+                          setState(() {
+                            readMore = !readMore;
+                          });
+                        },
+                        child: Text(
+                          readMore
+                              ? StringTranslateExtension("read_more").tr()
+                              : StringTranslateExtension("read_less").tr(),
+                          style: AppStyle.w500s15h20Primary
+                              .copyWith(color: AppColor.blue),
+                        ),
+                      )
                   ],
                 ),
               ),
             ),
+            16.h,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ListTile(
-                onTap: _features,
-                dense: false,
-                contentPadding: EdgeInsets.zero,
-                title: Text(StringTranslateExtension("features").tr(),
-                    style: AppStyle.w600s15h20DarkBluePrimary),
+              child: Text(
+                StringTranslateExtension("features").tr(),
+                style: AppStyle.w500s15h20DarkBlue500
+                    .copyWith(fontSize: 18, color: AppColor.primaryDark),
               ),
             ),
             ...List.generate(
               attributesLen,
               (index) {
                 return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -399,23 +428,26 @@ class _ProductBodyState extends State<ProductBody> {
                 );
               },
             ),
-            ZoomTapAnimation(
-              onTap: () {
-                context.push(AppRouter.features,
-                    extra: FeaturesConstructorModel(
-                        attributes: widget.product.data?.attributes ?? []));
-              },
-              child: Container(
-                color: AppColor.white,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                child: Text(
-                  StringTranslateExtension("all_features").tr(),
-                  style:
-                      AppStyle.w500s15h20Primary.copyWith(color: AppColor.blue),
+            if ((attributes?.length ?? 0) > 3)
+              ZoomTapAnimation(
+                onTap: () {
+                  setState(() {
+                    atrebute = !atrebute;
+                  });
+                },
+                child: Container(
+                  color: AppColor.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                  child: Text(
+                    atrebute
+                        ? StringTranslateExtension("hide_features").tr()
+                        : StringTranslateExtension("all_features").tr(),
+                    style: AppStyle.w500s15h20Primary
+                        .copyWith(color: AppColor.blue),
+                  ),
                 ),
               ),
-            ),
             Container(
               color: AppColor.lightGray200,
               height: 10,
@@ -538,42 +570,27 @@ class _ProductBodyState extends State<ProductBody> {
     );
   }
 
-  void _available() {
-    context.push(
-      AppRouter.description,
-      extra: DescriptionConstructorModel(
-        textUz: widget.product.data?.descriptionUz ?? "",
-        textRu: widget.product.data?.descriptionRu ?? "",
-        textCrl: widget.product.data?.descriptionCrl ?? "",
-      ),
-    );
-  }
-
-  void _features() {
-    context.push(
-      AppRouter.features,
-      extra: FeaturesConstructorModel(
-        attributes: widget.product.data?.attributes ?? [],
-      ),
-    );
-  }
+  // void _available() {
+  //   context.push(
+  //     AppRouter.description,
+  //     extra: DescriptionConstructorModel(
+  //       textUz: widget.product.data?.descriptionUz ?? "",
+  //       textRu: widget.product.data?.descriptionRu ?? "",
+  //       textCrl: widget.product.data?.descriptionCrl ?? "",
+  //     ),
+  //   );
+  // }
 
   bool isScrolling() {
     controller.addListener(() {
-      print(controller.position.pixels);
-      print("-");
-      print(MediaQuery.of(context).size.height);
-      print("+");
       if (MediaQuery.of(context).size.height * 0.8 >
           controller.position.pixels) {
         if (isScrolled.value == true) {
           isScrolled.value = false;
-          print("scrool bolmagan");
         }
       } else {
         if (isScrolled.value == false) {
           isScrolled.value = true;
-          print("scrool bolgan");
         }
       }
     });

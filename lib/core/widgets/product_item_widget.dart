@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elaro_app/core/bloc/favourite/bloc/favourite_bloc.dart';
+import 'package:elaro_app/feature/favorite/presentation/bloc/favourite_bloc.dart';
 import 'package:elaro_app/core/constants/app_colors.dart';
 import 'package:elaro_app/core/constants/app_images.dart';
 import 'package:elaro_app/core/constants/app_styles.dart';

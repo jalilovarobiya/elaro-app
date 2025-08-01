@@ -58,7 +58,7 @@ class DioClient {
           } catch (e) {
             return handler.next(error);
           }
-       },
+        },
       ),
     );
   }
@@ -70,10 +70,10 @@ class DioClient {
     bool anotherlink = false,
   }) async {
     try {
-      final requestUrl = anotherlink ? url : url;
+      final requestUrl = anotherlink ? "" : baseUrl;
 
       final response = await dioClient.get(
-        requestUrl,
+        "$requestUrl$url",
         options: Options(headers: {if (header != null) ...header}),
         queryParameters: params,
       );
@@ -184,16 +184,22 @@ class DioClient {
     }
   }
 
-
   Future<StatusModel> getMethod(
-      {required pathUrl, Map<String, dynamic>? header, Map<String, dynamic>? body, required isHeader, bool anotherLink = false}) async {
+      {required pathUrl,
+      Map<String, dynamic>? header,
+      Map<String, dynamic>? body,
+      required isHeader,
+      bool anotherLink = false}) async {
     try {
       final res = await dioClient
           .get(
-        "${anotherLink ? "" : baseUrl}$pathUrl",
-        options: Options(headers: isHeader ? await defaultHeader() : {"Content_type": "application/json"}),
-        data: jsonEncode(body ?? {}),
-      )
+            "${anotherLink ? "" : baseUrl}$pathUrl",
+            options: Options(
+                headers: isHeader
+                    ? await defaultHeader()
+                    : {"Content_type": "application/json"}),
+            data: jsonEncode(body ?? {}),
+          )
           .timeout(const Duration(seconds: 120));
       // logger.d([
       //   'GET',
@@ -205,9 +211,11 @@ class DioClient {
       //   res.data,
       // ]);
       if (res.statusCode! >= 200 && res.statusCode! < 300) {
-        return StatusModel(response: res.data, isSuccess: true, code: res.statusCode);
+        return StatusModel(
+            response: res.data, isSuccess: true, code: res.statusCode);
       }
-      return StatusModel(response: res.data, isSuccess: false, code: res.statusCode);
+      return StatusModel(
+          response: res.data, isSuccess: false, code: res.statusCode);
     } on DioException catch (e) {
       // logger.e([
       //   'GET',
@@ -222,14 +230,21 @@ class DioClient {
     }
   }
 }
+
 StatusModel dioError(DioException e) {
   try {
-    if((e.response!.statusCode! >= 500)){
-      return StatusModel(response: e.response, isSuccess: false, code: e.response?.statusCode);
+    if ((e.response!.statusCode! >= 500)) {
+      return StatusModel(
+          response: e.response, isSuccess: false, code: e.response?.statusCode);
     }
-    if ((e.type == DioExceptionType.connectionError) || (e.type == DioExceptionType.connectionTimeout)) {
-      return StatusModel(response: {"message": "connection_error".tr}, isSuccess: false, code: e.response?.statusCode);
+    if ((e.type == DioExceptionType.connectionError) ||
+        (e.type == DioExceptionType.connectionTimeout)) {
+      return StatusModel(
+          response: {"message": "connection_error".tr},
+          isSuccess: false,
+          code: e.response?.statusCode);
     }
   } catch (e) {}
-  return StatusModel(response: e.response, isSuccess: false, code: e.response?.statusCode);
+  return StatusModel(
+      response: e.response, isSuccess: false, code: e.response?.statusCode);
 }

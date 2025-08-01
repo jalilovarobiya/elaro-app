@@ -7,31 +7,31 @@ part of 'order_history_model.dart';
 // **************************************************************************
 
 _$OrderHistoryModelImpl _$$OrderHistoryModelImplFromJson(
-  Map<String, dynamic> json,
-) => _$OrderHistoryModelImpl(
-  data:
-      (json['data'] as List<dynamic>?)
+        Map<String, dynamic> json) =>
+    _$OrderHistoryModelImpl(
+      data: (json['data'] as List<dynamic>?)
           ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
           .toList(),
-);
+    );
 
 Map<String, dynamic> _$$OrderHistoryModelImplToJson(
-  _$OrderHistoryModelImpl instance,
-) => <String, dynamic>{'data': instance.data};
+        _$OrderHistoryModelImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+    };
 
 _$DatumImpl _$$DatumImplFromJson(Map<String, dynamic> json) => _$DatumImpl(
-  id: (json['id'] as num?)?.toInt(),
-  userId: (json['user_id'] as num?)?.toInt(),
-  status: (json['status'] as num?)?.toInt(),
-  totalAmount: json['total_amount'] as String?,
-  orderDateTime: json['order_date_time'] as String?,
-  shippingAddress: json['shipping_address'] as String?,
-  url: json['url'] as String?,
-  products:
-      (json['products'] as List<dynamic>?)
+      id: (json['id'] as num?)?.toInt(),
+      userId: (json['user_id'] as num?)?.toInt(),
+      status: (json['status'] as num?)?.toInt(),
+      totalAmount: json['total_amount'] as String?,
+      orderDateTime: json['order_date_time'] as String?,
+      shippingAddress: json['shipping_address'] as String?,
+      url: json['url'] as String?,
+      products: (json['products'] as List<dynamic>?)
           ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
-);
+    );
 
 Map<String, dynamic> _$$DatumImplToJson(_$DatumImpl instance) =>
     <String, dynamic>{
@@ -64,14 +64,12 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       descriptionRu: json['description_ru'] as String?,
       categoryId: (json['category_id'] as num?)?.toInt(),
       brandId: (json['brand_id'] as num?)?.toInt(),
-      images:
-          (json['images'] as List<dynamic>?)
-              ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
-              .toList(),
-      attributes:
-          (json['attributes'] as List<dynamic>?)
-              ?.map((e) => Attribute.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      attributes: (json['attributes'] as List<dynamic>?)
+          ?.map((e) => Attribute.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
@@ -120,9 +118,12 @@ Map<String, dynamic> _$$AttributeImplToJson(_$AttributeImpl instance) =>
     };
 
 _$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
-  id: (json['id'] as num?)?.toInt(),
-  image: json['image'] as String?,
-);
+      id: (json['id'] as num?)?.toInt(),
+      image: json['image'] as String?,
+    );
 
 Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
-    <String, dynamic>{'id': instance.id, 'image': instance.image};
+    <String, dynamic>{
+      'id': instance.id,
+      'image': instance.image,
+    };

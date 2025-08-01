@@ -12,8 +12,7 @@ part of 'order_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$OrderEvent {
@@ -23,29 +22,35 @@ mixin _$OrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String adres, String id, String delivaryId) order,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String adres, String id, String delivaryId)? order,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String adres, String id, String delivaryId)? order,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Order value) order,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Order value)? order,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Order value)? order,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of OrderEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -57,9 +62,8 @@ mixin _$OrderEvent {
 /// @nodoc
 abstract class $OrderEventCopyWith<$Res> {
   factory $OrderEventCopyWith(
-    OrderEvent value,
-    $Res Function(OrderEvent) then,
-  ) = _$OrderEventCopyWithImpl<$Res, OrderEvent>;
+          OrderEvent value, $Res Function(OrderEvent) then) =
+      _$OrderEventCopyWithImpl<$Res, OrderEvent>;
   @useResult
   $Res call({String adres, String id, String delivaryId});
 }
@@ -83,35 +87,28 @@ class _$OrderEventCopyWithImpl<$Res, $Val extends OrderEvent>
     Object? id = null,
     Object? delivaryId = null,
   }) {
-    return _then(
-      _value.copyWith(
-            adres:
-                null == adres
-                    ? _value.adres
-                    : adres // ignore: cast_nullable_to_non_nullable
-                        as String,
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
-            delivaryId:
-                null == delivaryId
-                    ? _value.delivaryId
-                    : delivaryId // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      adres: null == adres
+          ? _value.adres
+          : adres // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      delivaryId: null == delivaryId
+          ? _value.delivaryId
+          : delivaryId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$OrderImplCopyWith<$Res> implements $OrderEventCopyWith<$Res> {
   factory _$$OrderImplCopyWith(
-    _$OrderImpl value,
-    $Res Function(_$OrderImpl) then,
-  ) = __$$OrderImplCopyWithImpl<$Res>;
+          _$OrderImpl value, $Res Function(_$OrderImpl) then) =
+      __$$OrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String adres, String id, String delivaryId});
@@ -122,9 +119,8 @@ class __$$OrderImplCopyWithImpl<$Res>
     extends _$OrderEventCopyWithImpl<$Res, _$OrderImpl>
     implements _$$OrderImplCopyWith<$Res> {
   __$$OrderImplCopyWithImpl(
-    _$OrderImpl _value,
-    $Res Function(_$OrderImpl) _then,
-  ) : super(_value, _then);
+      _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OrderEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -135,36 +131,28 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? id = null,
     Object? delivaryId = null,
   }) {
-    return _then(
-      _$OrderImpl(
-        adres:
-            null == adres
-                ? _value.adres
-                : adres // ignore: cast_nullable_to_non_nullable
-                    as String,
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
-        delivaryId:
-            null == delivaryId
-                ? _value.delivaryId
-                : delivaryId // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$OrderImpl(
+      adres: null == adres
+          ? _value.adres
+          : adres // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      delivaryId: null == delivaryId
+          ? _value.delivaryId
+          : delivaryId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$OrderImpl implements _Order {
-  const _$OrderImpl({
-    required this.adres,
-    required this.id,
-    required this.delivaryId,
-  });
+  const _$OrderImpl(
+      {required this.adres, required this.id, required this.delivaryId});
 
   @override
   final String adres;
@@ -258,11 +246,10 @@ class _$OrderImpl implements _Order {
 }
 
 abstract class _Order implements OrderEvent {
-  const factory _Order({
-    required final String adres,
-    required final String id,
-    required final String delivaryId,
-  }) = _$OrderImpl;
+  const factory _Order(
+      {required final String adres,
+      required final String id,
+      required final String delivaryId}) = _$OrderImpl;
 
   @override
   String get adres;
@@ -287,14 +274,16 @@ mixin _$OrderState {
     required TResult Function() loading,
     required TResult Function(OrderModel data) success,
     required TResult Function(FailureModel failure) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(OrderModel data)? success,
     TResult? Function(FailureModel failure)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -302,21 +291,24 @@ mixin _$OrderState {
     TResult Function(OrderModel data)? success,
     TResult Function(FailureModel failure)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -324,15 +316,15 @@ mixin _$OrderState {
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OrderStateCopyWith<$Res> {
   factory $OrderStateCopyWith(
-    OrderState value,
-    $Res Function(OrderState) then,
-  ) = _$OrderStateCopyWithImpl<$Res, OrderState>;
+          OrderState value, $Res Function(OrderState) then) =
+      _$OrderStateCopyWithImpl<$Res, OrderState>;
 }
 
 /// @nodoc
@@ -352,9 +344,8 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -362,9 +353,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$OrderStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OrderState
   /// with the given fields replaced by the non-null parameter values.
@@ -471,9 +461,8 @@ abstract class _Initial implements OrderState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -481,9 +470,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$OrderStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OrderState
   /// with the given fields replaced by the non-null parameter values.
@@ -590,9 +578,8 @@ abstract class _Loading implements OrderState {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
-    _$SuccessImpl value,
-    $Res Function(_$SuccessImpl) then,
-  ) = __$$SuccessImplCopyWithImpl<$Res>;
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({OrderModel data});
 
@@ -604,24 +591,22 @@ class __$$SuccessImplCopyWithImpl<$Res>
     extends _$OrderStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl _value,
-    $Res Function(_$SuccessImpl) _then,
-  ) : super(_value, _then);
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OrderState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$SuccessImpl(
-        data:
-            null == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                    as OrderModel,
-      ),
-    );
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$SuccessImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as OrderModel,
+    ));
   }
 
   /// Create a copy of OrderState
@@ -757,9 +742,8 @@ abstract class _Success implements OrderState {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-    _$FailureImpl value,
-    $Res Function(_$FailureImpl) then,
-  ) = __$$FailureImplCopyWithImpl<$Res>;
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FailureModel failure});
 }
@@ -769,24 +753,22 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$OrderStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-    _$FailureImpl _value,
-    $Res Function(_$FailureImpl) _then,
-  ) : super(_value, _then);
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OrderState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? failure = null}) {
-    return _then(
-      _$FailureImpl(
-        failure:
-            null == failure
-                ? _value.failure
-                : failure // ignore: cast_nullable_to_non_nullable
-                    as FailureModel,
-      ),
-    );
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailureImpl(
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as FailureModel,
+    ));
   }
 }
 

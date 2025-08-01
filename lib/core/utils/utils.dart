@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:ui';
-
 import 'package:elaro_app/core/secure_storage.dart/secure_storage.dart';
 import 'package:elaro_app/feature/profile/data/model/profile_model.dart';
 import 'package:flutter/material.dart';
@@ -46,22 +45,20 @@ class Utils {
     }
   }
 
-  static String? validator(String? value, int minLength) {
-    if (value == null || value.isEmpty) {
-      return 'Iltimos, maʼlumot kiriting';
-    } else if (value.length < minLength) {
-      return 'Kamida $minLength ta belgidan iborat bo‘lishi kerak';
-    }
+  static validator(String? text, int len, [String? val]) {
+    if (text == null) return val ?? "";
+    if (text.length < len) return val ?? "";
     return null;
   }
+
   static Color hexToColor(String hexColor) {
-    try{
+    try {
       hexColor = hexColor.replaceAll('#', '');
       if (hexColor.length == 6) {
         hexColor = 'FF$hexColor';
       }
       return Color(int.parse(hexColor, radix: 16));
-    }catch(e){
+    } catch (e) {
       return Colors.transparent;
     }
   }
