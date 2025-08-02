@@ -5,8 +5,6 @@ import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/app_textfiled.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/button_widget.dart';
 import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
-import 'package:elaro_app/feature/profile/presentation/pages/region_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

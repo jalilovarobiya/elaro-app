@@ -74,9 +74,9 @@ class _ProductBodyState extends State<ProductBody> {
               ? widget.product.data?.descriptionRu ?? ""
               : widget.product.data?.descriptionCrl ?? "";
       if (readMore || desc.length <= 500) {
-        return "${desc.substring(0, 500)}.";
+        return desc;
       }
-      return desc;
+      return "${desc.substring(0, 500)}.";
     }
 
     // String seeAllAtrebutes(String lang, int index) {
@@ -359,7 +359,7 @@ class _ProductBodyState extends State<ProductBody> {
                   children: [
                     12.h,
                     Translator(
-                      maxLen: readMore ? null : 20,
+                      maxLen: readMore ? 5 : 50,
                       uz: description("uz"),
                       ru: description("ru"),
                       crl: description("crl"),

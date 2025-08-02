@@ -1,3 +1,4 @@
+import 'package:elaro_app/core/utils/utils.dart';
 import 'package:elaro_app/feature/auth/presentation/pages/auth_page.dart';
 import 'package:elaro_app/feature/card/presentation/pages/card_creen.dart';
 import 'package:elaro_app/feature/category/data/model/category_constructr.dart';
@@ -7,6 +8,7 @@ import 'package:elaro_app/feature/category/presentation/pages/category_screen.da
 import 'package:elaro_app/feature/category/presentation/pages/global_search_page.dart';
 import 'package:elaro_app/feature/category/presentation/pages/sub_category_page.dart';
 import 'package:elaro_app/feature/home/data/model/brand_constructr_model.dart';
+import 'package:elaro_app/feature/home/data/model/products_model.dart' as data;
 import 'package:elaro_app/feature/home/presentation/screens/brand_page.dart';
 import 'package:elaro_app/feature/home/presentation/screens/hit_products_page.dart';
 import 'package:elaro_app/feature/home/presentation/screens/home_screen.dart';
@@ -16,17 +18,18 @@ import 'package:elaro_app/feature/home/presentation/screens/recomanded_products_
 import 'package:elaro_app/feature/auth/presentation/pages/otp_screen.dart';
 import 'package:elaro_app/feature/auth/presentation/pages/register_page.dart';
 import 'package:elaro_app/feature/main/screen/main_screen.dart';
+import 'package:elaro_app/feature/order/presentation/pages/order_history_ditails_screen.dart';
 import 'package:elaro_app/feature/order/presentation/pages/order_history_page.dart';
+import 'package:elaro_app/feature/order/presentation/pages/order_screen.dart';
 import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
-import 'package:elaro_app/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/favourite_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/language_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/location_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:elaro_app/feature/profile/presentation/pages/region_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:elaro_app/feature/order/data/model/order_history_model.dart';
 
 class AppRouter {
   static String home = "/home";
@@ -51,6 +54,8 @@ class AppRouter {
   static String register = "/register";
   static String product = "/product";
   static String region = "/region";
+  static String orderScreen = "/orderScreen";
+  static String orderHistoryDitails = "/orderHistoryDitails";
 
   static GoRouter router = GoRouter(
     initialLocation: home,
@@ -106,21 +111,14 @@ class AppRouter {
                 name: card,
                 pageBuilder: (context, state) => CustomTransitionPage(
                   key: state.pageKey,
-                  child: BlocBuilder<ProfileBloc, ProfileState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        success: (_) => CardScreen(),
-                        orElse: () => AuthPage(),
-                      );
+                  child: FutureBuilder(
+                    future: Utils().isLogin(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return snapshot.data! ? CardScreen() : AuthPage();
+                      }
+                      return SizedBox();
                     },
-                    // )(
-                    //   future: Utils().isLogin(),
-                    //   builder: (context, snapshot) {
-                    //     if (snapshot.hasData) {
-                    //       return snapshot.data! ? CardScreen() : AuthPage();
-                    //     }
-                    //     return SizedBox();
-                    //   },
                   ),
                   transitionsBuilder: (
                     context,
@@ -141,23 +139,22 @@ class AppRouter {
                 name: order,
                 pageBuilder: (context, state) => CustomTransitionPage(
                   key: state.pageKey,
-                  child: BlocBuilder<ProfileBloc, ProfileState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        success: (_) => OrderHistoryPage(),
-                        orElse: () => AuthPage(),
-                      );
+                  child:
+                      // BlocBuilder<ProfileBloc, ProfileState>(
+                      //   builder: (context, state) {
+                      //     return state.maybeMap(
+                      //       success: (_) => OrderHistoryPage(),
+                      //       orElse: () => AuthPage(),
+                      //     );
+                      //   },
+                      FutureBuilder<bool>(
+                    future: Utils().isLogin(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return snapshot.data! ? OrderHistoryPage() : AuthPage();
+                      }
+                      return SizedBox();
                     },
-                    // FutureBuilder<bool>(
-                    //   future: Utils().isLogin(),
-                    //   builder: (context, snapshot) {
-                    //     if (snapshot.hasData) {
-                    //       return snapshot.data!
-                    //           ? OrderHistoryPage()
-                    //           : AuthPage();
-                    //     }
-                    //     return SizedBox();
-                    //   },
                   ),
                   transitionsBuilder: (
                     context,
@@ -304,6 +301,24 @@ class AppRouter {
             titleUzb: data.titleUzb,
             titleRus: data.titleRus,
             titleCrl: data.titleCrl,
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRouter.orderScreen,
+        name: AppRouter.orderScreen,
+        builder: (context, state) {
+          final cards = state.extra as List<data.Datum>;
+          return OrderScreen(cards: cards);
+        },
+      ),
+      GoRoute(
+        path: AppRouter.orderHistoryDitails,
+        name: AppRouter.orderHistoryDitails,
+        builder: (context, state) {
+          final data = state.extra as Datum;
+          return OrderHistoryDitailsScreen(
+            data: data,
           );
         },
       ),

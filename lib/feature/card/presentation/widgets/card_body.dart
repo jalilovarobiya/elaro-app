@@ -12,7 +12,6 @@ import 'package:elaro_app/core/widgets/translator.dart';
 import 'package:elaro_app/feature/auth/presentation/widgets/loading_widget.dart';
 import 'package:elaro_app/feature/card/presentation/blocs/card/bloc/card_bloc.dart';
 import 'package:elaro_app/feature/home/data/model/products_model.dart';
-import 'package:elaro_app/feature/order/presentation/pages/order_screen.dart';
 import 'package:elaro_app/feature/profile/data/model/product_constructor_model.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -209,20 +208,21 @@ class _CardBodyState extends State<CardBody> {
                   ),
                   8.h,
                   Container(
-                    decoration: AppStyle.lightGray400R16NoBorder.copyWith(
-                      color: AppColor.lightGray300,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    child: Text(
-                      "730 000 so'mdan / 24 oy",
-                      style: AppStyle.w500s13h18DarkBlue500.copyWith(
-                        color: Colors.black,
+                      decoration: AppStyle.lightGray400R16NoBorder.copyWith(
+                        color: AppColor.lightGray300,
                       ),
-                    ),
-                  ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 8,
+                      ),
+                      child: Translator(
+                        uz: "730 000 so'mdan / 24 oy",
+                        ru: "730 000 so'mdan / 24 oy",
+                        crl: "730 000 сум на  24 месяца",
+                        style: AppStyle.w500s13h18DarkBlue500.copyWith(
+                          color: Colors.black,
+                        ),
+                      )),
                   20.h,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -403,11 +403,7 @@ class _CardBodyState extends State<CardBody> {
                     );
                     return;
                   }
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => OrderScreen(cards: cardList),
-                    ),
-                  );
+                  context.push(AppRouter.orderScreen, extra: cardList);
                 }
               },
               style: ElevatedButton.styleFrom(

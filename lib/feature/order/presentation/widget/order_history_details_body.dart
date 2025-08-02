@@ -48,13 +48,8 @@ class _OrderHistoryDetailsBodyState extends State<OrderHistoryDetailsBody> {
                       child: AspectRatio(
                         aspectRatio: 4 / 3,
                         child: CachedNetworkImage(
-                          imageUrl:
-                              widget
-                                  .data
-                                  .products?[generator]
-                                  .images
-                                  ?.firstOrNull
-                                  ?.image ??
+                          imageUrl: widget.data.products?[generator].images
+                                  ?.firstOrNull?.image ??
                               "",
                         ),
                       ),
@@ -112,10 +107,8 @@ class _OrderHistoryDetailsBodyState extends State<OrderHistoryDetailsBody> {
                 ),
                 Expanded(
                   child: Translator(
-                    uz:
-                        "${Utils.cashFormat("${widget.data.totalAmount ?? 0}")} ${"sum".tr()}",
-                    ru:
-                        "${Utils.cashFormat("${widget.data.totalAmount ?? 0}")} ${"sum".tr()}",
+                    uz: "${Utils.cashFormat("${widget.data.totalAmount ?? 0}")} ${"sum".tr()}",
+                    ru: "${Utils.cashFormat("${widget.data.totalAmount ?? 0}")} ${"sum".tr()}",
                     crl:
                         "${Utils.cashFormat("${widget.data.totalAmount ?? 0}")} ${"sum".tr()}",
                     style: AppStyle.w600s18h22DarkBluePrimary,
@@ -149,7 +142,7 @@ class _OrderHistoryDetailsBodyState extends State<OrderHistoryDetailsBody> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            20.h,
             if (widget.data.status != 4)
               ButtonWidget(
                 text: "cancel".tr(),
